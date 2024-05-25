@@ -1459,3 +1459,167 @@ calculate(20)
 55
 210
 ```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 函式參數詳解：參數預設值、名稱對應、任意長度參數 (函式進階) <br/> 10_function-args.py
+
+>預設資料
+
+>> 基本語法
+
+```
+def 函式名稱(參數名稱 = 預設資料):
+	函式內部的程式碼
+```
+
+>> 程式範例
+
+```
+# 參數 msg 預設資料為 "Hello"
+def say(msg = "Hello"):
+	print(msg)
+# 印出 Hello Function
+	say("Hello Function")
+say()   # 印出預設資料Hello
+```
+
+##### 用 say("Hello Function") 會印出 Hello Function，但用 say() 因 () 無資料所以會採用預設資料
+
+> 名稱對應
+
+>> 基本語法
+
+```
+def 函式名稱(名稱1, 名稱2):
+	函式內部的程式碼
+# 呼叫函式，以參數名稱對應資料
+函式名稱(名稱2 = 3, 名稱1 = 5)
+```
+
+##### 呼叫函式名稱式可以倒過來，重點是前面要加參數名稱
+
+>> 程式範例
+
+```
+# 定義一個可以做除法的函數
+def divide(n1, n2):
+	result = n1 / n2
+	print(result)
+divide(2, 4)   # 印出 0.5
+divide(n2 = 2, n1 = 4)   # 印出 2.0
+```
+
+> 無限參數
+
+>> 基本語法
+
+```
+def 函式名稱(*無限參數):
+	無限參數以 Tuple 資料型態處理函式內部的程式碼
+# 呼叫程式，可傳入無限數量的參數
+函式名稱(資料一, 資料二, 資料三)
+```
+
+##### 呼叫函式中可以放不定量的資料
+
+>> 程式範例
+
+```
+# 函式接受無限參數 msgs
+def say(*msgs):
+	#以Tuple的方式處理
+	for msg in msgs
+		print(msg)
+# 呼叫函式，傳入三個參數資料
+say("Hello", "Arbitrary", "Arguments")
+```
+
+##### 若給 3 個字串，就會變成 3 個字串的 Tuple，用一個迴圈將 Tuple 資料取出
+
+#### Tuple：有序列表(資料不可更動)，List 資料可更動
+
+#### 參數的預設資料
+
+```
+def power(base, exp = 0):
+	print(base ** exp)
+power(3, 2)
+power(4)
+
+→
+
+9
+1
+```
+
+##### power(4) 因為沒有給次方數，因此帶入預設值 0
+
+>> 使用參數對應名稱
+
+```
+def divide(n1, n2):
+	print(n1 / n2)
+divide(2, 4)
+divide(n2 = 2, n1 = 4)
+
+→
+
+0.5
+2.0
+```
+
+>> 無限 / 不定 參數資料
+
+```
+def avg(*ns):
+	print(ns)
+avg(3, 4)
+avg(3, 5, 10)
+avg(1, 4, -1, -8)
+
+→
+
+(3, 4)
+(3, 5, 10)
+(1, 4, -1, -8)
+```
+
+##### 參數的資料會變成 Tuple 的形態傳遞進去
+
+```
+def avg(*ns):
+	for n in ns:
+		print(n)
+avg(3, 4)
+
+→
+
+3
+4
+```
+
+```
+def avg(*ns):
+	sum = 0
+	for n in ns:
+		sum = sum + n
+		print(sum / len(ns))
+avg(3, 4)
+avg(3, 5, 10)
+avg(1, 4, -1, -8)
+
+→
+
+3.5
+6.0
+-1.0
+```
+
+##### len：列表 (Tuple) 的長度
