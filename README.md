@@ -3128,4 +3128,366 @@ print(data)
 
 - f1 = file("data1.txt")：建立一個檔案的實體物件 
 
-- 有經過包裝的程式在做類似的程式會比較輕鬆 
+- 有經過包裝的程式在做類似的程式會比較輕鬆
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 網路爬蟲 Web Crawler 基本教學 Instance Methods <br/> 19_crawler.py 
+
+### 基本流程
+
+1. 連線到特定網址，抓取資料
+
+2. 解析資料，取得實際想要的部分
+
+### 抓取資料
+
+- 關鍵心法：盡可能讓程式模仿一個普通使用者的樣子 (因為這些網站都不希望讓程式抓取資料)
+
+### 解析資料
+
+- JSON 格式資料：使用內建的 json 模組即可
+
+- HTML 格式資料 (網路上的網站大部分的格式)
+
+- - HTML 的格式以標籤為運作單位 (<>)；</> 前方加斜線代表結束
+
+```
+<html>
+	<head>
+		<title>HTML格式</title>
+	</head>
+	<body>
+		<div class="list">
+			<span>階層結構</span>
+			<span>樹狀結構</sapn>
+		</div>
+	</body>
+</html>
+```
+
+##### head 標籤裡的下一層 (title標籤)，代表網頁的標題
+
+##### HTML由很多標籤組成，而且為階層結構
+
+##### head 和 body 是相鄰的標籤
+
+##### div 標籤裡的 class 為標籤的屬性
+
+#### 使用第三方套件 BeautifulSoup 來做解析
+
+### 安裝套件
+
+- pip 套件管理工具：安裝 Python 時，就一起安裝在電腦裡了
+
+- 安裝 BeautifulSoup
+
+```
+pip install beautifulsoup4
+```
+
+### 抓取 PTT 電影版的網頁原始碼 (HTML)
+
+1. 抓取 PTT 電影版的網頁原始碼 (HTML)
+
+2. 連線到此網址 (要用程式連線上方網址)
+
+3. (要抓到的是在網頁點右鍵：檢視網頁原始碼)  ex：
+
+###### <br/>
+
+![](./MarkDown-img/crawler.jpg)
+
+###### <br/>
+
+##### 原則上所有內容都會在此原始碼內
+
+```
+import urllib.request as req
+
+url = "https://www.ptt.cc/bbs/movie/index.html"
+
+with req.urlopen(url) as response:
+	data=response.read().decode("utf-8")
+
+print(data)
+
+→
+
+出現一堆錯誤
+(最後一行) urllib.error.HTTPError: HTTP Error 403: Forbidden 
+最後一行表示連線被拒絕，因為程式看起來不像正常使用者做連線 (一般網站皆不喜歡此種連線) 
+```
+
+1. 回到PTT電影版
+
+2. 在瀏覽器 (建議Chrome) 右上方的選單
+
+3. 更多工具
+
+4. 開發人員工具 (F12)
+
+5. 上方標籤選單選到 Network (網路監控的工具)
+
+6. 重新 PTT 電影版的網頁
+
+7. 尋找網頁本身 (通常在最上面 (index.html)) (記得左上角要選到All)
+
+8. 選擇Headers
+
+9. (使用瀏覽器發送到PPT的伺服器會附加很多資訊，此附加資訊代表為正常使用者) 找Request Headers (裡面內容為一般使用者會發出的資訊)
+
+10. 找 user-agent (代表使用的作業系統、瀏覽器)，此設定必須要有，將user-agent內容複製到程式中
+
+```
+import urllib.request as req
+
+url = "https://www.ptt.cc/bbs/movie/index.html"
+
+# 建立一個 Request 物件，附加 Request Headers 的資訊
+request = req.Request(url, headers = {
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+})
+
+with req.urlopen(request) as response:
+    data = response.read().decode("utf-8")
+
+print(data)
+
+→
+
+成功抓到網頁原始碼資料
+```
+
+#### 解析原始碼，取得每天文章標題
+
+##### 在 TERMIANAL 中輸入 pip install beautifulsoup4 進行安裝 
+
+```
+# 抓取 PTT 電影版的網頁原始碼 (HTML)
+
+import urllib.request as req
+
+url = "https://www.ptt.cc/bbs/movie/index.html"
+
+# 建立一個 Request 物件，附加 Request Headers 的資訊
+request=req.Request(url, headers = {
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+})
+
+with req.urlopen(request) as response:
+    data = response.read().decode("utf-8")
+
+# 解析原始碼，取得每天文章標題
+
+import bs4
+root = bs4.BeautifulSoup(data, "html.parser")
+print(root.title)
+
+→
+
+<title>看板 movie 文章列表 - 批踢踢實業坊</title>
+```
+
+#### 抓標籤裡的文字 (在 print(root.title) 後面加 string 即可)
+
+```
+# 抓取PTT電影版的網頁原始碼 (HTML)
+
+import urllib.request as req
+
+url = "https://www.ptt.cc/bbs/movie/index.html"
+
+# 建立一個 Request 物件，附加 Request Headers 的資訊
+request = req.Request(url, headers = {
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+})
+
+with req.urlopen(request) as response:
+    data = response.read().decode("utf-8")
+
+# 解析原始碼，取得每天文章標題
+import bs4
+root = bs4.BeautifulSoup(data,"html.parser")
+print(root.title.string)
+
+→
+
+看板 movie 文章列表 - 批踢踢實業坊
+```
+
+##### 在 print(root.title) 後面加 string 即可
+
+###### <br/>
+
+![](./MarkDown-img/crawler2.jpg)
+
+###### <br/>
+
+##### 發現每個文章的標題，都被 ```<a>``` (a的標籤) 包裹，然後再被 ```<div>``` 包裹 (成功找出想要的資料在原始碼中的特色)
+
+```
+# 抓取PTT電影版的網頁原始碼 (HTML)
+
+import urllib.request as req
+
+url = "https://www.ptt.cc/bbs/movie/index.html"
+
+# 建立一個 Request 物件，附加 Request Headers 的資訊
+request = req.Request(url, headers = {
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+})
+
+with req.urlopen(request) as response:
+    data = response.read().decode("utf-8")
+
+# 解析原始碼，取得每天文章標題
+import bs4
+root = bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析HTML格式文件
+titles = root.find("div", class_="title")   # 尋找 class="title" 的 div 標籤 
+print(titles)
+
+→
+
+<div class="title">
+<a href="/bbs/movie/M.1635954120.A.2E7.html">[新聞] 漫威老大太狠心 原本想要初代復仇者全滅</a>
+</div
+```
+
+##### find 會幫忙找到一個符合條件的 ```<div class="title">``` 標籤
+
+#### 發現標籤裡有 a 標籤
+
+```
+# 抓取PTT電影版的網頁原始碼 (HTML)
+
+import urllib.request as req
+
+url = "https://www.ptt.cc/bbs/movie/index.html"
+
+# 建立一個 Request 物件，附加 Request Headers 的資訊
+request=req.Request(url, headers = {
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+})
+
+with req.urlopen(request) as response:
+    data=response.read().decode("utf-8")
+
+# 解析原始碼，取得每天文章標題
+import bs4
+root=bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+titles=root.find("div",class_="title")   # 尋找 class="title" 的 div 標籤
+
+print(titles.a.string)
+
+→
+
+[新聞] 漫威老大太狠心 原本想要初代復仇者全滅
+```
+
+#### 抓到所有標題
+
+```
+# 抓取PTT電影版的網頁原始碼 (HTML)
+
+import urllib.request as req
+
+url = "https://www.ptt.cc/bbs/movie/index.html"
+
+# 建立一個 Request 物件，附加 Request Headers 的資訊
+request = req.Request(url, headers = {
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+})
+
+with req.urlopen(request) as response:
+    data=response.read().decode("utf-8")
+
+# 解析原始碼，取得每天文章標題
+import bs4
+root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+titles=root.find_all("div",class_="title")   # 尋找所有 class="title" 的 div 標籤
+
+print(titles)
+
+→ 
+
+[<div class="title">
+<a href="/bbs/movie/M.1635954120.A.2E7.html">[新聞] 漫威老大太狠心 原本想要初代復仇者全滅</a>
+</div>, <div class="title">
+<a href="/bbs/movie/M.1635954704.A.D91.html">[新聞] 專訪／陳靜「永恆族」當裘莉粉絲 理察讚</a>
+<a href="/bbs/movie/M.1635954725.A.F47.html">[請益] 怒火裡的個一疑問</a>
+<a href="/bbs/movie/M.1635956755.A.DF8.html">[請益] 沒看漫威其他電影適合看永恆族嗎</a>     
+<a href="/bbs/movie/M.1635957112.A.9E0.html">[好微雷] 永恆族根本爆好看</a>
+<a href="/bbs/movie/M.1635957256.A.653.html">[新聞] 克莉絲汀史都華雙喜曝婚訊！ 打造黛妃</a>
+<a href="/bbs/movie/M.1635959191.A.751.html">[ 好雷] 永恆族招誰惹誰</a>
+<a href="/bbs/movie/M.1635959343.A.2E5.html">[贈票]【王者理查】威爾史密斯顛峰之作邀您見證</a>
+<a href="/bbs/movie/M.1635960207.A.759.html">[好無雷] 永恆族 - 大師兄回來了 全都回來了 </a>
+<a href="/bbs/movie/M.1635960741.A.4A9.html">[好無雷] 永恆族好看啊啊啊</a>
+<a href="/bbs/movie/M.1635960996.A.EC4.html">[極好雷] 永恆族集結!Eternals Assemble!</a> 
+<a href="/bbs/movie/M.1635961086.A.C5A.html">[討論] 永恆族片兩個尾片段</a>
+<a href="/bbs/movie/M.1635961311.A.579.html">[討論] 永恆族-漫威是不是政治正確玩上癮了</a>
+<a href="/bbs/movie/M.1635961535.A.E3B.html">[好雷] 超乎預期的永恆族</a>
+<a href="/bbs/movie/M.1630756788.A.1FE.html">[公告] 電影板板規 2021/9/4</a>
+<a href="/bbs/movie/M.1630734048.A.152.html">[公告] 請注意防雷 / 分類</a>
+<a href="/bbs/movie/M.1589355894.A.CDD.html">[情報] 近期院線預計重映片單</a>
+<a href="/bbs/movie/M.1633428583.A.FAE.html">[情報] 2021 第58屆金馬獎 入圍名單</a>
+<a href="/bbs/movie/M.1635917057.A.4A7.html">[情報] 2021 第58屆金馬獎 評審團</a>
+</div>] 
+```
+
+##### 成功把標籤用列表找出來 
+
+#### 抓出資料 (用 for 迴圈) 
+
+```
+# 抓取PTT電影版的網頁原始碼 (HTML)
+
+import urllib.request as req
+
+url = "https://www.ptt.cc/bbs/movie/index.html"
+
+# 建立一個 Request 物件，附加 Request Headers 的資訊
+request = req.Request(url, headers = {
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+}) 
+
+with req.urlopen(request) as response:
+    data = response.read().decode("utf-8")
+
+# 解析原始碼，取得每天文章標題
+import bs4
+root = bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
+
+for title in titles: 
+    if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來 
+        print(title.a.string) 
+
+→ 
+
+[新聞] 漫威老大太狠心 原本想要初代復仇者全滅
+[新聞] 專訪／陳靜「永恆族」當裘莉粉絲 理察讚
+[請益] 怒火裡的個一疑問
+[請益] 沒看漫威其他電影適合看永恆族嗎
+[好微雷] 永恆族根本爆好看
+[新聞] 克莉絲汀史都華雙喜曝婚訊！ 打造黛妃
+[好雷] 永恆族招誰惹誰
+[贈票]【王者理查】威爾史密斯顛峰之作邀您見證
+[好無雷] 永恆族 - 大師兄回來了 全都回來了
+[好無雷] 永恆族好看啊啊啊
+[極好雷] 永恆族集結!Eternals Assemble!
+[討論] 永恆族片兩個尾片段
+[討論] 永恆族-漫威是不是政治正確玩上癮了
+[好雷] 超乎預期的永恆族
+[公告] 電影板板規 2021/9/4
+[公告] 請注意防雷 / 分類
+[情報] 近期院線預計重映片單
+[情報] 2021 第58屆金馬獎 入圍名單
+[情報] 2021 第58屆金馬獎 評審團
+```
