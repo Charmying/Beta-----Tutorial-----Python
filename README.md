@@ -1136,3 +1136,326 @@ else:
 輸入一個正整數：12 enter
 沒有整數平方根
 ```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 函式基礎：定義並呼叫函式 <br/> 09_function-basic.py
+
+> 函式
+
+#### 程式區塊 (函式：程式碼包裝在一個區塊中，方便隨時呼叫，函式就是一個程式區塊)
+
+#### 定義 > 呼叫：要先定義 (建立) 函式，然後才能呼叫 (使用) 函式
+
+> 定義函式
+
+>>基本語法
+
+```
+def 函式名稱(參數名稱):
+	函式內部的程式碼
+```
+
+##### def 代表 define
+
+>> 程式範例：定義一個印出 Hello 的函式
+
+```
+def sayHello():
+	print("Hello")
+```
+
+##### sayHello 名字自取，但不可是中文及數字，只能是一般的英文
+
+>> 程式範例：定義可以印出任何訊息的函式
+
+```
+def say(msg):
+	print(msg)
+```
+
+##### 想法：把參數內的資料 ( () 內的資料) 印出來，暫時還不知道資料為何，只是先定義名字 (變數的概念)
+
+>> 程式範例：定義一個可以做加法的函式
+
+```
+def add(n1, n2):
+	result = n1 + n2
+	print(result)
+```
+
+> 呼叫函式
+
+>> 基本語法
+```
+函式名稱(變數資料)
+```
+
+>> 程式範例：定義一個印出 Hello 的函式
+
+```
+def sayHello():
+	print("Hello")
+sayHello()   # 呼叫上方定義的函式
+```
+
+##### 呼叫函式：跳到函式裡面
+
+>> 程式範例：定義可以印出任何訊息的函式
+
+```
+def say(msg):
+	print(msg)
+say("Hello Function")   # 呼叫上方定義的函式
+say("Hello Python")   # 呼叫上方定義的函式
+```
+
+##### 函式參數的設計在呼叫時有彈性
+
+>> 程式範例：定義一個可以做加法的函式
+
+```
+def add(n1, n2):
+	result = n1 + n2
+	print(result)
+# 呼叫上方定義的函式
+add(3, 4)
+add(7, 8)
+```
+
+> 回傳值
+
+>> 基本語法
+
+```
+def 函式名稱(參數名稱):
+	函式內部的程式碼
+	return   # 結束函式，回傳None
+```
+
+##### 程式內寫下 return，代表程式強制結束
+
+##### 資料：數字、字串、布林值、列表、字典、物件 …
+
+>> 程式範例：函式回傳 None
+
+```
+def say(msg):
+	print(msg)
+	return
+# 呼叫函式，取得回傳值
+value = say("Hello Function")
+print(value)
+
+→
+
+None
+```
+
+##### 函式呼叫的結果，就是回傳值，也就是 None (say("Hello Function"))，None 放進變數 value，印出 value，印出 None
+
+>> 程式範例：函式回傳字串 Hello
+
+```
+def add(n1, n2):
+	result = n1 + n2
+	return "Hello"
+# 呼叫函式，取得回傳值
+value = add(3, 4)
+print(value)
+
+→
+
+Hello
+```
+
+##### 程式邏輯：呼叫 add，3 放進 n1，4 放進 n2，3 + 4 = 7 放進 result，return 字串 Hello，字串Hello 被丟回 add(3, 4)，add(3, 4) 為字串 Hello = value，印出 value
+
+##### result的7沒有用，因為return的是Hello
+
+##### 最後函式呼叫完得到的要看回傳值 (return)，和程式碼無關
+
+>> 函式內部的程式碼，若是沒有做函式呼叫，就不會執行
+
+```
+def multiply():
+	print(3 * 4)
+
+→
+
+無錯誤但不執行
+```
+
+##### 函式內部的 code (程式碼)，沒有呼叫就不會執行
+
+```
+def multiply():
+	print(3 * 4)
+multiply()
+
+→
+
+12
+```
+
+```
+def multiply():
+	print(3 * 4)
+multiply()
+multiply()
+
+→
+
+12
+12
+```
+
+>> 透過參數得到彈性
+
+```
+def multiply(n1, n2):
+	print(n1 * n2)
+multiply(3, 4)
+multiply(10, 8)
+
+→
+
+12
+80
+```
+
+```
+def  multiply(n1, n2):
+	print(n1 * n2)
+value=multiply(3, 4)
+print(value)
+
+→
+
+12
+None
+```
+
+```
+def multiply(n1, n2):
+	print(n1 * n2)
+	return
+value = multiply(3, 4)
+print(value)
+
+→
+
+12
+None
+```
+
+##### return後面沒有帶回傳值就跟沒寫一樣
+
+```
+def multiply(n1, n2):
+	print(n1 * n2)
+	return 10
+value = multiply(3, 4)
+print(value)
+
+→
+
+12
+10
+```
+
+```
+def  multiply(n1, n2):
+	print(n1 * n2)
+	return n1 * n2
+value = multiply(3, 4)
+print(value)
+
+→
+
+12
+12
+```
+
+##### 可以直接在裡面印出來，也可以回傳到外面印出來
+
+```
+def multiply(n1, n2):
+	return n1 * n2
+value = multiply(3, 4)
+print(value)
+
+→
+
+12
+```
+
+```
+def multiply(n1, n2):
+	print(n1 * n2)
+	return n1 * n2
+value = multiply(3, 4)
+
+→
+
+12
+```
+
+>> 回傳值的好處是可以在外部繼續操作
+
+```
+def multiply(n1, n2):
+	return n1 * n2
+value = multiply(3, 4) + multiply(10, 5)   # (3 * 4) + (10 * 5)
+print(value)
+
+→
+
+62
+```
+
+> 程式的包裝
+
+>> 同樣的邏輯可以重複利用
+
+```
+sum = 0
+for n in range(1, 11):
+	sum = sum + n
+print(sum)
+
+sum = 0
+for n in range(1, 21):
+	sum = sum + n
+print(sum)
+
+→
+
+55
+210
+```
+
+#### 類似的工作一直做 (copy test)，就會做程式的包裝
+
+##### 函式最大的用途就是做程式的包裝
+
+```
+def calculate(max):
+	sum = 0
+	for n in range(1, max + 1):
+		sum = sum + n
+	print(sum)
+calculate(10)
+calculate(20)
+
+→
+
+55
+210
+```
