@@ -1623,3 +1623,186 @@ avg(1, 4, -1, -8)
 ```
 
 ##### len：列表 (Tuple) 的長度
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## Module 模組的載入與使用 <br/> 11_module.py
+
+### Python 中所謂的模組，就是獨立的程式檔案，可以被其他的程式載入和使用，其中最大的好處是可以重複使用，在程式碼太長太多時可以寫成不同的檔案模組重複使用，這就是 Python 的模組要解決的問題
+
+### 模組(module)
+
+- 獨立的程式檔案：將程式寫在一個檔案中，此檔案可重複載入使用 
+
+- 載入 > 使用：先載入模組，再使用模組中的函式或變數
+
+> 載入模組
+
+>> 基本語法
+
+```
+import 模組名稱
+```
+
+```
+import 模組名稱 as 模組別名
+```
+
+> 使用模組
+
+>> 基本語法
+
+```
+模組名稱或別名.函式名稱(參數資料)
+```
+
+```
+模組名稱或別名.變數名稱
+```
+
+> 內建模組 (Python 語言中已內建好的模組)
+
+#### sys 模組：取得系統相關資料
+
+>> 程式範例
+
+```
+# 載入sys模組
+import sys
+
+# 使用 sys 模組
+print(sys.platform)   # 印出作業系統
+print(sys.maxsize)   # 印出整數型態的最大值
+print(sys.path)   # 印出搜尋模組的路徑
+```
+
+```
+# 載入sys模組 
+import sys as s
+
+# 使用 sys 模組
+print(s.platform)   # 印出作業系統
+print(s.maxsize)   # 印出整數型態的最大值
+print(s.path)   # 印出搜尋模組的路徑
+
+※ s 是別名
+```
+
+> 自訂模組
+
+#### 建立幾何運算模組：建立檔案 geometry.py，定義平面幾何運算用的函式
+
+##### 載入與使用：載入 geometry 模組，並使用模組中定義的功能
+
+```
+import sys
+
+print(sys.platform)
+print(sys.maxsize)
+
+→ 
+
+win32
+9223372036854775807
+```
+
+```
+import sys as system
+
+print(system.platform)
+print(system.maxsize)
+
+→
+
+win32
+9223372036854775807
+```
+
+#### 建立 geometry 模組，載入使用(自訂模組)
+
+##### 先另開一個 python 檔案命名 geometry.py，並在其中自訂模組
+
+```
+# 在 geometry 模組中定義幾何運算功能
+
+# 計算兩個點的距離
+def distance(x1, y1, x2, y2):
+	return ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
+
+# 計算線段的斜率
+def slope(x1, y1, x2, y2):
+	return (y2 - y1) / (x2 - x1)
+```
+
+##### 回到主程式 (11_module.py)
+
+```
+import geometry
+
+result=geometry.distance(1, 1, 5, 5)
+print(result)
+result=geometry.slope(1, 2, 5, 6)
+print(result)
+
+→ 
+
+5.656854249492381
+1.0
+```
+
+##### 調整搜尋模組的路徑
+
+```
+import sys
+
+print(sys.path)   # 印出模組的搜尋路徑列表
+
+→ 
+
+['D:\\Python-training','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\python310.zip','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\DLLs','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\lib','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310', 'C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages']
+```
+
+##### 在資料夾中建立一個資料夾 (modules)，將 11_module.py 移入
+
+```
+import sys
+import geometry
+
+print(geometry.distance(1, 1, 5, 5))
+
+→ 
+
+Traceback (most recent call last):
+  File "D:\Python-training\11_module.py", line 16, in <module>
+	import geometry
+ModuleNotFoundError: No module named 'geometry'
+```
+
+##### 在模組的搜尋路徑中，並沒有包含自己創建的資料夾(modules)，因此產生錯誤 
+
+```
+import sys
+
+sys.path.append("modules")   # 在模組的搜尋路徑列表中[新增路徑]
+print(sys.path)   # 印出模組的搜尋路徑列表
+print("=========================================")
+
+import geometry
+print(geometry.distance(1, 1, 5, 5))
+
+→ 
+
+['D:\\Python-training','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\python310.zip','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\DLLs','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\lib','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310', 'C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages', 'modules']
+
+=========================================
+
+5.656854249492381
+```
+
+##### 路徑的最後多了 'modules'
