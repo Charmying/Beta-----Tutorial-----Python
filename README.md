@@ -2178,3 +2178,262 @@ with open("config.json", mode = "w") as file:
 
 {'name': 'New Name', 'version': '1,2,5'}
 ```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 亂數與統計模組 <br/> 14_file.py
+
+### 內建模組：學習 random 和 statistics 模組 
+
+> 亂數模組
+
+>> 載入模組
+
+```
+import random
+```
+
+>> 隨機選取
+
+```
+import random
+
+# 從列表中隨機選取1個資料 
+random.choice([0, 1, 5, 8]) 
+
+# 從列表中隨機選取2個資料 
+random.sample([0, 1, 5, 8], 2) 
+```
+
+##### 若想選取 3 個資料，把 2 改成 3；選取資料數不能超過列表長度
+
+>> 隨機調換順序
+
+```
+import random
+
+# 將列表的資料「就地」隨機調換順序
+data = [0, 1, 5, 8]
+random.shuffle(data)
+
+print(data)
+```
+
+##### 就地：將 data 本身進行修改
+
+>> 隨機亂數
+
+```
+import random
+
+# 取得 0.0 ~ 1.0 之間的隨機亂數
+random.random()
+random.uniform(0.0, 1.0)
+```
+
+##### uniform：機率相同
+
+>> 常態分配亂數
+
+```
+import random 
+
+# 取得平均數 100、標準差 10 的常態分配亂數 
+random.normalvariate(100, 10) 
+```
+
+###### <br/>
+
+![](./MarkDown-img/normalDistribution.jpg)
+
+###### <br/>
+
+> 統計模組
+
+>> 載入模組
+
+```
+import statistics
+```
+
+>> 使用模組
+
+```
+import statistics
+
+# 計算列表中數字的平均數
+statistics.mean([1, 4, 6, 9]) 
+
+# 計算列表中數字的中位數
+statistics.median([1, 4, 6, 9])
+
+# 計算列表中數字的標準差   
+statistics.stdev([1, 4, 6, 9])
+```
+
+##### 標準差：代表資料散佈的狀況 
+
+> 隨機模組
+
+#### 隨機選取：TERMINAL 每次出現的數字都不同
+
+```
+import random
+
+data = random.choice([1, 5, 6, 10, 20])
+print(data)
+
+→
+
+10
+```
+
+```
+import random
+
+data=random.sample([1, 5, 6, 10, 20], 3)
+print(data)
+
+→
+
+[1, 20, 6]
+```
+
+#### 隨機調換順序：隨機直接調換 data 本身順序，TERMINAL每次出現的順序都不同
+
+```
+import random
+
+data=[1, 5, 8, 20]
+random.shuffle(data)
+print(data)
+
+→
+
+[8, 20, 1, 5]
+```
+
+#### 隨機選取亂數：TERMINAL 每次出現的數字都不同
+
+```
+import random
+
+data = random.random()   # 0.0 ~ 1.0 之間的隨機亂數
+print(data)
+
+→
+
+0.09932831340192749
+```
+
+##### 等於
+
+```
+import random
+
+data = random.uniform(0.0, 1.0)   # 0.0 ~ 1.0 之間的隨機亂數
+print(data)
+
+→
+
+0.7038663863717032
+```
+
+```
+import random
+
+data = random.uniform(60, 100)   # 60 ~ 100 之間的隨機亂數
+print(data)
+
+→
+
+64.21584558160195
+```
+
+#### 取得常態分配亂數
+
+```
+# 平均數100，標準差10，得到的資料多數在 90 ~ 110 之間
+
+data = random.normalvariate(100, 10)
+print(data)
+
+→
+
+112.49345426404079
+```
+
+```
+# 平均數 0，標準差 5，得到的資料多數在 -5 ~ 5 之間
+
+data = random.normalvariate(0, 5)
+print(data)
+
+→
+
+7.198595824699282
+```
+
+> 統計模組 
+
+```
+import statistics as stat
+
+data = stat.mean([1, 4, 5, 8])
+print(data)
+
+→
+
+4.5
+```
+
+```
+import statistics as stat
+
+data = stat.mean([1, 2, 3, 4, 5, 8, 100])
+print(data)
+
+→
+
+17.571428571428573
+```
+
+```
+import statistics as stat
+
+# 中位數不會被極端值影響
+data = stat.median([1, 2, 3, 4, 5, 8, 100])
+print(data)
+
+→
+
+4
+```
+
+```
+import statistics as stat
+
+data = stat.stdev([1, 2, 3, 4, 5, 8, 100])
+print(data)
+
+→
+
+36.41820580816296
+```
+
+```
+import statistics as stat
+
+data = stat.stdev([1, 2, 3, 4, 5, 8, 10])
+print(data)
+
+→ 
+
+3.251373336211726
+```
