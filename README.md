@@ -2900,3 +2900,232 @@ print(name2.first, name2.last)
 Charmy Tseng
 G Bye
 ```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 實體物件的建立與使用 – 下篇-實體方法 Instance Methods <br/> 18_instance.py
+
+> 實體屬性
+
+#### 實體屬性：封裝在實體物件中的變數
+
+>> 程式範例
+
+```
+class Point:
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+
+# 建立實體物件，並取得實體屬性資料
+
+p = Point(1, 5)
+print(p.x + p.y)
+```
+
+> 實體方法
+
+#### 實體方法：封裝在實體物件中的函式
+
+>> 基本語法
+
+```
+class類別名稱:
+	# 定義初始化函式
+	def __init__(self):
+		定義實體屬性
+			# 定義實體方法/函式   # 與初始化函式同一個階層
+
+# 建立實體物件，放入變數obj中
+obj = 類別名稱()
+```
+
+```
+class類別名稱:
+	# 定義的初始化函式
+	def __init__(self):
+		#封裝在實體物件中的變數
+	def 方法名稱(self, 更多自訂參數):
+		# 方法主體，透過 self 操作實體物件
+
+# 建立實體物件，放入變數 obj 中
+obj = 類別名稱()
+```
+
+> 使用方法
+
+>> 基本語法
+
+```
+實體物件.實體屬性名稱(參數資料)   # 和函式呼叫動作相同 
+```
+
+>> 程式範例
+
+```
+class Point:
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+	def show(self)
+		print(self.x, self.y)
+
+p = Point(1, 5)   # 建立實體物件
+p = show()   # 呼叫實體方法
+```
+
+- Point：類別
+
+- x & y：實體屬性
+
+- show：實體方法
+
+- self：代表實體物件本身，一定要寫； 
+
+```
+# 此段為初始化函式 
+def __init__(self, x, y):
+	self.x = x
+	self.y = y
+```
+
+#### Point 實體物件的設計：平面座標上的點
+
+```
+class Point:
+	def __init__(self,x,y):
+		self.x = x
+		self.y = y
+	# 定義實體方法
+	def show(self):
+		print(self.x, self.y)
+
+p = Point(3, 4)
+p.show()   # 呼叫實體方法/函式
+
+→
+
+3 4
+```
+
+##### Point(3,4)→實體物件：Point(3, 4) → 實體物件，呼叫初始化函式，並且得到實體屬性 x & y，還會得到實體方法 show
+
+```
+class Point:
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+	# 定義實體方法
+	def show(self):
+		print(self.x, self.y)
+	def distance(self, targetX, targetY):
+		return (((self.x - targetX) ** 2) + ((self.y - targetY) ** 2)) ** 0.5
+
+p=Point(3, 4)
+p.show()   # 呼叫實體方法/函式
+result = p.distance(0, 0)   # 計算座標 3, 4 和座標 0, 0 之間的距離
+print(result)
+
+→
+
+3 4
+5.0
+```
+
+##### 因為 distance 的這個函式是 return，把 ```(((self.x - targetX) ** 2) + ((self.y - targetY) ** 2)) ** 0.5``` 的結果利用 return 回傳，所以建立額外的變數 result 接收回傳的資料
+
+```
+def distance(self, targetX, targetY):
+	return(((self.x - targetX) ** 2) + ((self.y - targetY) ** 2)) ** 0.5 
+```
+
+##### 此段為函式的概念，只是封裝在實體物件裡，所以稱實體方法
+
+> File 實體物件的設計：包裝檔案讀取的程式
+
+>> 新增檔案 
+
+#### data1.txt 
+
+```
+笨狗
+```
+
+#### data2.txt 
+
+```
+好可愛
+```
+
+#### instance.py
+
+```
+class file:
+	def __init__(self,name):
+		self.name = name
+		self.file = None   # 尚未開啟檔案:初期是 None
+	def open(self):
+		self.file = open(self.name, mode = "r", encoding = "utf-8")
+	def read(self):
+		return self.file.read()
+
+# 讀取第一個檔案
+f1 = file("data1.txt")
+f1.open()
+data = f1.read()
+print(data)
+
+→
+
+笨狗
+```
+
+```
+class file:
+	# 初始化函式
+	def __init__(self, name):
+		self.name = name
+		self.file = None   # 尚未開啟檔案:初期是 None
+	# 定義實體方法
+	def open(self):
+		self.file = open(self.name, mode = "r", encoding = "utf-8")
+	def read(self)
+		return self.file.read()
+
+# 讀取第一個檔案
+f1 = file("data1.txt")
+f1.open()
+data = f1.read()
+print(data)
+
+# 讀取第二個檔案 
+f2 = file("data2.txt")
+f2.open()
+data = f2.read()
+print(data)
+
+→
+
+笨狗
+好可愛
+```
+
+##### 程式邏輯：利用類別建立實體物件 (file) → 建立初始化函式 → 建立兩個實體屬性 (name、file)，file 初期是 None → 定義實體方法 → 有兩個實體方法：open 方法 (調用 python 內建的檔案開啟功能，得到一個檔案物件，放在實體屬性 file 裡面)；read 方法 (利用剛剛得到的檔案物件做 read，把檔案讀取出來並且回傳) → 這樣即完成一個定義 (一個實體物件的設計) → 設計完後開始使用，使用方式 → 建立實體物件放在 f1，會呼叫初始化函式 → 利用變數 f1 代表實體物件呼叫實體方法 open → 會開始跑 ```self.file = open(self.name, mode = "r", encoding = "utf-8")``` → 呼叫另一個實體方法 → 就會開始跑 ```return self.file.read()``` → 回傳資料放進 data 裡面 → 印出 data 
+
+- 定義 class 是為了產生實體物件，目標是包裝檔案讀取的程式 
+
+- 先有檔案名稱 檔案開啟 檔案讀取 將此流程包裝在實體物件中 
+
+- none 為 python 中特定的資料，代表空 
+
+- 檔案名稱由實體屬性中取得 
+
+- f1 = file("data1.txt")：建立一個檔案的實體物件 
+
+- 有經過包裝的程式在做類似的程式會比較輕鬆 
