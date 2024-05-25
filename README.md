@@ -1806,3 +1806,115 @@ print(geometry.distance(1, 1, 5, 5))
 ```
 
 ##### 路徑的最後多了 'modules'
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## Package 封包的設計與使用 <br/> 12_main.py
+
+### 封包：包含模組的資料夾(用來整理、分類模組程式)
+
+- 檔案系統中的資料夾對應到Python的封包
+
+- 檔案系統中的檔案對應到模組
+
+> 建立封包
+
+>> 專案檔案配置
+
+```
+- 專案資料夾
+	- 主程式.py
+	- 封包資料夾
+		- __init__.py
+		- 模組一.py
+		- 模組二.py
+
+# 有裝- __init__.py的資料夾才會被當作封包，若無- __init__.py則為普通資料夾，- __init__.py裡面留空即可，但檔案要建立，__為兩個底線
+```
+
+>> 專案檔案配置範例
+
+```
+- 專案資料夾
+	- main.py
+	- geometry
+		- __init__.py
+		- point.py
+		- line.py
+```
+
+> 使用封包
+
+>> 基本語法
+
+```
+import 封包名稱.模組名稱
+```
+
+```
+import 封包名稱.模組名稱 as 模組別名
+```
+
+1. 新增資料夾 (backup)，將先前程式移入其中
+
+2. 把程式放進 backup 後，要改寫成 python backup\檔案名.py 或先輸入 cd backup(資料夾名) 後輸入檔案名才能執行
+
+3. 新增封包並在其中建立檔案 ```__init__.py```、```point.py```、```line.py ```
+
+#### point.py
+
+```
+def distance(x, y):
+	return (x ** 2 + y ** 2) ** 0.5
+```
+
+#### line.py
+
+```
+def len(x1, y1, x2, y2):
+	return ((x2 - x1) ** 2) + ((y2 - y1) ** 2) ** 0.5
+def slope(x1, y1, x2, y2):
+	return (y2 - y1) / (x2 - x1)
+```
+
+#### main.py
+
+```
+import geometry.point
+result = geometry.point.distance(3, 4)
+print("距離", result)
+
+import geometry.line
+result = geometry.line.slope(1, 1, 3, 3)
+print("斜率", result)
+
+→ 
+
+距離 5.0
+斜率 1.0
+```
+
+##### geometry.point為模組的完整名稱
+
+#### 若覺得封包名稱太長，可以使用別名
+
+```
+import geometry.point as point
+result = point.distance(3, 4) 
+print("距離", result) 
+
+import geometry.line as line 
+result = line.slope(1, 1, 3, 3) 
+print("斜率", result) 
+
+→ 
+
+距離 5.0
+斜率 1.0
+```
