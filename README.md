@@ -2730,3 +2730,173 @@ Not Supported
 ##### 程式邏輯：定義類別 → 定義 supporttedSrcs 有的東西 → 定義讀取 src → 若沒有在 supporttedSrcs → 則印出 Not Supported → 其餘則印出 Read from src (src 為讀取的內容) → 印出 supporttedSrcs 內的東西 → 讀取 file (有在 supporttedSrcs 裡) → 讀取interest (沒有在 supporttedSrcs 裡)
 
 ##### 注意如何定義類別，類別的屬性是什麼樣的概念，有了類別 (IO) 和類別的屬性 (supporttedSrcs、read) 後該如何使用 (IO.supporttedSrcs、IO.read)，read 是一個函式，可以呼叫 
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 實體物件的建立與使用 – 上篇 - 實體屬性 Instance Attributes <br/> 17_instance.py
+
+### 類別的兩種用法
+
+- 類別與類別屬性
+
+- 類別與實體物件、實體屬性
+	- 類別 → 建立實體物件 → 操作實體物件的屬性
+
+### 實體物件
+
+- 透過類別建立：先定義類別，再透過類別建立實體物件
+
+- 建立 > 使用：要先建立實體物件，然後才能使用實體屬性
+
+> 建立實體
+
+>> 基本語法
+
+```
+class 類別名稱:
+	# 定義初始化函式
+	def __init__(self): 
+		# 透過操作 self 來定義實體屬性 
+
+# 建立實體物件，放入變數obj中 
+obj = 類別名稱()   # 呼叫初始化函式 
+```
+
+>> 程式範例
+
+```
+class Point:
+	def __init__(self):
+		self.x = 3
+		self.y = 4
+
+# 建立實體物件，此實體物件包含 x 和 y 兩個實體屬性
+p = Point()
+```
+
+##### x & y 為屬性名稱
+
+##### ```x = 3``` & ```y = 4``` 為實體屬性，和類別屬性不同
+
+>> 程式範例
+
+```
+class Point:
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+
+# 建立實體物件，建立時，可直接傳入參數資料
+p = Point(1, 5)
+```
+
+##### ```self.x = x``` & ```self.y = y```：把參數 x 放入實體屬性 x 裡面，把參數 y 放入實體屬性y裡面；```def__init__(self,x,y)``` 中的 self 固定帶入，不需要特別寫
+
+##### 順序為 ```p = Point(1, 5)``` 中的 ```1, 5``` 放入 x, y 中 ```(self, x, y)``` 中的參數 x, y，再帶入實體參數 x, y
+
+> 使用實體
+
+>> 基本語法
+
+```
+實體物件.實體屬性名稱
+```
+
+>> 程式範例
+
+```
+class Point:
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+
+# 建立實體物件，並取得實體屬性資料
+p = Point(1, 5)
+print(p.x + p.y)   # 1 + 5 = 6，印出 6
+```
+
+##### 實體物件.實體屬性名稱 → p.x & p.y
+
+#### Point 實體物件的設計：平面座標上的點
+
+```
+class Point:
+	def __init__(self):
+		self.x = 3
+		self.y = 4
+
+p1=Point()   # 透過初始化函式，產生點的實體物件，放進變數裡 
+print(p1.x, p1.y)
+
+→
+
+3 4
+```
+
+#### 建立第一個實體物件裝在 p1，再建立第二個實體物件裝在 p2，就是和類別 & 類別屬性操作不一樣的地方
+
+```
+class Point:
+	def __init__(self): 
+		self.x = 3 
+		self.y = 4 
+
+# 建立第一個實體物件 
+p1 = Point() 
+print(p1.x, p1.y) 
+
+# 建立第二個實體物件 
+p2 = Point() 
+print(p2.x, p2.y) 
+
+→ 
+
+3 4 
+3 4 
+```
+
+```
+class Point:
+	def __init__(self,x,y):
+		self.x = x
+		self.y = y
+
+# 建立第一個實體物件
+p1 = Point(3, 4)
+print(p1.x, p1.y)
+
+# 建立第二個實體物件
+p2 = Point(5, 6)
+print(p2.x, p2.y)
+
+→
+
+3 4
+5 6
+```
+
+#### FullName 實體物件的設計：分開紀錄姓、名資料的全名
+
+```
+class FullName:
+	def __init__(self, first, last):
+		self.first=first
+		self.last=last
+
+name1=FullName("Charmy", "Tseng")
+print(name1.first, name1.last)
+
+name2=FullName("G", "Bye")
+print(name2.first, name2.last)
+
+→
+
+Charmy Tseng
+G Bye
+```
