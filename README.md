@@ -2437,3 +2437,182 @@ print(data)
 
 3.251373336211726
 ```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 網路連線程式、公開資料串接 <br/> 15_open-data.py
+
+### 內建模組：學習 random 和 statistics 模組 
+
+> 網路連線
+
+>> 載入模組
+
+```
+import urllib.request
+```
+
+>> 下載特定網址資料
+
+```
+import urllib.request as request
+
+with request.urlopen(網址) as response:
+	data=response.read()
+
+print(data)
+
+# request：別名(自己設定)
+# response：物件
+```
+
+> 公開資料
+
+- 適合的資料來源
+
+	- ex. 台北市政府公開資料
+
+- 確認資料格式
+	- ex. JSON、CSV 或其他格式
+
+- 解讀 JSON 格式 → 使用內建的 json 模組
+
+> 網路連線
+
+```
+import urllib.request as request
+
+src = "http://www.ntu.edu.tw/" 
+
+with request.urlopen(src) as response:
+	data = response.read()   # 取得台灣大學網站的原始碼 (HTML、CSS、JS)
+
+print(data)
+
+→
+
+取得台灣大學網站的原始碼
+```
+
+```
+import urllib.request as request
+
+src = "http://www.ntu.edu.tw/"
+
+with request.urlopen(src) as response:
+	data = response.read().decode("utf-8")   # 取得台灣大學網站的原始碼 (HTML、CSS、JS)
+
+print(data)
+
+→
+
+取得台灣大學網站的原始碼(轉換中文)
+```
+
+### 串接、擷取公開資料
+
+1. google → data.taipei
+
+2. 搜尋：內湖科技
+
+3. 找到：台北市內湖科技園區廠商名錄
+
+4. 尋找 API 並複製網址
+
+5. 開啟新分頁貼上搜尋
+
+6. 此名錄為 JSON 格式
+
+7. 注意第一行 result 和 results (results 後面為陣列，即為 python 的 list)
+
+8. list (列表) 中有很多的字典 (JSON 的說法為有很多的物件)
+
+- API：讓程式連線，自動下載
+
+```
+import urllib.request as request
+import json
+
+src = "https://data.taipei/api/v1/dataset/296acfa2-5d93-4706-ad58-e83cc951863c?scope=resourceAquire"
+
+with request.urlopen(src) as response:
+	data = json.load(response)   # 利用 json 模組處理 json 資料格式
+
+print(data)
+
+→
+
+成功把台北市政府公開資料印在 console
+```
+
+#### 將公司名稱列表出來 
+
+```
+import urllib.request as request
+import json
+
+src = "https://data.taipei/api/v1/dataset/296acfa2-5d93-4706-ad58-e83cc951863c?scope=resourceAquire"
+
+with request.urlopen(src) as response:
+	data=json.load(response) # 利用 json 模組處理 json 資料格式
+
+# 將公司名稱列表出來
+clist=data["result"]["results"]
+print(clist)
+
+→
+
+資料格式最後只有一個列表(一個中括號)
+clist = data["result"]["results"]，此寫法來自網頁中 JSON，data 為全部，result 和 results 為第一行的 result 和 results
+```
+
+```
+import urllib.request as request
+import json
+
+src = "https://data.taipei/api/v1/dataset/296acfa2-5d93-4706-ad58-e83cc951863c?scope=resourceAquire"
+
+with request.urlopen(src) as response:
+	data = json.load(response)   # 利用 json 模組處理 json 資料格式
+
+# 將公司名稱列表出來
+clist=data["result"]["results"]
+for company in clist:
+	print(company["公司名稱"])
+
+→
+
+公司名稱的乾淨列表
+此資料中公司名稱為 key，對應的公司名稱為 value；統編為 key，統編號碼為 value 
+```
+
+#### 將公司名稱的乾淨列表抓到檔案中
+
+```
+import urllib.request as request
+import json
+
+src = "https://data.taipei/api/v1/dataset/296acfa2-5d93-4706-ad58-e83cc951863c?scope=resourceAquire"
+
+with request.urlopen(src) as response:
+	data=json.load(response) # 利用json模組處理json資料格式
+
+# 將公司名稱列表出來
+
+clist = data["result"]["results"] 
+with open("data.txt", "w", encoding = "utf-8") as file:
+	for company in clist: 
+		file.write(company["公司名稱"] + "\n") 
+
+→ 
+
+產生新的檔案data.txt在資料夾裡
+data.txt →
+公司名稱的乾淨列表
+```
