@@ -1918,3 +1918,263 @@ print("斜率", result)
 距離 5.0
 斜率 1.0
 ```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 文字檔案的讀取和儲存 <br/> 13_file.py
+
+### 檔案操作流程 ：開啟檔案 > 讀取或寫入 > 關閉檔案
+
+> 開啟檔案
+
+>> 基本語法
+
+```
+檔案物件 = open(檔案路徑, mode = 開啟模式)
+```
+
+- 開啟模式
+
+- 讀取模式 - r
+
+- 寫入模式(儲存) - w
+
+-讀寫模式 – r+
+
+> 讀取檔案
+
+>> 讀取全部文字 
+
+```
+檔案物件.read()
+```
+
+>> 一次讀取一行 
+
+```
+for 變數 in 檔案物件:
+	從檔案依序讀取每行文字到變數中
+```
+
+>> 讀取 JSON 格式
+
+```
+import json
+
+讀取到的資料 = json.load(檔案物件)
+```
+
+- 資料格式 JSON 使用的非常頻繁，經常用於網路中交換資料或儲存設定檔
+
+> 寫入檔案(儲存檔案) # 因為英文是 write 所以有翻譯問題
+
+>> 寫入文字
+
+```
+檔案物件.write("字串")
+```
+
+>> 寫入換行符號
+
+```
+檔案物件.write("這是範例文字\n") 
+```
+
+>> 寫入 JSON 格式
+
+```
+import json
+
+json.dump(要寫入的資料, 檔案物件)
+```
+
+> 關閉檔案
+
+>> 基本語法
+
+```
+檔案物件.close()
+```
+
+> 最佳實務
+
+```
+with open(檔案路徑, mode = 開啟模式) as 檔案物件:
+	讀取或寫入檔案的程式
+
+# 以上區塊會自動、安全的關閉檔案
+```
+
+>> 儲存檔案
+
+```
+file = open("data.txt", mode="w")   # 開啟 
+file.write("Hello File")   # 操作 
+file.close()   # 關閉 
+
+→
+
+產生新的檔案data.txt在資料夾裡 
+data.txt → 
+Hello File 
+```
+
+#### 同一個檔案打開再重新寫入會有覆蓋的效果(檔案的內容會被整個覆蓋)，即用新的資料覆蓋檔案裡的內容 
+
+```
+file = open("data.txt", mode = "w")
+file.write("Hello File\nSecond Line")
+file.close()
+
+→
+
+data.txt →
+Hello File
+Second Line
+```
+
+```
+file = open("data.txt", mode = "w")
+file.write("測試中文\n好棒棒")
+file.close()
+
+→
+
+data.txt →
+���դ���
+�n�δ�
+# 出現亂碼
+```
+
+#### 若要顯示中文，需要先指定utf-8編碼(最常見的)
+
+```
+file = open("data.txt", mode = "w",encoding = "utf-8")
+file.write("測試中文\n好棒棒")
+file.close()
+
+→
+
+data.txt →
+測試中文
+好棒棒
+```
+
+> 最佳實務寫法
+
+```
+with open("data.txt", mode = "w", encoding = "utf-8") as file:
+	file.write("測試中文\n好棒棒")
+
+→
+
+data.txt → 
+測試中文
+好棒棒
+```
+
+##### 不需要寫 close，會自動、安全、可靠的將檔案資源釋放、關閉
+
+>> 讀取檔案(讀取已經存在的檔案)
+
+
+- 寫入：不存在沒關係，可以創造新檔案 
+
+```
+with open("data.txt", mode = "r", encoding = "utf-8") as file:
+	data = file.read()
+
+print(data)
+
+→
+
+測試中文
+好棒棒
+```
+#### 寫入數字檔案後讀取且把每行數字做加法
+
+```
+# 儲存檔案
+with open("data.txt", mode = "w", encoding = "utf-8") as file:
+	file.write("5\n3")
+
+# 讀取檔案
+# 把檔案中的數字資料，一行一行的讀取出來，並計算總合
+sum = 0
+with open("data.txt", mode = "r", encoding = "utf-8") as file:
+	for line in file:   # 一行一行讀取
+		sum+=int(line)
+print(sum)
+
+→
+
+8
+```
+
+##### 儲存檔案中先產生新的檔案 data.txt 在資料夾裡並將 5 和 3 在不同行顯示，在讀取檔案中將 data.txt 的 5 和 3 讀取並相加
+
+> 使用 JSON 讀取格式、複寫檔案
+
+#### 新增檔案 config.json
+
+```
+{
+	"name":"My Name",
+	"version":"1,2,5"
+}
+```
+
+#### file.py
+
+```
+import json
+with open("config.json", mode = "r") as file:
+	data = json.load(file)
+
+print(data)   # 是一個字典資料
+print("name：", data["name"])
+print("version：", data["version"])
+
+→ 
+
+name： My Name
+
+version： 1,2,5
+```
+
+>> 修改資料
+
+#### config.json
+
+```
+{
+	"name":"My Name",
+	"version":"1,2,5"
+}
+```
+
+#### file.py
+
+```
+# 從檔案中讀取JSON資料，放入變數data裡面
+with open("config.json", mode = "r") as file:
+	data = json.load(file)
+
+print(data)   # 是一個字典資料
+
+data["name"] = "New Name"   # 修改變數中的資料
+
+# 把最新的資料複寫回檔案中
+with open("config.json", mode = "w") as file:
+	json.dump(data,file)
+
+→
+
+{'name': 'New Name', 'version': '1,2,5'}
+```
