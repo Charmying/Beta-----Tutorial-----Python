@@ -3172,9 +3172,9 @@ print(data)
 </html>
 ```
 
-##### head 標籤裡的下一層 (title標籤)，代表網頁的標題
+##### head 標籤裡的下一層 (title 標籤)，代表網頁的標題
 
-##### HTML由很多標籤組成，而且為階層結構
+##### HTML 由很多標籤組成，而且為階層結構
 
 ##### head 和 body 是相鄰的標籤
 
@@ -3446,7 +3446,7 @@ print(titles)
 #### 抓出資料 (用 for 迴圈) 
 
 ```
-# 抓取PTT電影版的網頁原始碼 (HTML)
+# 抓取 PTT 電影版的網頁原始碼 (HTML)
 
 import urllib.request as req
 
@@ -3465,9 +3465,9 @@ import bs4
 root = bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
 titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
 
-for title in titles: 
-    if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來 
-        print(title.a.string) 
+for title in titles:
+    if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+        print(title.a.string)
 
 → 
 
@@ -3491,3 +3491,420 @@ for title in titles:
 [情報] 2021 第58屆金馬獎 入圍名單
 [情報] 2021 第58屆金馬獎 評審團
 ```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 網路爬蟲 Web Crawler 教學 – Cookie 操作實務 <br/> 20_crawler-cookie.py
+
+### 基本流程
+
+1. 連線到特定網址，抓取資料
+
+2. 解析資料，取得實際想要的部分
+
+- 關鍵心法：盡可能讓程式模仿一個普通使用者的樣子 (因為這些網站都不希望讓程式抓取資料)
+
+### Cookie
+
+- Cookie：網站存放在瀏覽器的一小段內容
+
+	- 每個網站都可以在瀏覽器中存放一小段資料
+
+- 與伺服器的互動：連線時，放在 Request Headers 中送出
+
+### 追蹤連結
+
+#### HTML 超連結
+
+```
+<html>
+	<head>
+		<title>HTML 格式</title>
+	</head>
+	<body>
+		<a href= "http://www.google.com/">Google</a>   <!-- 追蹤網頁的超連結抓到下一份網頁 -->
+	</body>
+</html>
+```
+
+##### 其中 ```<a>``` 即為超連結
+
+##### 此動作為追蹤網頁的連結去抓下一份網頁； ```<a>``` 中 href 的屬性，要抓到 href 裡面的網址後進行第二次連線
+
+##### 連續抓取頁面實務：解析頁面的超連結，並結合程式邏輯完成
+
+- ex. PPT 八卦版的第一頁，追蹤上一頁連結，抓第二頁，就可以持續追蹤上一頁抓很多的頁面 
+
+#### 抓取 PTT 八卦版
+
+1. Google 搜尋 PTT 八卦版並打開該網頁
+
+2. 要用程式連線上方網址
+
+3. 要抓到的是在網頁點右鍵：檢視網頁原始碼
+
+```
+# 抓取 PTT 電影版的網頁原始碼 (HTML)
+
+import urllib.request as req
+
+url = "https://www.ptt.cc/bbs/movie/index.html"
+
+# 建立一個 Request 物件，附加 Request Headers 的資訊
+request = req.Request(url, headers = {
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+}) 
+
+with req.urlopen(request) as response:
+    data = response.read().decode("utf-8")
+
+# 解析原始碼，取得每天文章標題
+import bs4
+root = bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
+
+for title in titles:
+    if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+        print(title.a.string)
+```
+
+```
+# 抓取 PTT 八卦版的網頁原始碼 (HTML)
+
+import urllib.request as req
+
+url = "https://www.ptt.cc/bbs/Gossiping/index.html"
+
+# 建立一個 Request 物件，附加 Request Headers 的資訊
+request = req.Request(url, headers = {
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+})
+
+with req.urlopen(request) as response:
+    data = response.read().decode("utf-8")
+
+# 解析原始碼，取得每天文章標題 
+import bs4 
+root = bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件 
+titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤 
+
+for title in titles:
+    if title.a !=None:   # 如標題包含 a 標籤(沒有被刪除)，印出來
+        print(title.a.string)
+
+→
+
+沒有抓到東西
+```
+
+##### 電影版和八卦版最大的差別，在於進入網頁確認是否滿 18 歲的畫面 (確認過 18 歲的畫面就可反覆直接進入)
+
+1. 回到 Google 搜尋 PTT 八卦版
+
+2. 在瀏覽器 (建議 Chrome) 右上方的選單
+
+3. 更多工具
+
+4. 開發人員工具 (F12)
+
+5. 上方標籤選單選到 Application
+
+6. 左邊選單選到 Cookies 後重新進入 PTT 八卦版
+
+7. 在 Cookies 找到 ptt.cc (PTT 的網站名稱)
+
+8. 會找到 5 個小資料 (Name：名字；Value：資料)
+
+9. 清除 Cookies (上方有 Clear all cookies)
+
+10. 重新整理網頁後 cookies 內沒有 over18 (需重新確認是否滿 18)
+
+##### 程式之所以抓不到東西，是因為沒有給 over18 的訊息 (所以給的回應是確認畫面而不是真正的標題列表)
+
+11. 上方標籤選單選到 Network (網路監控的工具)
+
+12. 重新整理網頁
+
+13. 找 index.html
+
+14. 找 Request Headers (發出網路連線時帶出的附加資訊)
+
+15. (Cookie 存放在瀏覽器，當瀏覽器和 PTT 連線時，會將 Cookie 放在 Request Headers 裡)在 Request Headers 中找到 cookie
+
+16. cookie 中最重要的是 over18=1 (有用；隔開) (利用 over18=1 將存放在瀏覽器中的 cookie 送給伺服器，讓伺服器判斷是否再給一次確認畫面)
+
+```
+# 抓取 PTT 八卦版的網頁原始碼 (HTML)
+
+import urllib.request as req
+
+url = "https://www.ptt.cc/bbs/Gossiping/index.html"
+
+# 建立一個 Request 物件，附加 Request Headers 的資訊
+request = req.Request(url, headers = {
+    "cookie":"over18=1",
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+})
+
+with req.urlopen(request) as response:
+    data = response.read().decode("utf-8")
+
+# 解析原始碼，取得每天文章標題
+import bs4
+root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
+
+for title in titles:
+    if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+        print(title.a.string)
+
+→
+
+[問卦] 大家YT打開都是自家縣市長嗎？
+[問卦] 老人真的有老人臭嗎
+Re: [問卦] 基隆人不坐台鐵，鄉民不懂基隆的八卦？？
+Re: [新聞] 再見開羅！埃及宣布12月起「開始遷都」..
+[問卦] 劉正風被滅門沒人要救？
+Re: [新聞] 詐騙集團大哥枉死！酒店女套好招　母痛哭
+Re: [問卦] 14天教召怎麼選人
+[問卦] 為什麼南部人明顯比北部人好看？
+[問卦] 花納稅人錢養網軍上網罵納稅人對嗎
+[問卦] pixel真的有那麼神嗎
+Re: [新聞] 快訊／迎戰「女版3Q」林靜儀 國民黨將派 
+Re: [問卦] 未繳欠費，真的有人被電信業者告過？
+Re: [新聞] 北捷博愛座糾紛 69歲翁持剪刀刺人遭送辦
+Re: [問卦] 基隆人不坐台鐵，鄉民不懂基隆的八卦？？
+Re: [新聞] 民進黨六都市長由蔡英文徵召 鄭文燦：我 
+[問卦] 香香豆的到底怎麼紅的？
+[問卦] 護藻礁跟核四怎麼選
+[新聞] 我精蟲減少！建築副理控：兒時遭調查局植入晶片...找徵信社
+[問卦] 誰是台灣的平等院鳳凰
+Re: [問卦] 最變態的港片
+[公告] 八卦板板規(2021.05.11)
+[協尋] 10月29日 觀音大同一路車禍
+[公告] 十一月置底閒聊 國父誕辰的十一月
+[公告] 魔王登基大典暨就職演說
+```
+
+1. 在 PTT 八卦版中找到上頁的按鈕 (超連結，也就是 ```<a>``` )，所以，抓到第一個頁面之後，要動態的追縱上頁的超連結長什麼樣子，就在上頁上面點右鍵
+
+2. 檢查(就會找到超連結的樣子)，並且發現在網頁中是 ```<a>``` (a 的標籤)，最特別的地方在於標籤內部的文字(‹ 上頁) 
+
+##### 解析 HTML：去找想要抓的標籤其中特殊的部分 
+
+```
+# 抓取 PTT 八卦版的網頁原始碼 (HTML)
+
+import urllib.request as req
+
+url = "https://www.ptt.cc/bbs/Gossiping/index.html"
+
+# 建立一個 Request 物件，附加 Request Headers 的資訊
+request = req.Request(url, headers = {
+    "cookie":"over18=1",
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+})
+
+with req.urlopen(request) as response:
+    data=response.read().decode("utf-8")
+
+# 解析原始碼，取得每天文章標題
+import bs4
+root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
+
+for title in titles:
+    if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+        print(title.a.string)
+
+# 抓取上一頁的連結
+nextLink = root.find("a", string="‹ 上頁")   # 找到內文是 ‹ 上頁 的 a 標籤
+print(nextLink)
+
+→ 
+
+沒問題
+
+(最後一行) <a class="btn wide" href="/bbs/Gossiping/index39194.html">‹ 上頁</a>
+```
+
+##### bs4 可根據條件找到想要的標籤：```titles = root.find_all("div", class_="title")``` 中是根據 ```class；nextLink = root.find("a", string="‹ 上頁")``` 是根據內文 (標籤裡的內文) string 
+
+#### 下個頁面的標籤在 nextLink，下個目標是屬性 (href)，也就是 ```/bbs/Gossiping/index39194.html```，此時 nextLink 已代表 ```<a>```
+
+```
+# 抓取 PTT 八卦版的網頁原始碼 (HTML)
+
+import urllib.request as req
+
+url = "https://www.ptt.cc/bbs/Gossiping/index.html"
+
+# 建立一個 Request 物件，附加 Request Headers 的資訊
+
+request = req.Request(url, headers = {
+    "cookie":"over18=1",
+    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+})
+
+with req.urlopen(request) as response:
+    data=response.read().decode("utf-8")
+
+# 解析原始碼，取得每天文章標題
+import bs4
+root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+titles = root.find_all("div", class_="title")   # 尋找所有 class="title "的 div 標籤
+
+for title in titles:
+    if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+        print(title.a.string)
+
+# 抓取上一頁的連結
+nextLink = root.find("a", string="‹ 上頁")   # 找到內文是 ‹ 上頁 的 a 標籤
+print(nextLink["href"])
+
+→ 
+
+沒問題
+
+(最後一行)/bbs/Gossiping/index39195.html
+```
+
+##### 但此網址沒有包含前面的 ptt,cc，待會人工接上
+
+#### 整理程式碼 (用函式做包裝)
+
+```
+# 抓取 PTT 八卦版的網頁原始碼 (HTML)
+
+import urllib.request as req
+
+def getData(url):
+    # 建立一個 Request 物件，附加 Request Headers 的資訊
+    request = req.Request(url, headers = {
+        "cookie":"over18=1",
+        "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+    })
+
+    with req.urlopen(request) as response:
+        data = response.read().decode("utf-8")
+
+    # 解析原始碼，取得每天文章標題
+    import bs4
+    root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+    titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
+
+    for title in titles:
+        if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+            print(title.a.string)
+
+    # 抓取上一頁的連結
+    nextLink = root.find("a", string="‹ 上頁")   # 找到內文是 ‹ 上頁 的 a 標籤
+    print(nextLink["href"])
+
+# 抓取一個頁面的標題
+
+pageURL = "https://www.ptt.cc/bbs/Gossiping/index.html"
+getData(pageURL)
+
+→ 
+
+沒問題 
+
+(最後一行)/bbs/Gossiping/index39195.html
+```
+
+```
+# 抓取 PTT 八卦版的網頁原始碼 (HTML)
+
+import urllib.request as req
+
+def getData(url):
+    # 建立一個 Request 物件，附加 Request Headers 的資訊
+    request = req.Request(url, headers = {
+        "cookie":"over18=1",
+        "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+    })
+
+    with req.urlopen(request) as response:
+        data = response.read().decode("utf-8")
+
+    # 解析原始碼，取得每天文章標題
+    import bs4
+    root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+    titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
+
+    for title in titles:
+        if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+            print(title.a.string)
+
+    # 抓取上一頁的連結
+    nextLink = root.find("a", string="‹ 上頁") # 找到內文是 ‹ 上頁 的 a 標籤
+    return nextLink["href"]
+
+# 抓取一個頁面的標題
+pageURL="https://www.ptt.cc/bbs/Gossiping/index.html"
+pageURL="https://www.ptt.cc" + getData(pageURL)
+print(pageURL)
+
+→ 
+
+沒問題 
+
+(最後一行) https://www.ptt.cc/bbs/Gossiping/index39197.html
+```
+
+##### 已經形成完整的網址 
+
+##### 程式邏輯：呼叫函式 getData(pageURL) → 網址 ("https://www.ptt.cc/bbs/Gossiping/index.html") 就會丟進去跑 → 跑完就會抓到上一頁的連結 (nextLink["href"]) → 之後就會 return 回到 getData(pageURL) → 再覆蓋回 pageURL 裡面
+
+##### getData(pageURL) 得到的是後面那一段 (/bbs/Gossiping/index.html) 所以前面手動加，"https://www.ptt.cc"，形成 ```pageURL = "https://www.ptt.cc" + getData(pageURL)```
+
+```
+# 抓取 PTT 八卦版的網頁原始碼 (HTML)
+
+import urllib.request as req
+
+def getData(url):
+    # 建立一個 Request 物件，附加 Request Headers 的資訊
+    request = req.Request(url, headers = {
+        "cookie":"over18=1",
+        "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+    })
+
+    with req.urlopen(request) as response:
+        data=response.read().decode("utf-8")
+
+    # 解析原始碼，取得每天文章標題
+    import bs4
+    root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+    titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
+
+    for title in titles:
+        if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+            print(title.a.string)
+
+    # 抓取上一頁的連結
+    nextLink = root.find("a", string="‹ 上頁")   # 找到內文是 ‹ 上頁 的 a 標籤
+    return nextLink["href"]
+
+# 主程式：抓取多個頁面的標題
+pageURL = "https://www.ptt.cc/bbs/Gossiping/index.html"
+
+count = 0
+
+while count < 3:   # 若想抓 3 頁就 < 3
+    pageURL = "https://www.ptt.cc" + getData(pageURL)
+    count += 1
+
+→ 
+
+成功
+```
+
+##### 程式邏輯：在程式中其實只加了 ```"cookie":"over18=1"``` → 在 Request Heades 中加上 Cookie 的 Headers → 把 over18=1 放進去 (代表連線曾經點過已滿 18 歲) → 把本來的程式包裝在一個函式裡叫做 getData → 然後傳遞網址進去 → 利用 url 去抓資料 → 研究原始碼，看看每個頁面的上一頁連結要怎麼抓 (要動態的抓到，因為每個頁面上一頁的網址都不一樣) → 用 bs4 工具去尋找 a 標籤 (```nextLink=root.find("a",string="‹ 上頁")```) → 抓到 href 屬性，href = 一個網址(網頁的超連結) → 進行 return (丟回函式的外面) → 包裝起來後外面的就是主程式 → ```pageURL = "https://www.ptt.cc/bbs/Gossiping/index.html"``` 為第一頁 → 去抓下一頁後得到網址再去串上網站名稱 → pageURL 就是上一頁的網址，再 +1 (```count+=1```) 
