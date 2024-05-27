@@ -3138,7 +3138,7 @@ print(data)
 
 
 
-## 網路爬蟲 Web Crawler 基本教學 Instance Methods <br/> 19_crawler.py 
+## 網路爬蟲 Web Crawler 基本教學 Instance Methods <br/> 19_crawler.py
 
 ### 基本流程
 
@@ -3907,4 +3907,38 @@ while count < 3:   # 若想抓 3 頁就 < 3
 成功
 ```
 
-##### 程式邏輯：在程式中其實只加了 ```"cookie":"over18=1"``` → 在 Request Heades 中加上 Cookie 的 Headers → 把 over18=1 放進去 (代表連線曾經點過已滿 18 歲) → 把本來的程式包裝在一個函式裡叫做 getData → 然後傳遞網址進去 → 利用 url 去抓資料 → 研究原始碼，看看每個頁面的上一頁連結要怎麼抓 (要動態的抓到，因為每個頁面上一頁的網址都不一樣) → 用 bs4 工具去尋找 a 標籤 (```nextLink=root.find("a",string="‹ 上頁")```) → 抓到 href 屬性，href = 一個網址(網頁的超連結) → 進行 return (丟回函式的外面) → 包裝起來後外面的就是主程式 → ```pageURL = "https://www.ptt.cc/bbs/Gossiping/index.html"``` 為第一頁 → 去抓下一頁後得到網址再去串上網站名稱 → pageURL 就是上一頁的網址，再 +1 (```count+=1```) 
+##### 程式邏輯：在程式中其實只加了 ```"cookie":"over18=1"``` → 在 Request Heades 中加上 Cookie 的 Headers → 把 over18=1 放進去 (代表連線曾經點過已滿 18 歲) → 把本來的程式包裝在一個函式裡叫做 getData → 然後傳遞網址進去 → 利用 url 去抓資料 → 研究原始碼，看看每個頁面的上一頁連結要怎麼抓 (要動態的抓到，因為每個頁面上一頁的網址都不一樣) → 用 bs4 工具去尋找 a 標籤 (```nextLink=root.find("a",string="‹ 上頁")```) → 抓到 href 屬性，href = 一個網址(網頁的超連結) → 進行 return (丟回函式的外面) → 包裝起來後外面的就是主程式 → ```pageURL = "https://www.ptt.cc/bbs/Gossiping/index.html"``` 為第一頁 → 去抓下一頁後得到網址再去串上網站名稱 → pageURL 就是上一頁的網址，再 +1 (```count+=1```)
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 網路爬蟲 Web Crawler 教學 – AJAX (XHR) 網路技術分析實務 <br/> 21_crawler-ajax.py
+
+### XHR 為 AJAX 技術的另一個稱號
+
+### 基本流程
+
+1. 連線到特定網址，抓取資料
+
+2. 解析資料，取得實際想要的部分
+
+### AJAX
+
+#### AJAX：網頁前端的 JavaScript 程式技術
+
+###### <br/>
+
+![](./MarkDown-img/crawler-ajax-1.jpg)
+
+###### <br/>
+
+![](./MarkDown-img/crawler-ajax-2.jpg)
+
+###### <br/>
+
+#### 第二次以後的動作在網頁前端被稱作 AJAX 的技巧
