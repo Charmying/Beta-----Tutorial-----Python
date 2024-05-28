@@ -3962,3 +3962,144 @@ while count < 3:   # 若想抓 3 頁就 < 3
 ### AJAX：網頁在背景透過 JavaScript 程式發出請求
 
 ### 需有 AJAX 觀念
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## Flask 網站開發 – 基礎環境建置教學 <br/> 23_app.py
+
+### 快速開始流程
+
+1. 安裝 Flask 套件
+
+2. 建立專案資料夾，撰寫程式
+
+3. 啟動伺服器，測試網站運作
+
+#### 安裝套件
+
+##### Flask 套件
+
+```
+pip install Flask
+```
+
+#### 建立專案
+
+1. 建立網站專案：在電腦中的任意位置建立「專案資料夾」
+
+2. 撰寫程式：撰寫第一隻網站伺服器端的程式 (俗稱後端)
+
+#### 執行測試
+
+1. 啟動網站：使用命令列執行 python 程式，即啟動網站
+
+2. 測試網站：將網址貼到瀏覽器的網址列中，測試網站運作
+
+### 快速開始
+
+1. 在資料夾中創新資料夾 (flask-heroku)
+
+2. VS Code 中點檔案
+
+3. 開啟資料夾
+
+4. 選 flask-heroku
+
+5. 在 TERMINAL 中輸 入pip install Flask
+
+6. 在專案中建立新的檔案 (app.py)
+
+```
+from flask import Flask
+
+app = Flask(__name__)   # __name__ 代表目前執行的模組
+
+ 
+
+@app.route("/")   # 函式的裝飾 (Decorator)：以函式為基礎，提供附加的功能
+
+def home():
+    return "Hello Flask"
+
+if __name__ == "__main__":   # 如果以主程式執行
+    app.run()   # 立刻啟動伺服器
+
+→
+
+* Serving Flask app '23_app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+
+→
+
+* Serving Flask app '23_app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [06/Nov/2021 02:10:41] "GET / HTTP/1.1" 200 –
+```
+
+##### 對著網址按 ctrl + 滑鼠左鍵，即會開啟網頁 (顯示 Hello Flask)；( ```ctrl``` + C 就會停止)
+
+##### ```__name__``` 為 Python 內建的變數，會儲存目前程式在哪個模組下執行
+
+##### 網站程式特性：必須 24 小時運作，不能中斷，若中斷網址就會掛掉
+
+##### /：網站的根目錄；http://127.0.0.1:5000/ 為網址的主機
+
+##### / 代表使用者連到根目錄時，要回應 Hello Flask
+
+##### 在網址上打 http://127.0.0.1:5000/test：因為 /test 網站沒有處理，網頁會告訴使用者找不到東西 (要不要處理可自己決定)
+
+```
+from flask import Flask
+
+app = Flask(__name__)   # __name__ 代表目前執行的模組
+
+@app.route("/")   # 函式的裝飾 (Decorator)：以函式為基礎，提供附加的功能
+
+def home():
+    return "Hello Flask 2"
+
+@app.route("/test")   # 代表我們要處理的網站路徑
+
+def test():
+    return "This is Test"
+
+if __name__ == "__main__":   # 如果以主程式執行
+    app.run()   # 立刻啟動伺服器
+
+→
+
+* Serving Flask app '23_app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+
+→
+
+* Serving Flask app '23_app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [06/Nov/2021 02:24:45] "GET / HTTP/1.1" 200 -
+```
+
+##### 在網址後面加 /test(http://127.0.0.1:5000/test)，即會顯示：This is Test
+
+##### /(輸入程式中沒有設定的 code)：網頁會告訴使用者找不到東西；```ctrl``` + C 後對網頁整理顯示無法連上這個網站，代表網站壞掉 (因為已中斷網址)
