@@ -4103,3 +4103,492 @@ if __name__ == "__main__":   # 如果以主程式執行
 ##### 在網址後面加 /test(http://127.0.0.1:5000/test)，即會顯示：This is Test
 
 ##### /(輸入程式中沒有設定的 code)：網頁會告訴使用者找不到東西；```ctrl``` + C 後對網頁整理顯示無法連上這個網站，代表網站壞掉 (因為已中斷網址)
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## Flask 網站開發 – Heroku 雲端主機教學 <br/> 24_app.py
+
+### 基本流程
+
+1. 安裝 Flask 套件
+
+2. 安裝 Git
+
+3. 到 Heroku 註冊帳號、建立應用
+
+4. 安裝 Heroku 命令列工具
+
+5. 將程式部屬到 Heroku App，並測試
+
+### 建立描述檔 (描述如何運作)
+
+- runtime.txt：描述使用的 python 環境
+
+- requirements.txt：描述程式運作所需要的套件
+
+- Procfile：告訴 Heroku 如何執行程式
+
+	- Procfile：process file
+
+### Git
+
+- 安裝 Git 工具：搜尋 Git，下載並安裝 Git Tool
+
+### 註冊帳號
+
+- Heroku：註冊一個帳號
+
+- 建立應用程式：選擇建立 Application 應用程式
+
+### Heroku CLI (Heroku 的命令列套件：Heroku Command-Line Interface)
+
+- Heroku 命令列工具：按照 Heroku 官網，應用程式中的指示安裝
+
+### 部屬專案
+
+1. 使用命令列模式：以下步驟使用命令列模式執行
+
+2. 登入 Heroku：heroku login
+
+3. 初始化專案：
+
+	1. git init
+
+	2. heroku git:remote -a 專案名稱 (一開始打就好)
+
+4. 更新專案：
+
+	1. git add .
+
+	2. git commit -m "更新的訊息"
+
+	3. git push heroku master(每次有更新就要打)
+
+#### 在 python-training 的資料夾中創新資料夾(python-training-setting)，新增檔案 24_app.py
+
+### 建立專案描述檔
+
+> runtime.txt (告訴人家版本 )
+
+```
+python-3.10.0
+```
+
+> requirements.txt (告訴人家專案在運作時需要哪些套件)
+
+```
+Flask
+
+gunicorn
+```
+
+##### 在 Heroku 上用，為了啟動程式用
+
+> Procfile (告訴 Heroku 要怎麼啟動專案)
+
+```
+web gunicorn 24_app:app
+```
+
+##### 啟動 web 專案；24_app：要啟動的檔名；app：code 中 ```app = Flask(__name__)``` 的 app
+
+### 安裝 Git
+
+1. Google 搜尋 git → [git 網站](https://git-scm.com/)
+
+###### <br/>
+
+![](./MarkDown-img/app-heroku.jpg)
+
+###### <br/>
+
+2. 點 Download for Winsows 下載 (windows 系統)
+
+### Heroku 註冊帳號並建立應用程式
+
+1. Google 搜尋 heroku 進入 Heroku 網站 (Heroku: Cloud Application Platform)
+
+2. 右上角 Sign Up
+
+3. 在 Heroku 網站中登入
+
+4. 按右上角的 New 後出現 Create new app 點進去
+
+5. 在 App name 中輸入名字 (python-training-setting)，其餘不管
+
+6. Create App → (進入畫面會顯示專案資訊)
+
+### 安裝 Heroku CLI (Heroku 的命令列套件)
+
+1. 點左上角 Personal
+
+2. 點剛剛建立的專案 (python-training-setting)
+
+3. 點上方的 Deploy (部署)
+
+	- 所謂的部署就是把寫的程式放到雲端，可以真正的在線上運作
+
+	- 下方也有教學
+
+4. 在網頁中看到 Install the Heroku CLI，點進去 (ctrl + 滑鼠左鍵會另開視窗)
+
+5. 下方選擇安裝
+
+### 確認 git 是否安裝成功
+
+```
+→ git
+
+usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path] 
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           [--super-prefix=<path>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone             Clone a repository into a new directory
+   init              Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add               Add file contents to the index
+   mv                Move or rename a file, a directory, or a symlink
+   restore           Restore working tree files
+   rm                Remove files from the working tree and from the index
+   sparse-checkout   Initialize and modify the sparse-checkout
+
+examine the history and state (see also: git help revisions)
+   bisect            Use binary search to find the commit that introduced a bug
+   diff              Show changes between commits, commit and working tree, etc
+   grep              Print lines matching a pattern
+   log               Show commit logs
+   show              Show various types of objects
+   status            Show the working tree status
+
+grow, mark and tweak your common history
+   branch            List, create, or delete branches
+   commit            Record changes to the repository
+   merge             Join two or more development histories together
+   rebase            Reapply commits on top of another base tip
+   reset             Reset current HEAD to the specified state
+   switch            Switch branches
+   tag               Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch             Download objects and refs from another repository
+   pull              Fetch from and integrate with another repository or a local branch
+   push              Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+```
+
+##### 安裝成功
+
+### 確認 heroku 是否安裝成功
+
+```
+→ heroku
+
+CLI to interact with Heroku
+
+VERSION
+  heroku/7.53.0 win32-x64 node-v12.21.0
+
+USAGE
+  $ heroku [COMMAND]
+
+COMMANDS
+  access          manage user access to apps
+  addons          tools and services for developing, extending, and operating your app
+  apps            manage apps on Heroku
+  auth            check 2fa status
+  authorizations  OAuth authorizations
+  autocomplete    display autocomplete installation instructions
+  buildpacks      scripts used to compile apps
+  certs           a topic for the ssl plugin
+  ci              run an application test suite on Heroku
+  clients         OAuth clients on the platform
+  config          environment variables of apps
+  container       Use containers to build and deploy Heroku apps
+  domains         custom domains for apps
+  drains          forward logs to syslog or HTTPS
+  features        add/remove app features
+  git             manage local git repository for app
+  help            display help for heroku
+  keys            add/remove account ssh keys
+  labs            add/remove experimental features
+  local           run Heroku app locally
+  logs            display recent log output
+  maintenance     enable/disable access to app
+  members         manage organization members
+  notifications   display notifications
+  orgs            manage organizations
+  pg              manage postgresql databases
+  pipelines       manage pipelines
+  plugins         list installed plugins
+  ps              Client tools for Heroku Exec
+  psql            open a psql shell to the database
+  redis           manage heroku redis instances
+  regions         list available regions for deployment
+  releases        display the releases for an app
+  reviewapps      manage reviewapps in pipelines
+  run             run a one-off process inside a Heroku dyno
+  sessions        OAuth sessions
+  spaces          manage heroku private spaces
+  status          status of the Heroku platform
+  teams           manage teams
+  update          update the Heroku CLI
+  webhooks        list webhooks on an app
+```
+
+##### 安裝成功
+
+##### heroku 放 C 槽，git 放 D 槽
+
+### 登入 heroku
+
+```
+→ heroku login
+
+heroku: Press any key to open up the browser to login or q to exit:
+questor=SFMyNTY.g2gDbQAAAA0xMTEuMjUyLjQ1Ljg0bgYA-E68D30BYgABUYA.WtYRzcQM-uIM_a8COrYWRyLEhrIs9ZpL_G_qN3YNyM4
+Logging in... done
+Logged in as charmytseng0118@gmail.com
+```
+
+##### 初始化專案 (只需做一次，未來持續的更新與部屬皆不用再做)
+
+> 第 1 步
+
+```
+→ git init
+
+Initialized empty Git repository in D:/Python-training/flask-heroku/python-training-setting/.git/
+```
+
+##### 旁邊出現的變化不用理
+
+> 第 2 步
+
+```
+→ heroku git:remote -a python-training-setting
+
+set git remote heroku to https://git.heroku.com/python-training-setting.git
+```
+
+### 部屬專案 (3個步驟)
+
+> 第 1 步
+
+```
+→ git add .
+```
+
+> 第 2 步
+
+```
+→ git commit -am "make it better"
+
+[master (root-commit) a72389b] make it better
+ 4 files changed, 17 insertions(+)
+ create mode 100644 24_app.py
+ create mode 100644 Procfile
+ create mode 100644 requirements.txt
+ create mode 100644 runtime.txt
+```
+
+>> 若是出現
+
+```
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'charmy@DESKTOP-QH4EVI9.(none)')
+```
+
+>> 則必須
+
+```
+→ git config --global user.name "Charmy"
+→ git config --global user.email "charmytseng0118@gmail.com"
+→ git commit -m "make it better"
+
+[master (root-commit) 8e8c17a] make it better
+ 5 files changed, 30 insertions(+)
+ create mode 100644 24_app.py
+ create mode 100644 Procfile
+ create mode 100644 requirements.txt
+ create mode 100644 runtime.txt
+```
+
+> 第 3 步
+
+```
+→ git push heroku master
+
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (6/6), 711 bytes | 711.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Building on the Heroku-20 stack
+remote: -----> Determining which buildpack to use for this app
+remote: -----> Python app detected
+remote: -----> Using Python version specified in runtime.txt
+remote: -----> Installing python-3.10.0
+remote: -----> Installing pip 21.3.1, setuptools 57.5.0 and wheel 0.37.0
+remote: -----> Installing SQLite3
+remote: -----> Installing requirements with pip
+remote:        Collecting Flask
+remote:          Downloading Flask-2.0.2-py3-none-any.whl (95 kB)
+remote:        Collecting gunicorn
+remote:          Downloading gunicorn-20.1.0-py3-none-any.whl (79 kB)
+remote:        Collecting itsdangerous>=2.0
+remote:          Downloading itsdangerous-2.0.1-py3-none-any.whl (18 kB)
+remote:        Collecting click>=7.1.2
+remote:          Downloading click-8.0.3-py3-none-any.whl (97 kB)
+remote:        Collecting Werkzeug>=2.0
+remote:          Downloading Werkzeug-2.0.2-py3-none-any.whl (288 kB)
+remote:        Collecting Jinja2>=3.0
+remote:          Downloading Jinja2-3.0.3-py3-none-any.whl (133 kB)
+remote:        Collecting MarkupSafe>=2.0
+remote:          Downloading MarkupSafe-2.0.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (30 kB)nux_2_12_x86_64.manylinux2010_x86_64.whl (30 kB)                                                       rn, Flask
+remote:        Installing collected packages: MarkupSafe, Werkzeug, Jinja2, itsdangerous, click, gunico0.3 gunicorn-20.1.0 itsdangerous-2.0.1rn, Flask
+remote:        Successfully installed Flask-2.0.2 Jinja2-3.0.3 MarkupSafe-2.0.1 Werkzeug-2.0.2 click-8.0.3 gunicorn-20.1.0 itsdangerous-2.0.1
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote:
+remote: -----> Compressing...
+remote:        Done: 59.6M
+remote: -----> Launching...
+remote:        Released v3
+remote:        https://python-training-setting.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+
+To https://git.heroku.com/python-training-setting.git
+
+ * [new branch]      master -> master
+```
+
+##### 注意 https://stackoverflow.com/questions/65404309/heroku-error-during-git-push-deployment-the-same-version-of-this-code-has-alr
+
+##### https://python-training- setting.herokuapp.com/ 為網站的正式網址，可以分享的真正在線上運作的網站
+
+##### ※ heroku 網站找到自己創立的專案，在 DEPLOY 中有執行步驟
+
+##### ↓
+
+##### 成功開啟網址後，網頁會顯示
+
+##### Hello Flask 2
+
+##### 在網址後方加上/test，網頁會顯示
+
+##### This is Test
+
+> 修改程式後
+
+```
+from flask import Flask
+
+app = Flask(__name__)   # __name__ 代表目前執行的模組
+ 
+@app.route("/")   # 函式的裝飾 (Decorator)：以函式為基礎，提供附加的功能
+
+def home():
+    return "Hello Flask 2"
+
+@app.route("/test")   # 代表我們要處理的網站路徑
+
+def test():
+    return "This is Test 2"
+
+if __name__ == "__main__":   # 如果以主程式執行
+
+    app.run()   # 立刻啟動伺服器
+```
+
+### 需重新佈署 
+
+> 第 1 步
+
+```
+→ git add .
+```
+
+> 第 2 步
+
+```
+→ git commit -am "make it better"
+
+[master c26f6f5] make it better
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+
+> 第 3 步
+
+```
+→ git push heroku master
+
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 382 bytes | 382.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Building on the Heroku-20 stack
+remote: -----> Using buildpack: heroku/python
+remote: -----> Python app detected
+remote: -----> Using Python version specified in runtime.txt
+remote: -----> No change in requirements detected, installing from cache
+remote: -----> Using cached install of python-3.10.0
+remote: -----> Installing pip 21.3.1, setuptools 57.5.0 and wheel 0.37.0
+remote: -----> Installing SQLite3
+remote: -----> Installing requirements with pip
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote:
+remote: -----> Compressing...
+remote:        Done: 59.5M
+remote: -----> Launching...
+remote:        Released v4
+remote:        https://python-training-setting.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+
+To https://git.heroku.com/python-training-setting.git
+   a72389b..c26f6f5  master -> master
+```
+
+##### 網頁重新整理即出現 This is Test 2
+
+##### 開發流程：先在本機端開發測試 (因為比較快)，再部屬到雲端，就變成真正可以用的網站
