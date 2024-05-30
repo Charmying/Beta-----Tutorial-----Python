@@ -3252,11 +3252,11 @@ url = "https://www.ptt.cc/bbs/movie/index.html"
 
 # 建立一個 Request 物件，附加 Request Headers 的資訊
 request = req.Request(url, headers = {
-    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
 })
 
 with req.urlopen(request) as response:
-    data = response.read().decode("utf-8")
+	data = response.read().decode("utf-8")
 
 print(data)
 
@@ -3278,11 +3278,11 @@ url = "https://www.ptt.cc/bbs/movie/index.html"
 
 # 建立一個 Request 物件，附加 Request Headers 的資訊
 request=req.Request(url, headers = {
-    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
 })
 
 with req.urlopen(request) as response:
-    data = response.read().decode("utf-8")
+	data = response.read().decode("utf-8")
 
 # 解析原始碼，取得每天文章標題
 
@@ -3306,11 +3306,11 @@ url = "https://www.ptt.cc/bbs/movie/index.html"
 
 # 建立一個 Request 物件，附加 Request Headers 的資訊
 request = req.Request(url, headers = {
-    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
 })
 
 with req.urlopen(request) as response:
-    data = response.read().decode("utf-8")
+	data = response.read().decode("utf-8")
 
 # 解析原始碼，取得每天文章標題
 import bs4
@@ -3341,11 +3341,11 @@ url = "https://www.ptt.cc/bbs/movie/index.html"
 
 # 建立一個 Request 物件，附加 Request Headers 的資訊
 request = req.Request(url, headers = {
-    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
 })
 
 with req.urlopen(request) as response:
-    data = response.read().decode("utf-8")
+	data = response.read().decode("utf-8")
 
 # 解析原始碼，取得每天文章標題
 import bs4
@@ -3373,11 +3373,11 @@ url = "https://www.ptt.cc/bbs/movie/index.html"
 
 # 建立一個 Request 物件，附加 Request Headers 的資訊
 request=req.Request(url, headers = {
-    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
 })
 
 with req.urlopen(request) as response:
-    data=response.read().decode("utf-8")
+	data=response.read().decode("utf-8")
 
 # 解析原始碼，取得每天文章標題
 import bs4
@@ -3402,11 +3402,11 @@ url = "https://www.ptt.cc/bbs/movie/index.html"
 
 # 建立一個 Request 物件，附加 Request Headers 的資訊
 request = req.Request(url, headers = {
-    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
 })
 
 with req.urlopen(request) as response:
-    data=response.read().decode("utf-8")
+	data=response.read().decode("utf-8")
 
 # 解析原始碼，取得每天文章標題
 import bs4
@@ -3454,11 +3454,11 @@ url = "https://www.ptt.cc/bbs/movie/index.html"
 
 # 建立一個 Request 物件，附加 Request Headers 的資訊
 request = req.Request(url, headers = {
-    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
 }) 
 
 with req.urlopen(request) as response:
-    data = response.read().decode("utf-8")
+	data = response.read().decode("utf-8")
 
 # 解析原始碼，取得每天文章標題
 import bs4
@@ -3466,8 +3466,8 @@ root = bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析 
 titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
 
 for title in titles:
-    if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
-        print(title.a.string)
+	if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+		print(title.a.string)
 
 → 
 
@@ -3558,11 +3558,11 @@ url = "https://www.ptt.cc/bbs/movie/index.html"
 
 # 建立一個 Request 物件，附加 Request Headers 的資訊
 request = req.Request(url, headers = {
-    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
 }) 
 
 with req.urlopen(request) as response:
-    data = response.read().decode("utf-8")
+	data = response.read().decode("utf-8")
 
 # 解析原始碼，取得每天文章標題
 import bs4
@@ -3570,8 +3570,8 @@ root = bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析 
 titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
 
 for title in titles:
-    if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
-        print(title.a.string)
+	if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+		print(title.a.string)
 ```
 
 ```
@@ -3583,11 +3583,11 @@ url = "https://www.ptt.cc/bbs/Gossiping/index.html"
 
 # 建立一個 Request 物件，附加 Request Headers 的資訊
 request = req.Request(url, headers = {
-    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
 })
 
 with req.urlopen(request) as response:
-    data = response.read().decode("utf-8")
+	data = response.read().decode("utf-8")
 
 # 解析原始碼，取得每天文章標題 
 import bs4 
@@ -3595,8 +3595,8 @@ root = bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析 
 titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤 
 
 for title in titles:
-    if title.a !=None:   # 如標題包含 a 標籤(沒有被刪除)，印出來
-        print(title.a.string)
+	if title.a !=None:   # 如標題包含 a 標籤(沒有被刪除)，印出來
+		print(title.a.string)
 
 →
 
@@ -3648,12 +3648,12 @@ url = "https://www.ptt.cc/bbs/Gossiping/index.html"
 
 # 建立一個 Request 物件，附加 Request Headers 的資訊
 request = req.Request(url, headers = {
-    "cookie":"over18=1",
-    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	"cookie":"over18=1",
+	"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
 })
 
 with req.urlopen(request) as response:
-    data = response.read().decode("utf-8")
+	data = response.read().decode("utf-8")
 
 # 解析原始碼，取得每天文章標題
 import bs4
@@ -3661,8 +3661,8 @@ root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析
 titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
 
 for title in titles:
-    if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
-        print(title.a.string)
+	if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+		print(title.a.string)
 
 →
 
@@ -3707,12 +3707,12 @@ url = "https://www.ptt.cc/bbs/Gossiping/index.html"
 
 # 建立一個 Request 物件，附加 Request Headers 的資訊
 request = req.Request(url, headers = {
-    "cookie":"over18=1",
-    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	"cookie":"over18=1",
+	"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
 })
 
 with req.urlopen(request) as response:
-    data=response.read().decode("utf-8")
+	data=response.read().decode("utf-8")
 
 # 解析原始碼，取得每天文章標題
 import bs4
@@ -3720,8 +3720,8 @@ root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析
 titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
 
 for title in titles:
-    if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
-        print(title.a.string)
+	if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+		print(title.a.string)
 
 # 抓取上一頁的連結
 nextLink = root.find("a", string="‹ 上頁")   # 找到內文是 ‹ 上頁 的 a 標籤
@@ -3748,12 +3748,12 @@ url = "https://www.ptt.cc/bbs/Gossiping/index.html"
 # 建立一個 Request 物件，附加 Request Headers 的資訊
 
 request = req.Request(url, headers = {
-    "cookie":"over18=1",
-    "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	"cookie":"over18=1",
+	"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
 })
 
 with req.urlopen(request) as response:
-    data=response.read().decode("utf-8")
+	data=response.read().decode("utf-8")
 
 # 解析原始碼，取得每天文章標題
 import bs4
@@ -3761,8 +3761,8 @@ root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析
 titles = root.find_all("div", class_="title")   # 尋找所有 class="title "的 div 標籤
 
 for title in titles:
-    if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
-        print(title.a.string)
+	if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+		print(title.a.string)
 
 # 抓取上一頁的連結
 nextLink = root.find("a", string="‹ 上頁")   # 找到內文是 ‹ 上頁 的 a 標籤
@@ -3785,27 +3785,27 @@ print(nextLink["href"])
 import urllib.request as req
 
 def getData(url):
-    # 建立一個 Request 物件，附加 Request Headers 的資訊
-    request = req.Request(url, headers = {
-        "cookie":"over18=1",
-        "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
-    })
+	# 建立一個 Request 物件，附加 Request Headers 的資訊
+	request = req.Request(url, headers = {
+		"cookie":"over18=1",
+		"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	})
 
-    with req.urlopen(request) as response:
-        data = response.read().decode("utf-8")
+	with req.urlopen(request) as response:
+		data = response.read().decode("utf-8")
 
-    # 解析原始碼，取得每天文章標題
-    import bs4
-    root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
-    titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
+	# 解析原始碼，取得每天文章標題
+	import bs4
+	root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+	titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
 
-    for title in titles:
-        if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
-            print(title.a.string)
+	for title in titles:
+		if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+			print(title.a.string)
 
-    # 抓取上一頁的連結
-    nextLink = root.find("a", string="‹ 上頁")   # 找到內文是 ‹ 上頁 的 a 標籤
-    print(nextLink["href"])
+	# 抓取上一頁的連結
+	nextLink = root.find("a", string="‹ 上頁")   # 找到內文是 ‹ 上頁 的 a 標籤
+	print(nextLink["href"])
 
 # 抓取一個頁面的標題
 
@@ -3825,27 +3825,27 @@ getData(pageURL)
 import urllib.request as req
 
 def getData(url):
-    # 建立一個 Request 物件，附加 Request Headers 的資訊
-    request = req.Request(url, headers = {
-        "cookie":"over18=1",
-        "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
-    })
+	# 建立一個 Request 物件，附加 Request Headers 的資訊
+	request = req.Request(url, headers = {
+		"cookie":"over18=1",
+		"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	})
 
-    with req.urlopen(request) as response:
-        data = response.read().decode("utf-8")
+	with req.urlopen(request) as response:
+		data = response.read().decode("utf-8")
 
-    # 解析原始碼，取得每天文章標題
-    import bs4
-    root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
-    titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
+	# 解析原始碼，取得每天文章標題
+	import bs4
+	root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+	titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
 
-    for title in titles:
-        if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
-            print(title.a.string)
+	for title in titles:
+		if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+			print(title.a.string)
 
-    # 抓取上一頁的連結
-    nextLink = root.find("a", string="‹ 上頁") # 找到內文是 ‹ 上頁 的 a 標籤
-    return nextLink["href"]
+	# 抓取上一頁的連結
+	nextLink = root.find("a", string="‹ 上頁") # 找到內文是 ‹ 上頁 的 a 標籤
+	return nextLink["href"]
 
 # 抓取一個頁面的標題
 pageURL="https://www.ptt.cc/bbs/Gossiping/index.html"
@@ -3871,27 +3871,27 @@ print(pageURL)
 import urllib.request as req
 
 def getData(url):
-    # 建立一個 Request 物件，附加 Request Headers 的資訊
-    request = req.Request(url, headers = {
-        "cookie":"over18=1",
-        "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
-    })
+	# 建立一個 Request 物件，附加 Request Headers 的資訊
+	request = req.Request(url, headers = {
+		"cookie":"over18=1",
+		"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+	})
 
-    with req.urlopen(request) as response:
-        data=response.read().decode("utf-8")
+	with req.urlopen(request) as response:
+		data=response.read().decode("utf-8")
 
-    # 解析原始碼，取得每天文章標題
-    import bs4
-    root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
-    titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
+	# 解析原始碼，取得每天文章標題
+	import bs4
+	root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+	titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
 
-    for title in titles:
-        if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
-            print(title.a.string)
+	for title in titles:
+		if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
+			print(title.a.string)
 
-    # 抓取上一頁的連結
-    nextLink = root.find("a", string="‹ 上頁")   # 找到內文是 ‹ 上頁 的 a 標籤
-    return nextLink["href"]
+	# 抓取上一頁的連結
+	nextLink = root.find("a", string="‹ 上頁")   # 找到內文是 ‹ 上頁 的 a 標籤
+	return nextLink["href"]
 
 # 主程式：抓取多個頁面的標題
 pageURL = "https://www.ptt.cc/bbs/Gossiping/index.html"
@@ -3899,8 +3899,8 @@ pageURL = "https://www.ptt.cc/bbs/Gossiping/index.html"
 count = 0
 
 while count < 3:   # 若想抓 3 頁就 < 3
-    pageURL = "https://www.ptt.cc" + getData(pageURL)
-    count += 1
+	pageURL = "https://www.ptt.cc" + getData(pageURL)
+	count += 1
 
 → 
 
@@ -4025,10 +4025,10 @@ app = Flask(__name__)   # __name__ 代表目前執行的模組
 @app.route("/")   # 函式的裝飾 (Decorator)：以函式為基礎，提供附加的功能
 
 def home():
-    return "Hello Flask"
+	return "Hello Flask"
 
 if __name__ == "__main__":   # 如果以主程式執行
-    app.run()   # 立刻啟動伺服器
+	app.run()   # 立刻啟動伺服器
 
 →
 
@@ -4070,15 +4070,15 @@ app = Flask(__name__)   # __name__ 代表目前執行的模組
 @app.route("/")   # 函式的裝飾 (Decorator)：以函式為基礎，提供附加的功能
 
 def home():
-    return "Hello Flask 2"
+	return "Hello Flask 2"
 
 @app.route("/test")   # 代表我們要處理的網站路徑
 
 def test():
-    return "This is Test"
+	return "This is Test"
 
 if __name__ == "__main__":   # 如果以主程式執行
-    app.run()   # 立刻啟動伺服器
+	app.run()   # 立刻啟動伺服器
 
 →
 
@@ -4520,16 +4520,16 @@ app = Flask(__name__)   # __name__ 代表目前執行的模組
 @app.route("/")   # 函式的裝飾 (Decorator)：以函式為基礎，提供附加的功能
 
 def home():
-    return "Hello Flask 2"
+	return "Hello Flask 2"
 
 @app.route("/test")   # 代表我們要處理的網站路徑
 
 def test():
-    return "This is Test 2"
+	return "This is Test 2"
 
 if __name__ == "__main__":   # 如果以主程式執行
 
-    app.run()   # 立刻啟動伺服器
+	app.run()   # 立刻啟動伺服器
 ```
 
 ### 需重新佈署 
@@ -4592,3 +4592,308 @@ To https://git.heroku.com/python-training-setting.git
 ##### 網頁重新整理即出現 This is Test 2
 
 ##### 開發流程：先在本機端開發測試 (因為比較快)，再部屬到雲端，就變成真正可以用的網站
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## Pandas 資料分析 – 基礎教學 <br/> 25_pandas-practice.py
+
+### 程式檔案不要用 pandas，會和內建模組名稱衝突
+
+### Pandas 算是 Python 中最受歡迎的資料分析套件，主要功用為快速的做一些常見的資料篩選、分析等等工作，就算沒有套件也能寫程式進行分析，套件目的為減少工作
+
+### 前言
+
+- Pandas：概念類似試算表的資料分析套件
+
+	- Excel、Google Sheet
+
+- 基礎學習項目：
+
+	1. 安裝 Pandas 套件
+
+	2. 認識單維度的資料 Series
+
+	3. 認識雙維度的資料 DataFrame
+
+### 準備環境
+ 
+#### 安裝 Pandas
+```
+pip install pandas 
+```
+
+##### pip 套件管理工具：安裝 Python 時，就一起安裝在電腦裡了
+
+### Series
+
+![](./MarkDown-img/series.jpg)
+
+###### <br/>
+
+-  建立 Series
+
+```
+# 載入 Pandas 模組
+import pandas as pd   # pd 是自己取的名字
+
+# 以列表資料為底，建立 Series
+pd.Series(列表)
+```
+
+- 使用 Series
+
+```
+import pandas as pd
+
+data = pd.Series(列表)
+
+data.max()   # 找到最大值
+data.median()   # 找到中位數
+data = data*2   # 放大兩倍
+```
+
+### DataFrame
+
+###### <br/>
+
+![](./MarkDown-img/dataframe.jpg)
+
+###### <br/>
+
+-  建立 DataFrame
+
+```
+# 載入 Pandas 模組
+
+import pandas as pd
+
+# 以字典資料為底，建立 DataFrame
+
+pd.DataFrame(字典)
+```
+
+- 取得特定欄(直向)
+
+```
+import pandas as pd
+
+data = pd.DataFrame(字典)
+
+data["欄位名稱"]
+```
+
+- 取得特定列(橫向)
+
+```
+import pandas as pd
+
+data = pd.DataFrame(字典)
+
+data.iloc[列編號]   # 列編號按順序由 0 開始累加
+```
+
+##### 列：row 
+
+### Series
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 建立 Series
+data = pd.Series([20, 10, 15])
+
+# 基本 Series 操作
+print(data)
+
+→
+
+0    20
+1    10
+2    15
+dtype: int64
+```
+
+##### dtype: int64：資料型態為 64 位元的整數
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 建立 Series
+data = pd.Series([20, 10, 15])
+
+# 基本 Series 操作
+print("Max", data.max())
+print("Median", data.median())
+
+data = data * 2
+print(data)
+
+→ 
+
+Max 20
+Median 15.0
+0    40
+1    20
+2    30
+dtype: int64
+```
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 建立 Series
+data = pd.Series([20, 10, 15])
+
+# 基本 Series 操作
+data = data == 20
+print(data)
+
+→ 
+
+0     True
+1    False
+2    False
+dtype: bool
+```
+
+##### 把這個資料跟 20 做比較；2 個等號就是比較運算；bool：布林值
+
+### DataFrame
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 建立 DataFrame
+data = pd.DataFrame({
+	"name": ["Amy", "John", "Bob"],
+	"salary": [80000, 60000, 55000]
+})
+
+# 基本 DataFrame 操作
+print(data)
+
+→
+
+   name  salary
+0   Amy   80000
+1  John   60000
+2   Bob   55000
+```
+
+##### 大括號就是字典
+
+#### 取得特定的欄位
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 建立 DataFrame
+data = pd.DataFrame({
+	"name": ["Amy", "John", "Bob"],
+	"salary": [80000, 60000, 55000]
+})
+
+# 取得特定的欄位 
+print(data["name"])
+
+→
+
+0     Amy
+1    John
+2     Bob
+Name: name, dtype: object
+```
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 建立 DataFrame
+data = pd.DataFrame({
+	"name": ["Amy", "John", "Bob"],
+	"salary": [80000, 60000, 55000]
+})
+
+# 取得特定的欄位
+print(data["salary"])
+
+→
+
+0    80000
+1    60000
+2    55000
+Name: salary, dtype: int64
+```
+
+#### 取得特定的列
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 建立 DataFrame
+data = pd.DataFrame({
+	"name": ["Amy", "John", "Bob"],
+	"salary": [80000, 60000, 55000]
+})
+
+# 取得特定的列
+print(data)
+print("==============")
+print(data.iloc[0])   # 印出第一列
+
+→
+
+   name  salary
+
+0   Amy   80000
+1  John   60000
+2   Bob   55000
+
+==============
+
+name        Amy
+salary    80000
+Name: 0, dtype: object
+```
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 建立 DataFrame
+data = pd.DataFrame({
+	"name":["Amy", "John", "Bob"],
+	"salary": [80000, 60000, 55000]
+})
+
+# 取得特定的列
+
+print(data)
+print("==============")
+print(data.iloc[1])   # 印出第二列 
+
+→
+
+   name  salary
+0   Amy   80000
+1  John   60000
+2   Bob   55000
+
+==============
+
+name       John
+salary    60000
+Name: 1, dtype: object
+```
