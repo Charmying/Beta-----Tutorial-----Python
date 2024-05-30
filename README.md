@@ -16,7 +16,7 @@
 
 1. 在 D 槽建立新資料夾 (python)
 
-2. 於 VS Code 的左上方工具列找到檔案 → 開啟資料夾 → 找到 D 槽建立的資料夾 (Python)
+2. 於 VS Code 的左上方工具列找到檔案 → 開啟資料夾 → 找到 D 槽建立的資料夾 (python)
 
 3. 新增檔案，主檔名 隨便 (建議英文)，副檔名為 .py
 
@@ -1726,7 +1726,7 @@ win32
 
 #### 建立 geometry 模組，載入使用(自訂模組)
 
-##### 先另開一個 python 檔案命名 geometry.py，並在其中自訂模組
+##### 先另開一個 Python 檔案命名 geometry.py，並在其中自訂模組
 
 ```
 # 在 geometry 模組中定義幾何運算功能
@@ -1819,7 +1819,7 @@ print(geometry.distance(1, 1, 5, 5))
 
 ### 封包：包含模組的資料夾(用來整理、分類模組程式)
 
-- 檔案系統中的資料夾對應到Python的封包
+- 檔案系統中的資料夾對應到 Python 的封包
 
 - 檔案系統中的檔案對應到模組
 
@@ -2529,7 +2529,7 @@ print(data)
 
 6. 此名錄為 JSON 格式
 
-7. 注意第一行 result 和 results (results 後面為陣列，即為 python 的 list)
+7. 注意第一行 result 和 results (results 後面為陣列，即為 Python 的 list)
 
 8. list (列表) 中有很多的字典 (JSON 的說法為有很多的物件)
 
@@ -3116,13 +3116,13 @@ print(data)
 好可愛
 ```
 
-##### 程式邏輯：利用類別建立實體物件 (file) → 建立初始化函式 → 建立兩個實體屬性 (name、file)，file 初期是 None → 定義實體方法 → 有兩個實體方法：open 方法 (調用 python 內建的檔案開啟功能，得到一個檔案物件，放在實體屬性 file 裡面)；read 方法 (利用剛剛得到的檔案物件做 read，把檔案讀取出來並且回傳) → 這樣即完成一個定義 (一個實體物件的設計) → 設計完後開始使用，使用方式 → 建立實體物件放在 f1，會呼叫初始化函式 → 利用變數 f1 代表實體物件呼叫實體方法 open → 會開始跑 ```self.file = open(self.name, mode = "r", encoding = "utf-8")``` → 呼叫另一個實體方法 → 就會開始跑 ```return self.file.read()``` → 回傳資料放進 data 裡面 → 印出 data 
+##### 程式邏輯：利用類別建立實體物件 (file) → 建立初始化函式 → 建立兩個實體屬性 (name、file)，file 初期是 None → 定義實體方法 → 有兩個實體方法：open 方法 (調用 Python 內建的檔案開啟功能，得到一個檔案物件，放在實體屬性 file 裡面)；read 方法 (利用剛剛得到的檔案物件做 read，把檔案讀取出來並且回傳) → 這樣即完成一個定義 (一個實體物件的設計) → 設計完後開始使用，使用方式 → 建立實體物件放在 f1，會呼叫初始化函式 → 利用變數 f1 代表實體物件呼叫實體方法 open → 會開始跑 ```self.file = open(self.name, mode = "r", encoding = "utf-8")``` → 呼叫另一個實體方法 → 就會開始跑 ```return self.file.read()``` → 回傳資料放進 data 裡面 → 印出 data 
 
 - 定義 class 是為了產生實體物件，目標是包裝檔案讀取的程式 
 
 - 先有檔案名稱 檔案開啟 檔案讀取 將此流程包裝在實體物件中 
 
-- none 為 python 中特定的資料，代表空 
+- none 為 Python 中特定的資料，代表空 
 
 - 檔案名稱由實體屬性中取得 
 
@@ -3997,7 +3997,7 @@ pip install Flask
 
 #### 執行測試
 
-1. 啟動網站：使用命令列執行 python 程式，即啟動網站
+1. 啟動網站：使用命令列執行 Python 程式，即啟動網站
 
 2. 測試網站：將網址貼到瀏覽器的網址列中，測試網站運作
 
@@ -4128,7 +4128,7 @@ if __name__ == "__main__":   # 如果以主程式執行
 
 ### 建立描述檔 (描述如何運作)
 
-- runtime.txt：描述使用的 python 環境
+- runtime.txt：描述使用的 Python 環境
 
 - requirements.txt：描述程式運作所需要的套件
 
@@ -4170,7 +4170,7 @@ if __name__ == "__main__":   # 如果以主程式執行
 
 	3. git push heroku master(每次有更新就要打)
 
-#### 在 python-training 的資料夾中創新資料夾(python-training-setting)，新增檔案 24_app.py
+#### 在 python-training 的資料夾中創新資料夾 (python-training-setting)，新增檔案 24_app.py
 
 ### 建立專案描述檔
 
