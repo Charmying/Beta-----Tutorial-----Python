@@ -201,7 +201,7 @@ print(s[1: 4])
 ell
 ```
 
-##### ※ 包含開頭，不包含結尾
+##### 包含開頭，不包含結尾
 
 ###### <br/>
 ###### <br/>
@@ -1684,14 +1684,12 @@ print(sys.path)   # 印出搜尋模組的路徑
 
 ```
 # 載入sys模組 
-import sys as s
+import sys as s   # s 是別名
 
 # 使用 sys 模組
 print(s.platform)   # 印出作業系統
 print(s.maxsize)   # 印出整數型態的最大值
 print(s.path)   # 印出搜尋模組的路徑
-
-※ s 是別名
 ```
 
 > 自訂模組
@@ -1791,7 +1789,7 @@ import sys
 
 sys.path.append("modules")   # 在模組的搜尋路徑列表中[新增路徑]
 print(sys.path)   # 印出模組的搜尋路徑列表
-print("=========================================")
+print("========================================")
 
 import geometry
 print(geometry.distance(1, 1, 5, 5))
@@ -1800,7 +1798,7 @@ print(geometry.distance(1, 1, 5, 5))
 
 ['D:\\Python-training','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\python310.zip','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\DLLs','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\lib','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310', 'C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages', 'modules']
 
-=========================================
+========================================
 
 5.656854249492381
 ```
@@ -3200,8 +3198,6 @@ pip install beautifulsoup4
 
 3. (要抓到的是在網頁點右鍵：檢視網頁原始碼)  ex：
 
-###### <br/>
-
 ![](./MarkDown-img/crawler.jpg)
 
 ###### <br/>
@@ -4498,7 +4494,7 @@ To https://git.heroku.com/python-training-setting.git
 
 ##### https://python-training- setting.herokuapp.com/ 為網站的正式網址，可以分享的真正在線上運作的網站
 
-##### ※ heroku 網站找到自己創立的專案，在 DEPLOY 中有執行步驟
+##### heroku 網站找到自己創立的專案，在 DEPLOY 中有執行步驟
 
 ##### ↓
 
@@ -4659,8 +4655,6 @@ data = data*2   # 放大兩倍
 ```
 
 ### DataFrame
-
-###### <br/>
 
 ![](./MarkDown-img/dataframe.jpg)
 
@@ -4896,4 +4890,381 @@ print(data.iloc[1])   # 印出第二列
 name       John
 salary    60000
 Name: 1, dtype: object
+```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## Pandas 資料分析 – Series 單維度資料 <br/> 26_pandas-series.py
+
+### Series
+
+![](./MarkDown-img/series.jpg)
+
+###### <br/>
+
+### 建立 Series
+
+```
+# 載入 Pandas 模組
+import pandas as pd
+
+# 以列表資料為底，建立 Series
+pd.Series(資料列表)
+```
+
+### 資料索引
+
+![](./MarkDown-img/series-2.jpg)
+
+###### <br/>
+
+##### 索引：index
+
+#### 內建索引
+
+```
+# 載入 Pandas 模組
+import pandas as pd
+
+# 以列表資料為底，建立 Series
+pd.Series(資料列表)
+```
+
+#### 自訂索引
+
+```
+# 載入 Pandas 模組
+import pandas as pd
+
+# 以列表資料為底，建立 Series
+pd.Series(資料列表, index = 索引列表)
+```
+
+### 觀察資料
+
+#### 資料型態
+
+```
+import pandas as pd
+
+data = pd.Series(資料列表)
+
+# 印出 dtype 屬性
+print(data.dtype)
+```
+
+#### 資料數量
+
+```
+import pandas as pd
+
+data = pd.Series(資料列表)
+
+# 印出 size 屬性
+print(data.size)
+```
+
+#### 資料索引
+
+```
+import pandas as pd
+
+data = pd.Series(資料列表, index = 索引列表)
+
+# 印出 index 屬性
+print(data.index)
+```
+
+### 取得資料
+
+#### 根據順序取值
+
+```
+import pandas as pd
+
+data = pd.Series(資料列表)
+
+# 取得資料 data[順序]
+print(data.[1])
+```
+
+##### 順序有 0 開始算，0 代表第 1 個資料
+
+#### 根據索引取值
+
+```
+import pandas as pd
+
+data = pd.Series(資料列表, index = 索引列表)
+
+# 取得資料 data[索引]
+print(data.[索引])
+```
+
+### 數字運算
+
+#### 數學、統計相關
+
+```
+import pandas as pd
+
+data = pd.Series([3, 10, 20, 5, -12])
+
+# 各種數學、統計運算
+print(data.sum(), data.max(), data.prod()) 
+print(data.mean(), data.median(), data.std()) 
+print(data.nlargest(n), data.nsmallest(n)) 
+```
+
+- sum：加法總和
+
+- max：找最大值
+
+- prod：乘法總和
+
+- mean：算算術平均數
+
+- median：中位數
+
+- std：標準差
+
+- nlargest(n)：取前 n 大的數字
+
+- nsmallest(n)：取最小的 n 個數字 
+
+#### 字串操作相關
+
+```
+import pandas as pd
+
+data = pd.Series("酷啦", "Python", "Pandas")
+
+# 各種字串操作，都定義在 str 底下 
+print(data.str.lower(), data.str.upper(), data.str.len()) 
+print(data.str.cat(sep=", "), data.str.contains("P")) 
+print(data.str.replace("Hello", "你好嗎")) 
+```
+
+- lower：把所有字串變成小寫
+
+- upper：把所有字串變成大寫
+
+- len：取得字串長度
+
+- ```cat(sep=", ")```：用逗號把字串串在一起
+
+- ```contains("P")```：看字串是否包含大寫的P
+
+- ```replace("Hello", "你好嗎")```：將字串進行取代，把 Hello 取代成你好嗎，把字串做取代的運算 
+
+### 資料索引
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引
+data = pd.Series([5, 4, -2, 3, 7])
+print(data)
+
+→
+
+0    5
+1    4
+2   -2
+3    3
+4    7
+dtype: int64
+```
+
+##### 左邊的 0 1 2 3 4 即為內建的索引
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引
+data = pd.Series([5, 4, -2, 3, 7], index = ["a", "b", "c", "d", "e"])
+print(data)
+
+→
+
+a    5
+b    4
+c   -2
+d    3
+e    7
+dtype: int64 
+```
+
+##### 自訂的資料索引數量要等於資料的數量
+
+### 觀察資料
+
+```
+# 載入 pandas 模組 
+import pandas as pd
+
+# 資料索引
+data = pd.Series([5, 4, -2, 3, 7], index = ["a", "b", "c", "d", "e"])
+
+# 觀察資料
+print("資料型態", data.dtype)
+print("資料數量", data.size)
+print("資料索引", data.index)
+
+→
+
+資料型態 int64
+資料數量 5
+資料索引 Index(['a', 'b', 'c', 'd', 'e'], dtype='object')
+```
+
+##### 字串就是 object
+
+### 取得資料
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引
+data = pd.Series([5, 4, -2, 3, 7], index = ["a", "b", "c", "d", "e"])
+
+# 取得資料：根據順序、根據索引
+print(data[2], data[0])  　#　根據順序
+print(data["e"], data["d"])  　#　根據索引
+
+→
+
+-2 5
+7 3
+```
+
+### 數字運算 
+
+```
+# 載入 pandas 模組 
+import pandas as pd 
+
+# 資料索引 
+data = pd.Series([5, 4, -2, 3, 7], index = ["a", "b", "c", "d", "e"]) 
+
+# 數字運算：基本、統計、順序 
+print("最大值", data.max()) 
+print("總和", data.sum()) 
+print("標準差", data.std()) 
+print("中位數", data.median()) 
+print("最大的三個數", data.nlargest(3))   # nsmallest(2)：最小的兩個數 
+
+→ 
+
+最大值 7 
+總和 17 
+標準差 3.361547262794322 
+中位數 4.0 
+最大的三個數 e    7      
+a    5 
+b    4 
+dtype: int64 
+```
+
+### 字串運算
+
+```
+# 載入 pandas 模組 
+import pandas as pd 
+
+# 資料索引 
+data = pd.Series(["酷啦", "Python", "Pandas"]) 
+
+# 字串運算：基本、串接、搜尋、取代 
+print(data.str.lower())   # 全部變小寫
+
+→
+
+0        酷啦
+
+1    python
+
+2    pandas
+
+dtype: object
+```
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引
+data = pd.Series(["酷啦", "Python", "Pandas"])
+
+# 字串運算：基本、串接、搜尋、取代
+print(data.str.len())   # 算出每個字串的長度
+
+→
+
+0    2
+1    6
+2    6
+dtype: int64
+```
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引
+data = pd.Series(["酷啦", "Python", "Pandas"])
+
+# 字串運算：基本、串接、搜尋、取代
+print(data.str.cat(sep=", "))   # 把字串串起來，可以自訂串接的符號
+print(data.str.cat(sep=" - "))   # 把字串串起來，可以自訂串接的符號
+
+→
+
+酷啦, Python, Pandas
+酷啦 - Python - Pandas
+```
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引
+data = pd.Series(["酷啦", "Python", "Pandas"])
+
+# 字串運算：基本、串接、搜尋、取代
+print(data.str.contains("P"))   # 判斷每個字串是否包含特定的字元
+
+→
+
+0    False
+1     True
+2     True
+dtype: bool
+```
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引
+data = pd.Series(["酷啦", "Python", "Pandas"])
+
+# 字串運算：基本、串接、搜尋、取代
+print(data.str.replace("酷啦", "好胖"))   # 將字串中的字元進行替換的動作
+
+→
+
+0        好胖
+1    Python
+2    Pandas
+dtype: object
 ```
