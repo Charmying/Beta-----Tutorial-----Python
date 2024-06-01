@@ -3158,7 +3158,7 @@ print(data)
 ```
 <html>
 	<head>
-		<title>HTML格式</title>
+		<title>HTML 格式</title>
 	</head>
 	<body>
 		<div class="list">
@@ -3309,7 +3309,7 @@ with req.urlopen(request) as response:
 
 # 解析原始碼，取得每天文章標題
 import bs4
-root = bs4.BeautifulSoup(data,"html.parser")
+root = bs4.BeautifulSoup(data, "html.parser")
 print(root.title.string)
 
 →
@@ -3344,7 +3344,7 @@ with req.urlopen(request) as response:
 
 # 解析原始碼，取得每天文章標題
 import bs4
-root = bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析HTML格式文件
+root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
 titles = root.find("div", class_="title")   # 尋找 class="title" 的 div 標籤 
 print(titles)
 
@@ -3376,7 +3376,7 @@ with req.urlopen(request) as response:
 
 # 解析原始碼，取得每天文章標題
 import bs4
-root=bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+root=bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
 titles=root.find("div",class_="title")   # 尋找 class="title" 的 div 標籤
 
 print(titles.a.string)
@@ -3457,7 +3457,7 @@ with req.urlopen(request) as response:
 
 # 解析原始碼，取得每天文章標題
 import bs4
-root = bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
 titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
 
 for title in titles:
@@ -3561,7 +3561,7 @@ with req.urlopen(request) as response:
 
 # 解析原始碼，取得每天文章標題
 import bs4
-root = bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
+root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件
 titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤
 
 for title in titles:
@@ -3586,7 +3586,7 @@ with req.urlopen(request) as response:
 
 # 解析原始碼，取得每天文章標題 
 import bs4 
-root = bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件 
+root = bs4.BeautifulSoup(data, "html.parser")   # 讓 BeautifulSoup 協助解析 HTML 格式文件 
 titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤 
 
 for title in titles:
@@ -6754,3 +6754,233 @@ D:\Python-training\29_pandas-googleplay.py:19: FutureWarning: The default value 
 ```data["Installs"] = pd.to_numeric(data["Installs"].str.replace("[, +]", "", regex = True))```
 
 ```data["Installs"] = pd.to_numeric(data["Installs"].str.replace("[, +]", "", regex = True).replace("Free", "", regex = True))```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## Email 發送電子郵件 – 基本教學 <br/> 30_send-email.py
+
+### 基本流程
+
+1. 使用 email.message 模組建立內容
+
+2. 使用 smtplib 模組發送信件
+
+3. 驗證寄件人身分：帳號密碼/兩階段驗證
+
+### 建立內容
+
+#### 載入模組
+
+```
+import email.message
+```
+
+#### 訊息物件
+
+```
+import email.message
+
+# 建立訊息物件
+msg = email.message.EmailMessage()
+
+# 利用訊息物件建立基本設定
+msg["From"] = "寄件人地址"
+msg["To"] = "收件人地址"
+msg["Subject"] = "電子郵件主題(標題)"
+```
+
+##### msg 為變數
+
+#### 純文字內容
+
+```
+import email.message
+
+msg = email.message.EmailMessage()
+msg["From"] = "寄件人地址"
+msg["To"] = "收件人地址"
+msg["Subject"] = "電子郵件主題(標題)"
+
+# 加入純文字內容
+msg.set_content("文字內容")
+```
+
+#### HTML 內容 (網頁的內容)
+
+```
+import email.message
+
+msg = email.message.EmailMessage()
+msg["From"] = "寄件人地址"
+msg["To"] = "收件人地址"
+msg["Subject"] = "電子郵件主題(標題)"
+
+# 加入 HTML 內容
+msg.add_alternative("<h1>HTML 內容</h1>", subtype = "html")
+```
+
+### 發送信件
+
+![](./MarkDown-img/send-email.jpg)
+
+###### <br/>
+
+##### GMAIL 有自己的 SMTP 伺服器 (用來發送電子郵件的伺服器)
+
+#### 載入模組
+
+```
+import smtplib
+```
+
+#### 連線 SMTP 伺服器
+
+```
+import smtplib
+
+# 可以從網路上找到主機名稱和連接埠號
+server = smtplib.SMTP_SSL("主機名稱", 連線埠號)
+```
+
+##### server 為變數
+
+##### 連線埠號：port (一個數字)
+
+#### 驗證寄件人身份
+
+```
+import smtplib
+
+server = smtplib.SMTP_SSL("主機名稱", 連線埠號)
+
+# 根據連線的伺服器，輸入對應的帳號密碼 
+server.login("帳號", "密碼") 
+```
+
+#### 發送郵件
+
+```
+import smtplib
+
+server = smtplib.SMTP_SSL("主機名稱", 連線埠號)
+server.login("帳號", "密碼")
+
+# msg 變數存放上一個步驟準備好的訊息物件
+server.send_message(msg)
+
+server.close()   # 發送完成後關閉連線 
+```
+
+### 帳戶處理 (GMAIL 為例)
+
+1. Chrome 搜尋 google 帳戶並打開該網頁 (Google 帳戶)
+
+2. 登入
+
+3. 安全性→找到低安全性應用程式存取權 (需開啟)
+
+4. 若帳戶有開啟兩步驟認證
+
+5. 點選產生應用程式密碼
+
+6. 郵件
+
+7. Windows電腦 (視裝置而定)，也可用其他自行設定 (Python Program)，此動作只是一個標示而已，可隨便輸入
+
+8. 產生
+
+9. 記住產生的密碼 (只會出現一次)，此密碼隨時可以刪出及產生新的，此密碼可以當作登入帳號的密碼，覺得不安全可以刪掉
+
+#### 範例 
+
+```
+# 寄送 Email 的程式
+# 準備訊息物件設定
+
+import email.message
+
+msg = email.message.EmailMessage()
+msg["From"] = "寄件人地址"
+msg["To"] = "收件人地址"
+msg["Subject"] = "電子郵件主題(標題)"
+
+# 寄送純文字的內容
+msg.set_content("測試")
+
+# 寄送比較多樣式的內容 (HTML)
+msg.add_alternative("<h1>HTML 內容</h1>", subtype = "html")
+
+# 連線到 SMTP Server，驗證寄件人身份並發送郵件
+import smtplib
+
+# 到網路上查詢 gmail smtp server 或是 yahoo smtp server
+server = smtplib.SMTP_SSL("smtp.gmail.com",465)
+server.login("帳號", "密碼")
+server.send_message(msg)
+
+server.close()
+```
+
+##### 純文字內容和 HTML 內容 2 選 1
+
+#### 純文字內容實際操作
+
+```
+# 寄送 Email 的程式
+# 準備訊息物件設定
+
+import email.message
+
+msg = email.message.EmailMessage()
+msg["From"] = "charmytseng0118@gmail.com"
+msg["To"] = "echarmy0118@gmail.com"
+msg["Subject"] = "酷啦皮卡丘"
+
+# 寄送純文字的內容
+msg.set_content("測試")
+
+# 連線到 SMTP Server，驗證寄件人身份並發送郵件
+import smtplib
+
+# 到網路上查詢 gmail smtp server 或是 yahoo smtp server
+server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+server.login("charmytseng0118@gmail.com", "charmytseng0118@gmail.com 的密碼")
+server.send_message(msg)
+
+server.close()
+```
+
+#### HTML 內容實際操作
+
+```
+# 寄送 Email 的程式
+# 準備訊息物件設定
+
+import email.message
+
+msg = email.message.EmailMessage()
+msg["From"] = "charmytseng0118@gmail.com"
+msg["To"] = "echarmy0118@gmail.com"
+msg["Subject"] = "酷啦皮卡丘"
+
+# 寄送比較多樣式的內容 (HTML)
+msg.add_alternative("<h1>HTML內容</h1>", subtype="html")
+
+# 連到 SMTP Server，驗證寄件人身份並發送郵件
+import smtplib
+
+# 到網路上查詢 gmail smtp server 或是 yahoo smtp server
+server = smtplib.SMTP_SSL("smtp.gmail.com",465)
+server.login("charmytseng0118@gmail.com", "CharmyKing0118Tseng")
+server.send_message(msg)
+
+server.close()
+```
+
+##### 寄件人和要連線的電子郵件主機是有相關的，要連線到 gmail 主機，寄件人必需是 gmail 帳戶 
