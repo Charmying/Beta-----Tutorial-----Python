@@ -5700,3 +5700,294 @@ a      Amy   30000  5000000     3  166.666667
 b      Bob   60000  4000000     6   66.666667
 c  Charles   45000  3000000     1   66.666667
 ```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## Pandas 資料分析 – 篩選資料 <br/> 28_pandas-filter.py
+
+### 資料結構總覽
+
+1. 單維度的資料 Series
+
+2. 雙維度的資料 DataFrame
+
+### Series
+
+> 基本邏輯
+
+```
+# 建立 Series 資料
+import pandas as pd
+
+data = pd.Series(列表)
+
+# 建立篩選條件 (與資料數量對應的布林值)
+condition = [True, False, True]   # 要第一個和第三個資料，不要第二個資料
+
+# 根據條件完成篩選
+filteredData = data[condition]
+```
+
+> 常見操作
+
+```
+# 建立 Series 資料
+import pandas as pd
+
+data = pd.Series(列表)
+
+# 建立篩選條件 (直接透過比較運算產生)
+condition = data > 5
+
+# 根據條件完成篩選
+filteredData = data[condition]
+```
+
+### DataFrame
+
+> 基本邏輯
+
+```
+# 建立 DataFrame 資料
+import pandas as pd
+
+data = pd.Series(字典)
+
+# 建立篩選條件 (與資料列數量對應的布林值)   # 篩選橫向資料(列)
+condition = [True, False, True]   # 要第一列和第三列不要第二列
+
+# 根據條件完成篩選
+filteredData = data[condition]
+```
+
+> 常見操作
+
+```
+# 建立 DataFrame 資料
+import pandas as pd
+
+data = pd.Series(字典)
+
+# 建立篩選條件 (透過特定欄位的比較運算產生)
+condition = data[欄位名稱] > 5
+
+# 根據條件完成篩選
+filteredData = data[condition]
+```
+
+### 篩選練習 - Series 
+
+#### 數字資料
+
+> 基本寫法，較無彈性
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 篩選練習 - Series
+data = pd.Series([30, 15, 20])
+condition = [True, False, True]
+filteredData = data[condition]
+
+print(filteredData)
+
+→
+
+0    30
+2    20
+dtype: int64
+```
+
+> 常見操作：比較運算
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 篩選練習 - Series
+data = pd.Series([30, 15, 20])
+condition = data > 18
+
+print(condition)
+print("========================================")
+
+filteredData = data[condition]
+print(filteredData)
+
+→ 
+
+0     True
+1    False
+2     True
+dtype: bool
+========================================
+0    30
+2    20
+dtype: int64 
+```
+
+#### 字串資料
+
+> 基本寫法，較無彈性
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 篩選練習 - Series
+data = pd.Series(["酷啦", "Python", "Pandas"])
+condition = [False, True, True]
+filteredData = data[condition]
+
+print(filteredData)
+
+→
+
+1    Python
+2    Pandas
+dtype: object 
+```
+
+> 常見操作：比較運算
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 篩選練習 - Series
+data = pd.Series(["酷啦", "Python", "Pandas"])
+condition = data.str.contains("P")
+
+print(condition)
+print("========================================")
+
+filteredData = data[condition]
+print(filteredData)
+
+→
+
+0    False
+1     True
+2     True
+dtype: bool 
+========================================
+1    Python
+2    Pandas
+dtype: object
+```
+
+### 篩選練習 - DataFrame
+
+#### DataFrame 的資料篩選都是篩選資料列
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 篩選練習 - DataFrame
+data = pd.DataFrame({
+	"name": ["Amy", "Bob", "Charles"],
+	"salary": [30000, 60000, 45000]
+})
+
+print(data)
+
+→
+
+      name  salary
+0      Amy   30000
+1      Bob   60000
+2  Charles   45000
+```
+
+> 基本寫法
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 篩選練習 - DataFrame
+data = pd.DataFrame({
+	"name": ["Amy", "Bob", "Charles"],
+	"salary": [30000, 60000, 45000]
+})
+
+condition = [False, True, True]
+filteredData = data[condition]
+
+print(filteredData)
+
+→
+
+      name  salary
+1      Bob   60000
+2  Charles   45000
+```
+
+> 常見操作：比較運算
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 篩選練習 - DataFrame
+data = pd.DataFrame({
+	"name": ["Amy", "Bob", "Charles"],
+	"salary": [30000, 60000, 45000]
+})
+
+condition = data["salary"] >= 40000
+print(condition)
+print("========================================")
+
+filteredData = data[condition]
+print(filteredData)
+
+→
+
+0    False
+1     True
+2     True
+Name: salary, dtype: bool
+========================================
+      name  salary
+1      Bob   60000
+2  Charles   45000
+```
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 篩選練習 - DataFrame
+data = pd.DataFrame({
+	"name": ["Amy", "Bob", "Charles"],
+	"salary": [30000, 60000, 45000]
+})
+
+condition = data["name"] == "Amy"
+print(condition)
+print("========================================")
+
+filteredData = data[condition]
+print(filteredData)
+
+→
+
+0     True
+1    False
+2    False
+Name: name, dtype: bool
+========================================
+  name  salary
+0  Amy   30000
+```
+
+##### 核心運作原則：透過比較運算，會得到布林值列表，實際篩選透過布林值列表，True 就取出
