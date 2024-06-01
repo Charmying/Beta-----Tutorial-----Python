@@ -1797,9 +1797,7 @@ print(geometry.distance(1, 1, 5, 5))
 → 
 
 ['D:\\Python-training','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\python310.zip','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\DLLs','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\lib','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310', 'C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages', 'modules']
-
 ========================================
-
 5.656854249492381
 ```
 
@@ -3025,7 +3023,7 @@ class Point:
 	def distance(self, targetX, targetY):
 		return (((self.x - targetX) ** 2) + ((self.y - targetY) ** 2)) ** 0.5
 
-p=Point(3, 4)
+p = Point(3, 4)
 p.show()   # 呼叫實體方法/函式
 result = p.distance(0, 0)   # 計算座標 3, 4 和座標 0, 0 之間的距離
 print(result)
@@ -4868,7 +4866,7 @@ import pandas as pd
 
 # 建立 DataFrame
 data = pd.DataFrame({
-	"name":["Amy", "John", "Bob"],
+	"name": ["Amy", "John", "Bob"],
 	"salary": [80000, 60000, 55000]
 })
 
@@ -5047,7 +5045,7 @@ data = pd.Series("酷啦", "Python", "Pandas")
 
 # 各種字串操作，都定義在 str 底下 
 print(data.str.lower(), data.str.upper(), data.str.len()) 
-print(data.str.cat(sep=", "), data.str.contains("P")) 
+print(data.str.cat(sep = ", "), data.str.contains("P")) 
 print(data.str.replace("Hello", "你好嗎")) 
 ```
 
@@ -5057,7 +5055,7 @@ print(data.str.replace("Hello", "你好嗎"))
 
 - len：取得字串長度
 
-- ```cat(sep=", ")```：用逗號把字串串在一起
+- ```cat(sep = ", ")```：用逗號把字串串在一起
 
 - ```contains("P")```：看字串是否包含大寫的P
 
@@ -5224,8 +5222,8 @@ import pandas as pd
 data = pd.Series(["酷啦", "Python", "Pandas"])
 
 # 字串運算：基本、串接、搜尋、取代
-print(data.str.cat(sep=", "))   # 把字串串起來，可以自訂串接的符號
-print(data.str.cat(sep=" - "))   # 把字串串起來，可以自訂串接的符號
+print(data.str.cat(sep = ", "))   # 把字串串起來，可以自訂串接的符號
+print(data.str.cat(sep = " - "))   # 把字串串起來，可以自訂串接的符號
 
 →
 
@@ -5267,4 +5265,437 @@ print(data.str.replace("酷啦", "好胖"))   # 將字串中的字元進行替�
 1    Python
 2    Pandas
 dtype: object
+```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## Pandas 資料分析 –  Dataframe 雙維度資料 <br/> 27_pandas-dataframe.py
+
+### DataFrame
+
+![](./MarkDown-img/dataframe.jpg)
+
+###### <br/>
+
+#### 直向為欄 (A 欄及 B 欄)；橫向為列 (第1列、第2列、第3列)
+
+### 建立 DataFrame
+
+```
+# 載入 Pandas 模組
+import pandas as pd
+
+# 以字典資料為底，建立 DataFrame
+pd.DataFrame(字典)
+```
+
+### 資料索引
+
+![](./MarkDown-img/dataframe-2.jpg)
+
+###### <br/>
+
+
+#### 內建索引
+
+```
+# 載入 Pandas 模組
+import pandas as pd
+
+# 以字典資料為底，建立 DataFrame
+pd.DataFrame(字典)
+```
+
+#### 自訂索引
+
+```
+# 載入 Pandas 模組
+import pandas as pd
+
+# 以字典資料為底，建立 DataFrame
+pd.DataFrame(字典, index = 索引列表)
+```
+
+### 觀察資料
+
+#### 資料數量
+```
+import pandas as pd
+
+data = pd.DataFrame(字典)
+
+# 印出 size 屬性
+print(data.size)
+```
+
+##### 每個格子為一筆資料 
+
+#### 資料形狀
+
+```
+import pandas as pd
+
+data=pd.DataFrame(字典)
+
+# 印出 shape 屬性
+print(data.shape)
+```
+
+#### 資料索引
+
+```
+import pandas as pd
+
+data = pd.DataFrame(資料列表, index = 索引列表)
+
+# 印出 index 屬性
+print(data.index)
+```
+
+### 取得「列 (Row)」資料
+
+![](./MarkDown-img/dataframe-3.jpg)
+
+###### <br/>
+
+#### 根據順序取一整列
+
+```
+import pandas as pd
+
+data = pd.DataFrame(字典)
+
+# 取得一整列 data.iloc[順序]
+print(data.iloc[列編號])   # Series 型態
+```
+
+#### 根據索引取一整列
+
+```
+import pandas as pd
+
+data = pd.DataFrame(字典, index = 索引列表)
+
+# 取得一整列 data.loc[順序]
+print(data.loc[索引])   # Series 型態
+```
+
+### 取得「欄 (Column)」資料
+
+![](./MarkDown-img/dataframe-4.jpg)
+
+###### <br/>
+
+#### 根據名稱取一整欄
+
+```
+import pandas as pd
+
+data = pd.DataFrame(字典)
+
+# 取得一整欄 data[欄位名稱]   ex. A、B、C
+print(data[欄位名稱])   # Series 型態 (代表 Series 運算可以直接使用)
+```
+
+#### 建立新的欄位
+
+```
+import pandas as pd
+
+data = pd.DataFrame(字典)
+
+# 以下語法建立新的欄位
+data["新欄位名稱"] = 列表資料
+data["新欄位名稱"] = Series 型態資料
+```
+
+### 資料索引：```pd.DataFrame(字典, index = 索引列表)```
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引：pd.DataFrame(字典, index = 索引列表)
+data = pd.DataFrame({
+    "name": ["Amy", "Bob", "Charles"],
+    "salary": [30000, 60000, 45000]
+})
+
+print(data)
+
+→
+
+      name  salary
+0      Amy   30000
+1      Bob   60000
+2  Charles   45000
+```
+
+##### 3 * 2 的資料
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引：pd.DataFrame(字典, index = 索引列表)
+data = pd.DataFrame({
+    "name": ["Amy", "Bob", "Charles"],
+    "salary": [30000, 60000, 45000]
+}, index = ["a", "b", "c"])
+
+print(data)
+
+→
+
+      name  salary
+a      Amy   30000
+b      Bob   60000
+c  Charles   45000
+```
+
+### 觀察資料
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引：pd.DataFrame(字典, index = 索引列表)
+data = pd.DataFrame({
+    "name": ["Amy", "Bob", "Charles"],
+    "salary": [30000, 60000, 45000]
+}, index = ["a", "b", "c"])
+
+print(data)
+print("========================================")
+
+# 觀察資料
+print("資料數列", data.size)
+print("資料形狀 (列、欄)", data.shape)
+print("資料索引", data.index)
+
+→
+
+      name  salary
+a      Amy   30000
+b      Bob   60000
+c  Charles   45000
+========================================
+資料數列 6
+資料形狀(列、欄) (3, 2)
+資料索引 Index(['a', 'b', 'c'], dtype='object')
+```
+
+### 取得列 (Row / 橫向) 的 Series 資料：根據順序、根據索引
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引：pd.DataFrame(字典, index = 索引列表)
+data = pd.DataFrame({
+    "name": ["Amy", "Bob", "Charles"],
+    "salary": [30000, 60000, 45000]
+}, index = ["a", "b", "c"])
+
+print(data)
+print("========================================")
+
+# 取得列 (Row / 橫向) 的 Series 資料：根據順序、根據索引
+print("取得第二列", data.iloc[1], sep = "\n")
+print("========================================")
+print("取得第c列", data.loc["c"], sep = "\n")
+
+→
+
+      name  salary
+a      Amy   30000
+b      Bob   60000
+c  Charles   45000
+========================================
+取得第二列
+name        Bob
+salary    60000
+Name: b, dtype: object
+========================================
+取得第 c 列
+name      Charles
+salary      45000
+Name: c, dtype: object
+```
+
+### 取得欄 (Column / 直向) 的 Series 資料：根據欄位的名稱
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引：pd.DataFrame(字典, index = 索引列表)
+data = pd.DataFrame({
+    "name": ["Amy", "Bob", "Charles"],
+    "salary": [30000, 60000, 45000]
+},index=["a", "b", "c"])
+
+print(data)
+print("========================================")
+
+# 取得欄 (Column / 直向) 的 Series 資料：根據欄位的名稱
+print("取得 name 欄位", data["name"], sep = "\n")
+
+→ 
+
+      name  salary
+a      Amy   30000
+b      Bob   60000
+c  Charles   45000
+========================================
+取得 name 欄位
+a        Amy
+b        Bob
+c    Charles
+Name: name, dtype: object
+```
+
+### 綜合範例
+
+#### 雙維度的資料，在取得特定的欄或列，會變成單維度的資料 (Series)
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引：pd.DataFrame(字典, index = 索引列表)
+data = pd.DataFrame({
+    "name": ["Amy", "Bob", "Charles"],
+    "salary": [30000, 60000, 45000]
+}, index = ["a", "b", "c"])
+
+print(data)
+print("========================================")
+
+# 取得欄 (Column / 直向) 的 Series 資料：根據欄位的名稱
+names = data["name"]   # 取得單維度的 Series 資料
+print("把 name 全部轉大寫", names.str.upper(), sep = "\n")
+
+# 計算薪水的平均值
+salaries = data["salary"]
+print("薪水的平均值", salaries.mean())
+
+→ 
+
+      name  salary
+a      Amy   30000
+b      Bob   60000
+c  Charles   45000
+========================================
+把 name 全部轉大寫
+a        AMY
+b        BOB
+c    CHARLES
+Name: name, dtype: object
+薪水的平均值 45000.0
+```
+
+#### 建立新的欄位
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引：pd.DataFrame(字典, index = 索引列表)
+data = pd.DataFrame({
+    "name": ["Amy", "Bob", "Charles"],
+    "salary": [30000, 60000, 45000]
+}, index = ["a", "b", "c"])
+
+print(data)
+print("========================================")
+
+# 建立新的欄位
+data["revenue"] = [5000000, 4000000, 3000000]   # data[新欄位的名稱] = 列表
+data["rank"] = pd.Series([3, 6, 1], index = ["a", "b", "c"])   # data[新欄位的名稱] = Series 的資料 (較正式的寫法)
+print(data)
+
+→ 
+
+      name  salary
+a      Amy   30000
+b      Bob   60000
+c  Charles   45000
+========================================
+      name  salary  revenue  rank
+a      Amy   30000  5000000     3
+b      Bob   60000  4000000     6
+c  Charles   45000  3000000     1
+```
+
+### 常見操作：現有欄位產生新欄位
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引：pd.DataFrame(字典, index = 索引列表)
+data = pd.DataFrame({
+    "name": ["Amy", "Bob", "Charles"],
+    "salary": [30000, 60000, 45000]
+}, index = ["a", "b", "c"])
+
+print(data)
+print("========================================")
+
+# 建立新的欄位
+data["revenue"] = [5000000, 4000000, 3000000]   # data[新欄位的名稱] = 列表
+data["rank"] = pd.Series([3, 6, 1], index = ["a", "b", "c"])   # data[新欄位的名稱] = Series 的資料
+data["cp"] = data["salary"]
+print(data)
+
+→
+
+      name  salary
+a      Amy   30000
+b      Bob   60000
+c  Charles   45000
+========================================
+      name  salary  revenue  rank     cp
+a      Amy   30000  5000000     3  30000
+b      Bob   60000  4000000     6  60000
+c  Charles   45000  3000000     1  45000 
+```
+
+```
+# 載入 pandas 模組
+import pandas as pd
+
+# 資料索引：pd.DataFrame(字典, index = 索引列表)
+data = pd.DataFrame({
+    "name": ["Amy", "Bob", "Charles"],
+    "salary": [30000, 60000, 45000]
+}, index = ["a", "b", "c"])
+
+print(data)
+print("========================================")
+
+# 建立新的欄位
+data["revenue"] = [5000000, 4000000, 3000000]   # data[新欄位的名稱] = 列表
+data["rank"] = pd.Series([3, 6, 1], index = ["a", "b", "c"])   # data[新欄位的名稱] = Series 的資料
+data["cp"] = data["revenue"] / data["salary"]
+print(data)
+
+→ 
+
+      name  salary
+a      Amy   30000
+b      Bob   60000
+c  Charles   45000
+========================================
+      name  salary  revenue  rank          cp
+a      Amy   30000  5000000     3  166.666667
+b      Bob   60000  4000000     6   66.666667
+c  Charles   45000  3000000     1   66.666667
 ```
