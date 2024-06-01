@@ -44,7 +44,7 @@
 
 - 資料的分類
 
-	- 數字：整數、長整數、浮點數(小數)
+	- 數字：整數、長整數、浮點數 (小數)
 
 	- 字串：任意的文字內容
 
@@ -1275,9 +1275,9 @@ print(value)
 Hello
 ```
 
-##### 程式邏輯：呼叫 add，3 放進 n1，4 放進 n2，3 + 4 = 7 放進 result，return 字串 Hello，字串Hello 被丟回 add(3, 4)，add(3, 4) 為字串 Hello = value，印出 value
+##### 程式邏輯：呼叫 add，3 放進 n1，4 放進 n2，3 + 4 = 7 放進 result，return 字串 Hello，字串 Hello 被丟回 ```add(3, 4)```，```add(3, 4)``` 為字串 Hello = value，印出 value
 
-##### result的7沒有用，因為return的是Hello
+##### result 的 7 沒有用，因為 return 的是 Hello
 
 ##### 最後函式呼叫完得到的要看回傳值 (return)，和程式碼無關
 
@@ -1534,16 +1534,17 @@ def 函式名稱(*無限參數):
 ```
 # 函式接受無限參數 msgs
 def say(*msgs):
-	#以Tuple的方式處理
+	# 以 Tuple 的方式處理
 	for msg in msgs
 		print(msg)
+
 # 呼叫函式，傳入三個參數資料
 say("Hello", "Arbitrary", "Arguments")
 ```
 
 ##### 若給 3 個字串，就會變成 3 個字串的 Tuple，用一個迴圈將 Tuple 資料取出
 
-#### Tuple：有序列表(資料不可更動)，List 資料可更動
+#### Tuple：有序列表 (資料不可更動)，List 資料可更動
 
 #### 參數的預設資料
 
@@ -1636,7 +1637,7 @@ avg(1, 4, -1, -8)
 
 ### Python 中所謂的模組，就是獨立的程式檔案，可以被其他的程式載入和使用，其中最大的好處是可以重複使用，在程式碼太長太多時可以寫成不同的檔案模組重複使用，這就是 Python 的模組要解決的問題
 
-### 模組(module)
+### 模組 (module)
 
 - 獨立的程式檔案：將程式寫在一個檔案中，此檔案可重複載入使用 
 
@@ -1722,7 +1723,7 @@ win32
 9223372036854775807
 ```
 
-#### 建立 geometry 模組，載入使用(自訂模組)
+#### 建立 geometry 模組，載入使用 (自訂模組)
 
 ##### 先另開一個 Python 檔案命名 geometry.py，並在其中自訂模組
 
@@ -1968,7 +1969,7 @@ import json
 
 - 資料格式 JSON 使用的非常頻繁，經常用於網路中交換資料或儲存設定檔
 
-> 寫入檔案(儲存檔案) # 因為英文是 write 所以有翻譯問題
+> 寫入檔案 (儲存檔案)   # 因為英文是 write 所以有翻譯問題
 
 >> 寫入文字
 
@@ -2021,7 +2022,7 @@ data.txt →
 Hello File 
 ```
 
-#### 同一個檔案打開再重新寫入會有覆蓋的效果(檔案的內容會被整個覆蓋)，即用新的資料覆蓋檔案裡的內容 
+#### 同一個檔案打開再重新寫入會有覆蓋的效果 (檔案的內容會被整個覆蓋)，即用新的資料覆蓋檔案裡的內容 
 
 ```
 file = open("data.txt", mode = "w")
@@ -2048,7 +2049,7 @@ data.txt →
 # 出現亂碼
 ```
 
-#### 若要顯示中文，需要先指定utf-8編碼(最常見的)
+#### 若要顯示中文，需要先指定utf-8編碼 (最常見的)
 
 ```
 file = open("data.txt", mode = "w",encoding = "utf-8")
@@ -2077,7 +2078,7 @@ data.txt →
 
 ##### 不需要寫 close，會自動、安全、可靠的將檔案資源釋放、關閉
 
->> 讀取檔案(讀取已經存在的檔案)
+>> 讀取檔案 (讀取已經存在的檔案)
 
 
 - 寫入：不存在沒關係，可以創造新檔案 
@@ -2105,7 +2106,7 @@ with open("data.txt", mode = "w", encoding = "utf-8") as file:
 sum = 0
 with open("data.txt", mode = "r", encoding = "utf-8") as file:
 	for line in file:   # 一行一行讀取
-		sum+=int(line)
+		sum += int(line)
 print(sum)
 
 →
@@ -2508,7 +2509,7 @@ print(data)
 
 →
 
-取得台灣大學網站的原始碼(轉換中文)
+取得台灣大學網站的原始碼 (轉換中文)
 ```
 
 ### 串接、擷取公開資料
@@ -2564,7 +2565,7 @@ print(clist)
 
 →
 
-資料格式最後只有一個列表(一個中括號)
+資料格式最後只有一個列表 (一個中括號)
 clist = data["result"]["results"]，此寫法來自網頁中 JSON，data 為全部，result 和 results 為第一行的 result 和 results
 ```
 
@@ -2627,7 +2628,7 @@ data.txt →
 
 - 封裝變數或函式：封裝的變數或函式，統稱類別的屬性
 
-- 定義 > 使用：要先定義(建立)類別，然後才能使用類別中封裝的屬性 
+- 定義 > 使用：要先定義 (建立) 類別，然後才能使用類別中封裝的屬性 
 
 > 定義類別
 
@@ -2678,7 +2679,7 @@ Test.say()   # 呼叫屬性say函式
 > 定義類別 & 使用類別 
 
 ```
-# 定義類別，與類別屬性(封裝在類別中的變數和函式)
+# 定義類別，與類別屬性 (封裝在類別中的變數和函式)
 
 # 定義一個類別 IO，有兩個屬性：supporttedSrcs 和 read
 class IO:
@@ -3324,7 +3325,7 @@ print(root.title.string)
 
 ###### <br/>
 
-##### 發現每個文章的標題，都被 ```<a>``` (a的標籤) 包裹，然後再被 ```<div>``` 包裹 (成功找出想要的資料在原始碼中的特色)
+##### 發現每個文章的標題，都被 ```<a>``` (a 的標籤) 包裹，然後再被 ```<div>``` 包裹 (成功找出想要的資料在原始碼中的特色)
 
 ```
 # 抓取PTT電影版的網頁原始碼 (HTML)
@@ -3589,7 +3590,7 @@ root = bs4.BeautifulSoup(data,"html.parser")   # 讓 BeautifulSoup 協助解析 
 titles = root.find_all("div", class_="title")   # 尋找所有 class="title" 的 div 標籤 
 
 for title in titles:
-	if title.a !=None:   # 如標題包含 a 標籤(沒有被刪除)，印出來
+	if title.a !=None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
 		print(title.a.string)
 
 →
@@ -3901,7 +3902,7 @@ while count < 3:   # 若想抓 3 頁就 < 3
 成功
 ```
 
-##### 程式邏輯：在程式中其實只加了 ```"cookie":"over18=1"``` → 在 Request Heades 中加上 Cookie 的 Headers → 把 over18=1 放進去 (代表連線曾經點過已滿 18 歲) → 把本來的程式包裝在一個函式裡叫做 getData → 然後傳遞網址進去 → 利用 url 去抓資料 → 研究原始碼，看看每個頁面的上一頁連結要怎麼抓 (要動態的抓到，因為每個頁面上一頁的網址都不一樣) → 用 bs4 工具去尋找 a 標籤 (```nextLink=root.find("a",string="‹ 上頁")```) → 抓到 href 屬性，href = 一個網址(網頁的超連結) → 進行 return (丟回函式的外面) → 包裝起來後外面的就是主程式 → ```pageURL = "https://www.ptt.cc/bbs/Gossiping/index.html"``` 為第一頁 → 去抓下一頁後得到網址再去串上網站名稱 → pageURL 就是上一頁的網址，再 +1 (```count+=1```)
+##### 程式邏輯：在程式中其實只加了 ```"cookie":"over18=1"``` → 在 Request Heades 中加上 Cookie 的 Headers → 把 over18=1 放進去 (代表連線曾經點過已滿 18 歲) → 把本來的程式包裝在一個函式裡叫做 getData → 然後傳遞網址進去 → 利用 url 去抓資料 → 研究原始碼，看看每個頁面的上一頁連結要怎麼抓 (要動態的抓到，因為每個頁面上一頁的網址都不一樣) → 用 bs4 工具去尋找 a 標籤 (```nextLink=root.find("a",string="‹ 上頁")```) → 抓到 href 屬性，href = 一個網址 (網頁的超連結) → 進行 return (丟回函式的外面) → 包裝起來後外面的就是主程式 → ```pageURL = "https://www.ptt.cc/bbs/Gossiping/index.html"``` 為第一頁 → 去抓下一頁後得到網址再去串上網站名稱 → pageURL 就是上一頁的網址，再 +1 (```count+=1```)
 
 ###### <br/>
 ###### <br/>
@@ -4381,7 +4382,7 @@ Initialized empty Git repository in D:/Python-training/flask-heroku/python-train
 set git remote heroku to https://git.heroku.com/python-training-setting.git
 ```
 
-### 部屬專案 (3個步驟)
+### 部屬專案 (3 個步驟)
 
 > 第 1 步
 
@@ -4670,7 +4671,7 @@ import pandas as pd
 pd.DataFrame(字典)
 ```
 
-- 取得特定欄(直向)
+- 取得特定欄 (直向)
 
 ```
 import pandas as pd
@@ -4680,7 +4681,7 @@ data = pd.DataFrame(字典)
 data["欄位名稱"]
 ```
 
-- 取得特定列(橫向)
+- 取得特定列 (橫向)
 
 ```
 import pandas as pd
@@ -5283,7 +5284,7 @@ dtype: object
 
 ###### <br/>
 
-#### 直向為欄 (A 欄及 B 欄)；橫向為列 (第1列、第2列、第3列)
+#### 直向為欄 (A 欄及 B 欄)；橫向為列 (第 1 列、第 2 列、第 3 列)
 
 ### 建立 DataFrame
 
@@ -5341,7 +5342,7 @@ print(data.size)
 ```
 import pandas as pd
 
-data=pd.DataFrame(字典)
+data = pd.DataFrame(字典)
 
 # 印出 shape 屬性
 print(data.shape)
@@ -5423,8 +5424,8 @@ import pandas as pd
 
 # 資料索引：pd.DataFrame(字典, index = 索引列表)
 data = pd.DataFrame({
-    "name": ["Amy", "Bob", "Charles"],
-    "salary": [30000, 60000, 45000]
+	"name": ["Amy", "Bob", "Charles"],
+	"salary": [30000, 60000, 45000]
 })
 
 print(data)
@@ -5445,8 +5446,8 @@ import pandas as pd
 
 # 資料索引：pd.DataFrame(字典, index = 索引列表)
 data = pd.DataFrame({
-    "name": ["Amy", "Bob", "Charles"],
-    "salary": [30000, 60000, 45000]
+	"name": ["Amy", "Bob", "Charles"],
+	"salary": [30000, 60000, 45000]
 }, index = ["a", "b", "c"])
 
 print(data)
@@ -5467,8 +5468,8 @@ import pandas as pd
 
 # 資料索引：pd.DataFrame(字典, index = 索引列表)
 data = pd.DataFrame({
-    "name": ["Amy", "Bob", "Charles"],
-    "salary": [30000, 60000, 45000]
+	"name": ["Amy", "Bob", "Charles"],
+	"salary": [30000, 60000, 45000]
 }, index = ["a", "b", "c"])
 
 print(data)
@@ -5487,7 +5488,7 @@ b      Bob   60000
 c  Charles   45000
 ========================================
 資料數列 6
-資料形狀(列、欄) (3, 2)
+資料形狀 (列、欄) (3, 2)
 資料索引 Index(['a', 'b', 'c'], dtype='object')
 ```
 
@@ -5499,8 +5500,8 @@ import pandas as pd
 
 # 資料索引：pd.DataFrame(字典, index = 索引列表)
 data = pd.DataFrame({
-    "name": ["Amy", "Bob", "Charles"],
-    "salary": [30000, 60000, 45000]
+	"name": ["Amy", "Bob", "Charles"],
+	"salary": [30000, 60000, 45000]
 }, index = ["a", "b", "c"])
 
 print(data)
@@ -5537,8 +5538,8 @@ import pandas as pd
 
 # 資料索引：pd.DataFrame(字典, index = 索引列表)
 data = pd.DataFrame({
-    "name": ["Amy", "Bob", "Charles"],
-    "salary": [30000, 60000, 45000]
+	"name": ["Amy", "Bob", "Charles"],
+	"salary": [30000, 60000, 45000]
 },index=["a", "b", "c"])
 
 print(data)
@@ -5571,8 +5572,8 @@ import pandas as pd
 
 # 資料索引：pd.DataFrame(字典, index = 索引列表)
 data = pd.DataFrame({
-    "name": ["Amy", "Bob", "Charles"],
-    "salary": [30000, 60000, 45000]
+	"name": ["Amy", "Bob", "Charles"],
+	"salary": [30000, 60000, 45000]
 }, index = ["a", "b", "c"])
 
 print(data)
@@ -5609,8 +5610,8 @@ import pandas as pd
 
 # 資料索引：pd.DataFrame(字典, index = 索引列表)
 data = pd.DataFrame({
-    "name": ["Amy", "Bob", "Charles"],
-    "salary": [30000, 60000, 45000]
+	"name": ["Amy", "Bob", "Charles"],
+	"salary": [30000, 60000, 45000]
 }, index = ["a", "b", "c"])
 
 print(data)
@@ -5642,8 +5643,8 @@ import pandas as pd
 
 # 資料索引：pd.DataFrame(字典, index = 索引列表)
 data = pd.DataFrame({
-    "name": ["Amy", "Bob", "Charles"],
-    "salary": [30000, 60000, 45000]
+	"name": ["Amy", "Bob", "Charles"],
+	"salary": [30000, 60000, 45000]
 }, index = ["a", "b", "c"])
 
 print(data)
@@ -5674,8 +5675,8 @@ import pandas as pd
 
 # 資料索引：pd.DataFrame(字典, index = 索引列表)
 data = pd.DataFrame({
-    "name": ["Amy", "Bob", "Charles"],
-    "salary": [30000, 60000, 45000]
+	"name": ["Amy", "Bob", "Charles"],
+	"salary": [30000, 60000, 45000]
 }, index = ["a", "b", "c"])
 
 print(data)
