@@ -1705,7 +1705,7 @@ import sys
 print(sys.platform)
 print(sys.maxsize)
 
-→ 
+→
 
 win32
 9223372036854775807
@@ -1749,7 +1749,7 @@ print(result)
 result=geometry.slope(1, 2, 5, 6)
 print(result)
 
-→ 
+→
 
 5.656854249492381
 1.0
@@ -1762,7 +1762,7 @@ import sys
 
 print(sys.path)   # 印出模組的搜尋路徑列表
 
-→ 
+→
 
 ['D:\\Python-training','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\python310.zip','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\DLLs','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\lib','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310', 'C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages']
 ```
@@ -1775,7 +1775,7 @@ import geometry
 
 print(geometry.distance(1, 1, 5, 5))
 
-→ 
+→
 
 Traceback (most recent call last):
   File "D:\Python-training\11_module.py", line 16, in <module>
@@ -1795,7 +1795,7 @@ print("========================================")
 import geometry
 print(geometry.distance(1, 1, 5, 5))
 
-→ 
+→
 
 ['D:\\Python-training','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\python310.zip','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\DLLs','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\lib','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310', 'C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages', 'modules']
 ========================================
@@ -1891,7 +1891,7 @@ import geometry.line
 result = geometry.line.slope(1, 1, 3, 3)
 print("斜率", result)
 
-→ 
+→
 
 距離 5.0
 斜率 1.0
@@ -1910,7 +1910,7 @@ import geometry.line as line
 result = line.slope(1, 1, 3, 3) 
 print("斜率", result) 
 
-→ 
+→
 
 距離 5.0
 斜率 1.0
@@ -2018,7 +2018,7 @@ file.close()   # 關閉
 →
 
 產生新的檔案data.txt在資料夾裡 
-data.txt → 
+data.txt →
 Hello File 
 ```
 
@@ -2071,7 +2071,7 @@ with open("data.txt", mode = "w", encoding = "utf-8") as file:
 
 →
 
-data.txt → 
+data.txt →
 測試中文
 好棒棒
 ```
@@ -2138,7 +2138,7 @@ print(data)   # 是一個字典資料
 print("name：", data["name"])
 print("version：", data["version"])
 
-→ 
+→
 
 name： My Name
 
@@ -2430,7 +2430,7 @@ import statistics as stat
 data = stat.stdev([1, 2, 3, 4, 5, 8, 10])
 print(data)
 
-→ 
+→
 
 3.251373336211726
 ```
@@ -2607,7 +2607,7 @@ with open("data.txt", "w", encoding = "utf-8") as file:
 	for company in clist: 
 		file.write(company["公司名稱"] + "\n") 
 
-→ 
+→
 
 產生新的檔案data.txt在資料夾裡
 data.txt →
@@ -2852,7 +2852,7 @@ print(p1.x, p1.y)
 p2 = Point() 
 print(p2.x, p2.y) 
 
-→ 
+→
 
 3 4 
 3 4 
@@ -3410,7 +3410,7 @@ titles=root.find_all("div",class_="title")   # 尋找所有 class="title" 的 di
 
 print(titles)
 
-→ 
+→
 
 [<div class="title">
 <a href="/bbs/movie/M.1635954120.A.2E7.html">[新聞] 漫威老大太狠心 原本想要初代復仇者全滅</a>
@@ -3464,7 +3464,7 @@ for title in titles:
 	if title.a != None:   # 如標題包含 a 標籤 (沒有被刪除)，印出來
 		print(title.a.string)
 
-→ 
+→
 
 [新聞] 漫威老大太狠心 原本想要初代復仇者全滅
 [新聞] 專訪／陳靜「永恆族」當裘莉粉絲 理察讚
@@ -3722,7 +3722,7 @@ for title in titles:
 nextLink = root.find("a", string="‹ 上頁")   # 找到內文是 ‹ 上頁 的 a 標籤
 print(nextLink)
 
-→ 
+→
 
 沒問題
 
@@ -3763,7 +3763,7 @@ for title in titles:
 nextLink = root.find("a", string="‹ 上頁")   # 找到內文是 ‹ 上頁 的 a 標籤
 print(nextLink["href"])
 
-→ 
+→
 
 沒問題
 
@@ -3807,7 +3807,7 @@ def getData(url):
 pageURL = "https://www.ptt.cc/bbs/Gossiping/index.html"
 getData(pageURL)
 
-→ 
+→
 
 沒問題 
 
@@ -3847,7 +3847,7 @@ pageURL="https://www.ptt.cc/bbs/Gossiping/index.html"
 pageURL="https://www.ptt.cc" + getData(pageURL)
 print(pageURL)
 
-→ 
+→
 
 沒問題 
 
@@ -3897,7 +3897,7 @@ while count < 3:   # 若想抓 3 頁就 < 3
 	pageURL = "https://www.ptt.cc" + getData(pageURL)
 	count += 1
 
-→ 
+→
 
 成功
 ```
@@ -4729,7 +4729,7 @@ print("Median", data.median())
 data = data * 2
 print(data)
 
-→ 
+→
 
 Max 20
 Median 15.0
@@ -4750,7 +4750,7 @@ data = pd.Series([20, 10, 15])
 data = data == 20
 print(data)
 
-→ 
+→
 
 0     True
 1    False
@@ -5162,7 +5162,7 @@ print("標準差", data.std())
 print("中位數", data.median()) 
 print("最大的三個數", data.nlargest(3))   # nsmallest(2)：最小的兩個數 
 
-→ 
+→
 
 最大值 7 
 總和 17 
@@ -5548,7 +5548,7 @@ print("========================================")
 # 取得欄 (Column / 直向) 的 Series 資料：根據欄位的名稱
 print("取得 name 欄位", data["name"], sep = "\n")
 
-→ 
+→
 
       name  salary
 a      Amy   30000
@@ -5587,7 +5587,7 @@ print("把 name 全部轉大寫", names.str.upper(), sep = "\n")
 salaries = data["salary"]
 print("薪水的平均值", salaries.mean())
 
-→ 
+→
 
       name  salary
 a      Amy   30000
@@ -5622,7 +5622,7 @@ data["revenue"] = [5000000, 4000000, 3000000]   # data[新欄位的名稱] = 列
 data["rank"] = pd.Series([3, 6, 1], index = ["a", "b", "c"])   # data[新欄位的名稱] = Series 的資料 (較正式的寫法)
 print(data)
 
-→ 
+→
 
       name  salary
 a      Amy   30000
@@ -5688,7 +5688,7 @@ data["rank"] = pd.Series([3, 6, 1], index = ["a", "b", "c"])   # data[新欄位�
 data["cp"] = data["revenue"] / data["salary"]
 print(data)
 
-→ 
+→
 
       name  salary
 a      Amy   30000
@@ -5821,7 +5821,7 @@ print("========================================")
 filteredData = data[condition]
 print(filteredData)
 
-→ 
+→
 
 0     True
 1    False
@@ -5991,3 +5991,766 @@ Name: name, dtype: bool
 ```
 
 ##### 核心運作原則：透過比較運算，會得到布林值列表，實際篩選透過布林值列表，True 就取出
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## Pandas 資料分析 – GooglePlay Store 資料集，實務演練 <br/> 29_pandas-googleplay.py
+
+### 資料工程
+
+- 收集資料：利用程式自動收集想要的資料
+
+- 清理資料：利用程式清理原始資料中不乾淨的東西
+
+- 資料分析：描述統計、推論統計等等
+
+- 基於資料的應用
+
+### 實務演練
+
+#### 收集資料：
+
+![](./MarkDown-img/pandas-googleplay.jpg)
+
+###### <br/>
+
+##### 清理、分析與應用：利用 Pandas 完成簡單的實務演練
+
+#### 下載 http://bit.ly/2UMcbDI 中的 csv 檔案並放入專案資料夾 (練習用的 Python 資料夾)
+
+##### csv 就是用逗號隔開的表格資料，每一行就是一個列，每個欄位用都號隔開
+
+### 觀察資料
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame (資料是 csv；檔案在專案資料夾的根目錄，所以可以直接寫檔案名稱)
+
+# 觀察資料
+print(data)
+
+→
+
+                                                     App  ...         Android Ver
+0         Photo Editor & Candy Camera & Grid & ScrapBook  ...        4.0.3 and up
+1                                    Coloring book moana  ...        4.0.3 and up
+2      U Launcher Lite – FREE Live Cool Themes, Hide ...  ...        4.0.3 and up
+3                                  Sketch - Draw & Paint  ...          4.2 and up
+4                  Pixel Draw - Number Art Coloring Book  ...          4.4 and up
+...                                                  ...  ...                 ...
+10836                                   Sya9a Maroc - FR  ...          4.1 and up
+10837                   Fr. Mike Schmitz Audio Teachings  ...          4.1 and up
+10838                             Parkinson Exercices FR  ...          2.2 and up
+10839                      The SCP Foundation DB fr nn5n  ...  Varies with device
+10840      iHoroscope - 2018 Daily Horoscope & Astrology  ...  Varies with device
+
+[10841 rows x 13 columns]
+```
+
+##### 共 10841 筆資料，無法全部印出來
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+```
+
+### 分析資料：評分的各種統計數據 
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 分析資料：評分的各種統計數據
+print(data["Rating"])
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+0        4.1 
+1        3.9 
+2        4.7
+3        4.5
+4        4.3
+        ...
+10836    4.5
+10837    5.0
+10838    NaN
+10839    4.5
+10840    4.5
+Name: Rating, Length: 10841, dtype: float64
+```
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 分析資料：評分的各種統計數據
+print("平均數", data["Rating"].mean())
+print("中位數", data["Rating"].median())
+print("取得前一百個應用程式的平均", data["Rating"].nlargest(100).mean())
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+平均數 4.193338315362443
+中位數 4.3
+取得前一百個應用程式的平均 5.14
+```
+
+##### 最高只有 5 分，平均卻是 5.14 
+
+#### 尋找奇怪的資料
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 分析資料：評分的各種統計數據
+condition = data["Rating"] > 5
+data = data[condition]
+print(data)
+print("平均數", data["Rating"].mean())
+print("中位數", data["Rating"].median())
+print("取得前一百個應用程式的平均", data["Rating"].nlargest(100).mean())
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+                                           App Category  Rating Reviews    Size Installs Type     Price Content Rating             Genres Last Updated Current Ver Android Ver
+10472  Life Made WI-Fi Touchscreen Photo Frame      1.9    19.0    3.0M  1,000+     Free    0  Everyone            NaN  February 11, 2018       1.0.19  4.0 and up         NaN
+平均數 19.0
+中位數 19.0
+取得前一百個應用程式的平均 19.0
+```
+
+##### 第 10472 筆資料評分為 19 分
+
+##### VS Code 介面拉越寬顯示在 TERMINAL 的資料越多
+
+#### 排除奇怪的資料 (資料清理)
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 分析資料：評分的各種統計數據
+condition = data["Rating"] <= 5
+data = data[condition]
+print("平均數", data["Rating"].mean())
+print("中位數", data["Rating"].median())
+print("取得前一百個應用程式的平均", data["Rating"].nlargest(100).mean())
+
+→
+
+資料數量 (10841, 13)
+
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+平均數 4.191757420456972
+中位數 4.3
+取得前一百個應用程式的平均 5.0
+```
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 分析資料：評分的各種統計數據
+condition = data["Rating"] <= 5
+data = data[condition]
+print("平均數", data["Rating"].mean())
+print("中位數", data["Rating"].median())
+print("取得前一百個應用程式的平均", data["Rating"].nlargest(1000).mean())
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+平均數 4.191757420456972
+中位數 4.3
+取得前一百個應用程式的平均 4.823
+```
+
+#### 分析資料：安裝數量的各種統計數據 
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 分析資料：安裝數量的各種統計數據
+print("平均數", data["Installs"].mean())
+
+→
+
+跑出一堆數字
+```
+
+#### 進一步觀察
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 分析資料：安裝數量的各種統計數據 
+print(data["Installs"])
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+0            10,000+
+1           500,000+
+2         5,000,000+
+3        50,000,000+
+4           100,000+
+            ...
+10836         5,000+
+10837           100+
+10838         1,000+
+10839         1,000+
+10840    10,000,000+
+Name: Installs, Length: 10841, dtype: object
+```
+
+##### 發現安裝數量欄位的資料為字串 (dtype 為 object)
+
+#### 將安裝數量轉換為數字的型態 (使用 pandas 中的 numeric 工具)
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量",data.shape)
+print("資料欄位",data.columns)
+print("========================================")
+
+# 分析資料：安裝數量的各種統計數據
+data["Installs"]=pd.to_numeric(data["Installs"])
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+Traceback (most recent call last):
+  File "pandas\_libs\lib.pyx", line 2305, in pandas._libs.lib.maybe_convert_numeric
+ValueError: Unable to parse string "10,000+"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python-training\29_pandas-googleplay.py", line 19, in <module>
+    data["Installs"]=pd.to_numeric(data["Installs"])
+  File "C:\Users\charmy\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\core\tools\numeric.py", line 183, in to_numeric
+    values, _ = lib.maybe_convert_numeric(
+  File "pandas\_libs\lib.pyx", line 2347, in pandas._libs.lib.maybe_convert_numeric
+ValueError: Unable to parse string "10,000+" at position 0 
+```
+
+##### 出現問題：其中 ValueError: Unable to parse string "10,000+" 中表示無法將此字串轉換成數字
+
+#### 將 , 和 + 清理後才能轉換 
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 分析資料：安裝數量的各種統計數據
+data["Installs"] = pd.to_numeric(data["Installs"].str.replace("[, +]", ""))
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+D:\Python-training\29_pandas-googleplay.py:19: FutureWarning: The default value of regex will change from True to False in a future version.
+  data["Installs"]=pd.to_numeric(data["Installs"].str.replace("[,+]",""))
+Traceback (most recent call last):
+  File "pandas\_libs\lib.pyx", line 2305, in pandas._libs.lib.maybe_convert_numeric
+ValueError: Unable to parse string "Free" 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Python-training\29_pandas-googleplay.py", line 19, in <module>
+    data["Installs"]=pd.to_numeric(data["Installs"].str.replace("[,+]",""))
+  File "C:\Users\charmy\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\core\tools\numeric.py", line 183, in to_numeric
+    values, _ = lib.maybe_convert_numeric(
+  File "pandas\_libs\lib.pyx", line 2347, in pandas._libs.lib.maybe_convert_numeric
+ValueError: Unable to parse string "Free" at position 10472
+```
+
+##### 還有很多問題，需再觀察 (實戰處理中很常見)
+
+##### 出現問題：其中 ValueError: Unable to parse string "Free" 中表示無法處理字串 Free
+
+#### ValueError: Unable to parse string "Free" at position 10472 中表示出現在位置 10472 中，取出觀察
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 分析資料：安裝數量的各種統計數據
+print(data["Installs"][10472])
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+Free
+```
+
+##### 表示原始資料不乾淨，需處理掉 (忽略掉)
+
+#### 忽略不乾淨資料
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 分析資料：安裝數量的各種統計數據
+data["Installs"] = pd.to_numeric(data["Installs"].str.replace("[, +]", "").replace("Free", ""))
+print(data["Installs"])
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+D:\Python-training\29_pandas-googleplay.py:19: FutureWarning: The default value of regex will change from True to False in a future version.
+  data["Installs"]=pd.to_numeric(data["Installs"].str.replace("[,+]","").replace("Free",""))
+0           10000.0
+1          500000.0
+2         5000000.0
+3        50000000.0
+4          100000.0
+            ...
+10836        5000.0
+10837         100.0
+10838        1000.0
+10839        1000.0
+10840    10000000.0
+Name: Installs, Length: 10841, dtype: float64
+```
+
+#### 抓取資料
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 分析資料：安裝數量的各種統計數據
+data["Installs"] = pd.to_numeric(data["Installs"].str.replace("[, +]", "").replace("Free", ""))
+print("平均數", data["Installs"].mean())
+
+condition = data["Installs"] > 100000
+print("安裝數量大於 100000 的應用程式有幾個", data[condition].shape)
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+D:\Python-training\29_pandas-googleplay.py:19: FutureWarning: The default value of regex will change from True to False in a future version.
+  data["Installs"]=pd.to_numeric(data["Installs"].str.replace("[,+]","").replace("Free",""))
+平均數 15464338.882564576
+安裝數量大於 100000 的應用程式有幾個 (4950, 13)
+```
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================") 
+
+# 分析資料：安裝數量的各種統計數據
+data["Installs"] = pd.to_numeric(data["Installs"].str.replace("[, +]", "").replace("Free", ""))
+print("平均數", data["Installs"].mean())
+
+condition = data["Installs"] > 100000
+print("安裝數量大於 100000 的應用程式有幾個", data[condition].shape[0])   # shape[0] 類似 Tuple (列表) 
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+D:\Python-training\29_pandas-googleplay.py:19: FutureWarning: The default value of regex will change from True to False in a future version.
+  data["Installs"] = pd.to_numeric(data["Installs"].str.replace("[, +]", "").replace("Free", ""))
+平均數 15464338.882564576
+安裝數量大於 100000 的應用程式有幾個 4950
+```
+
+#### 基於資料的應用：關鍵字搜尋應用程式名稱 
+
+
+
+
+
+
+
+
+
+
+
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 基於資料的應用：關鍵字搜尋應用程式名稱
+keyword = input("請輸入關鍵字：")
+condition = data["App"].str.contains(keyword)
+print(data[condition])
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+請輸入關鍵字：game  enter 
+                                                     App  ...         Android Ver
+728        Free intellectual training game application |  ...          4.4 and up
+884                           Low Poly – Puzzle art game  ...          4.1 and up
+908                       VRV: Anime, game videos & more  ...  Varies with device
+955    PlayKids - Educational cartoons and games for ...  ...  Varies with device
+1810                      Word Crossy - A crossword game  ...        4.0.3 and up
+1937         Cover Fire: offline shooting games for free  ...          4.1 and up
+1965                                     Quiz: Logo game  ...        4.0.3 and up
+2020   Super ABC! Learning games for kids! Preschool ...  ...          4.1 and up
+2036    Number Counting games for toddler preschool kids  ...  Varies with device
+2065   Super ABC! Learning games for kids! Preschool ...  ...          4.1 and up
+2070   Baby ABC in box! Kids alphabet games for toddl...  ...          4.1 and up
+2098       Extreme Racing 2 - Real driving RC cars game!  ...          4.1 and up
+2102            Car Racing game for Kids - Beepzz Dogs 🐕  ...          4.2 and up
+2103        Pony Friends 🦄 - Beepzz racing game for kids  ...          4.2 and up
+2172                      World Racers family board game  ...          5.1 and up
+2175                        Whoowasit? - Best kids game!  ...          4.1 and up
+2207   PlayKids - Educational cartoons and games for ...  ...  Varies with device
+4146                         Gangstar Vegas - mafia game  ...  Varies with device
+4393                            Dual N-Back - Brain game  ...          4.1 and up
+4878        Math games for kids : times tables - AB Math  ...        4.0.3 and up
+4882         Math games for kids : times tables training  ...        4.0.3 and up
+5011                      AE Gun Ball: arcade ball games  ...          2.2 and up
+5413       Princess Closet : Otome games free dating sim  ...        4.0.3 and up
+5525       Grow Stone Online : 2d pixel RPG, MMORPG game  ...        4.0.3 and up
+6094                                            BF games  ...        4.0.3 and up
+6140   Board Game Stats: Play tracking for tabletop g...  ...          4.1 and up
+6335                              BJ card game blackjack  ...          2.3 and up
+6811              Bu the Baby Bunny - Cute pet care game  ...          4.1 and up
+6824      Pu - Cute giant panda bear, baby pet care game  ...          4.1 and up
+7643   Them Bombs: co-op board game play with 2-4 fri...  ...          4.1 and up
+8617   Destiny Ninja Shall we date otome games love s...  ...          4.0 and up
+9400                     RUN JUMP RUN-fun games for free  ...          3.0 and up
+9583                        Shoot`Em Down: Shooting game  ...          4.1 and up
+9668                      Free games: Masha and the Bear  ...          4.1 and up
+9677   Masha and The Bear Jam Day Match 3 games for kids  ...          4.1 and up
+10024                              No Pimple - Fun games  ...          2.3 and up
+10165           EZ game screen recorder with audio 1080P  ...          5.0 and up
+10505                   Offroad drive : 4x4 driving game  ...          4.1 and up
+[38 rows x 13 columns]
+```
+
+#### 只列出應用程式名稱
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 基於資料的應用：關鍵字搜尋應用程式名稱
+keyword = input("請輸入關鍵字：")
+condition = data["App"].str.contains(keyword)
+print(data[condition]["App"])
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+請輸入關鍵字：game  enter 
+728          Free intellectual training game application |
+884                             Low Poly – Puzzle art game
+908                         VRV: Anime, game videos & more
+955      PlayKids - Educational cartoons and games for ...
+1810                        Word Crossy - A crossword game
+1937           Cover Fire: offline shooting games for free
+1965                                       Quiz: Logo game
+2020     Super ABC! Learning games for kids! Preschool ...
+2036      Number Counting games for toddler preschool kids
+2065     Super ABC! Learning games for kids! Preschool ...
+2070     Baby ABC in box! Kids alphabet games for toddl...
+2098         Extreme Racing 2 - Real driving RC cars game!
+2102              Car Racing game for Kids - Beepzz Dogs 🐕
+2103          Pony Friends 🦄 - Beepzz racing game for kids
+2172                        World Racers family board game
+2175                          Whoowasit? - Best kids game!
+2207     PlayKids - Educational cartoons and games for ...
+4146                           Gangstar Vegas - mafia game
+4393                              Dual N-Back - Brain game
+4878          Math games for kids : times tables - AB Math
+4882           Math games for kids : times tables training
+5011                        AE Gun Ball: arcade ball games
+5413         Princess Closet : Otome games free dating sim
+5525         Grow Stone Online : 2d pixel RPG, MMORPG game
+6094                                              BF games
+6140     Board Game Stats: Play tracking for tabletop g...
+6335                                BJ card game blackjack
+6811                Bu the Baby Bunny - Cute pet care game
+6824        Pu - Cute giant panda bear, baby pet care game
+7643     Them Bombs: co-op board game play with 2-4 fri...
+8617     Destiny Ninja Shall we date otome games love s...
+9400                       RUN JUMP RUN-fun games for free
+9583                          Shoot`Em Down: Shooting game
+9668                        Free games: Masha and the Bear
+9677     Masha and The Bear Jam Day Match 3 games for kids
+10024                                No Pimple - Fun games
+10165             EZ game screen recorder with audio 1080P
+10505                     Offroad drive : 4x4 driving game
+Name: App, dtype: object
+```
+
+#### 列出包含關鍵字的應用程式數量 (取得數量用 shape)
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 基於資料的應用：關鍵字搜尋應用程式名稱
+keyword=input("請輸入關鍵字：")
+condition = data["App"].str.contains(keyword)
+print("包含關鍵字的應用程式數量", data[condition].shape[0])
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+請輸入關鍵字：game  enter 
+包含關鍵字的應用程式數量 38
+```
+
+##### 大小寫有差，若 game 是大寫就會比對不到
+
+#### 忽略大小寫
+
+```
+import pandas as pd
+
+# 讀取資料
+data = pd.read_csv("googleplaystore.csv")   # 把 csv 格式的檔案讀取成一個 DataFrame
+
+# 觀察資料
+print("資料數量", data.shape)
+print("資料欄位", data.columns)
+print("========================================")
+
+# 基於資料的應用：關鍵字搜尋應用程式名稱
+keyword = input("請輸入關鍵字：")
+condition = data["App"].str.contains(keyword, case = False)
+print("包含關鍵字的應用程式數量", data[condition].shape[0])
+
+→
+
+資料數量 (10841, 13)
+資料欄位 Index(['App', 'Category', 'Rating', 'Reviews', 'Size', 'Installs', 'Type',
+       'Price', 'Content Rating', 'Genres', 'Last Updated', 'Current Ver',
+       'Android Ver'],
+      dtype='object')
+========================================
+請輸入關鍵字：game  enter
+包含關鍵字的應用程式數量 257
+```
+
+##### 在分析資料中，```data["Installs"] = pd.to_numeric(data["Installs"].str.replace("[, +]", ""))``` 的動作會讓 TERMINAL 裡出現
+```
+D:\Python-training\29_pandas-googleplay.py:19: FutureWarning: The default value of regex will change from True to False in a future version.
+  data["Installs"] = pd.to_numeric(data["Installs"].str.replace("[, +]", ""))
+```
+
+##### 只要加上 ```regex = True``` --> ```replace("[, +]", "", regex = True)``` 即可
+
+```data["Installs"] = pd.to_numeric(data["Installs"].str.replace("[, +]", "", regex = True))```
+
+```data["Installs"] = pd.to_numeric(data["Installs"].str.replace("[, +]", "", regex = True).replace("Free", "", regex = True))```
