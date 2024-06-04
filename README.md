@@ -6983,4 +6983,197 @@ server.send_message(msg)
 server.close()
 ```
 
-##### 寄件人和要連線的電子郵件主機是有相關的，要連線到 gmail 主機，寄件人必需是 gmail 帳戶 
+##### 寄件人和要連線的電子郵件主機是有相關的，要連線到 gmail 主機，寄件人必需是 gmail 帳戶
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 可疊代資料型態 – Iterable Data Types <br/> 31_iterable.py
+
+### 可疊代 (Iterable)：可以分開、逐一取出內部資料
+
+### 資料型態
+
+1. 字串 (String)：可以把字串中的字元分開、逐一取出
+
+	- ex. "Hello"
+
+2. 列表 (List)：可以把列表中的資料分開、逐一取出
+
+	- ex. [3, 4, 2]
+
+3. 集合 (Set)：可以把集合中的資料分開、逐一取出
+
+	- ex. {100, 1, 5}
+
+4. 字典 (Dictionary)：可以把字典中的 Key 分開、逐一取出
+
+	- ex. {"a": 3, "x": 4}
+
+### for 迴圈
+
+> 基本語法
+
+```
+for 變數名稱 in 列表或字串:
+	將列表中的資料或字串中的字元，逐一取出
+```
+
+> 語法進階說明
+
+```
+for 變數名稱 in 可疊代的資料:
+	將可疊代的資料分開
+	逐一取出
+```
+
+### 內建函式
+
+> 回傳最大值
+
+```
+max(可疊代的資料)
+```
+
+> 回傳排序後的列表
+
+```
+sorted(可疊代的資料)
+```
+
+### for 迴圈
+
+> 字串 (String)
+
+```
+# for 變數名稱 in 可疊代的資料:
+
+for x in "abc": 
+	print(x) 
+
+→
+
+a 
+b 
+c 
+```
+
+> 列表 (List)
+
+```
+# for 變數名稱 in 可疊代的資料:
+
+for x in [3, 5, 2]:
+	print(x)
+
+→
+
+3
+5
+2
+```
+
+> 集合 (Set)
+
+```
+# for 變數名稱 in 可疊代的資料:
+
+for x in {"a", "test", 3, 10}:
+	print(x)
+
+→
+
+10
+3
+a
+test
+```
+
+##### 集合本身沒有順序性
+
+> 字典 (Dictionary)
+
+```
+# for 變數名稱 in 可疊代的資料:
+
+for x in {"a", "test", 3, 10}:
+	print(x)
+
+→
+
+10
+3
+a
+test
+```
+
+##### 字典針對的是 Key
+
+```
+# for 變數名稱 in 可疊代的資料:
+
+dic = {"a": 3, "x": 5}
+for key in dic:
+	print(key)
+	print(dic[key])
+
+→
+
+a 
+3 
+x 
+5 
+```
+
+### 內建函式
+
+> max(可疊代資料)
+
+```
+# max(可疊代資料)
+
+result = max([10, 2, 30, 1])
+print(result)
+
+result = max("xaz")
+print(result)
+
+result = max({10, 200, 30, 1})
+print(result)
+
+result = max({"x": 3, "a": 4})
+print(result)
+
+→
+
+30
+z
+200
+x
+```
+
+##### 英文字串大小看 abc 順序；中文字串大小看背後編碼
+
+##### 字典大小由 Key 決定
+
+> sorted(可疊代資料)
+
+```
+# sorted(可疊代資料)
+
+result = sorted("cab")
+print(result)
+
+result = sorted({10, 2, 100, -5})
+print(result)
+
+→
+
+['a', 'b', 'c']
+[-5, 2, 10, 100]
+```
