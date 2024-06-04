@@ -835,8 +835,10 @@ while True:
 	print(n)
 	n += 1
 
-→ (此迴圈為無窮迴圈，在 TERMINAL 中 ctrl + c 即可終止)
+→
 ```
+
+##### 此迴圈為無窮迴圈，在 TERMINAL 中 ```ctrl + c``` 即可終止
 
 ```
 n = 1
@@ -4045,7 +4047,7 @@ if __name__ == "__main__":   # 如果以主程式執行
 127.0.0.1 - - [06/Nov/2021 02:10:41] "GET / HTTP/1.1" 200 –
 ```
 
-##### 對著網址按 ctrl + 滑鼠左鍵，即會開啟網頁 (顯示 Hello Flask)；( ```ctrl``` + C 就會停止)
+##### 對著網址按 ```ctrl + 滑鼠左鍵```，即會開啟網頁 (顯示 Hello Flask)；( ```ctrl + c``` 就會停止)
 
 ##### ```__name__``` 為 Python 內建的變數，會儲存目前程式在哪個模組下執行
 
@@ -4097,7 +4099,7 @@ if __name__ == "__main__":   # 如果以主程式執行
 
 ##### 在網址後面加 /test(http://127.0.0.1:5000/test)，即會顯示：This is Test
 
-##### /(輸入程式中沒有設定的 code)：網頁會告訴使用者找不到東西；```ctrl``` + C 後對網頁整理顯示無法連上這個網站，代表網站壞掉 (因為已中斷網址)
+##### /(輸入程式中沒有設定的 code)：網頁會告訴使用者找不到東西；```ctrl + c``` 後對網頁整理顯示無法連上這個網站，代表網站壞掉 (因為已中斷網址)
 
 ###### <br/>
 ###### <br/>
@@ -4231,7 +4233,7 @@ web gunicorn 24_app:app
 
 	- 下方也有教學
 
-4. 在網頁中看到 Install the Heroku CLI，點進去 (ctrl + 滑鼠左鍵會另開視窗)
+4. 在網頁中看到 Install the Heroku CLI，點進去 (```ctrl + 滑鼠左鍵``` 會另開視窗)
 
 5. 下方選擇安裝
 
@@ -7028,8 +7030,7 @@ for 變數名稱 in 列表或字串:
 
 ```
 for 變數名稱 in 可疊代的資料:
-	將可疊代的資料分開
-	逐一取出
+	將可疊代的資料分開，逐一取出
 ```
 
 ### 內建函式
@@ -7176,4 +7177,266 @@ print(result)
 
 ['a', 'b', 'c']
 [-5, 2, 10, 100]
+```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 生成器 Generator 基礎使用 <br/> 32_generator.py
+
+### 生成器 Generator：動態產生可疊代的資料，搭配 for 迴圈使用
+
+### 建立生成器
+
+#### 使用 yeild 語法：在函式中使用 yield 語法，呼叫時回傳生成器
+
+> 基本語法
+
+```
+yield 資料
+```
+
+```
+def 函式名稱():
+	yield 資料
+
+# 呼叫函式，回傳生成器
+變數名稱 = 函式名稱()
+```
+
+##### 在函式裡面使用 yield 語法
+
+> 程式範例
+
+```
+def test():
+	yield 3
+
+# 呼叫函式，回傳生成器
+gen = test()
+print(gen)
+```
+
+### for 迴圈
+
+> 語法說明
+
+```
+for 變數名稱 in 可疊代的資料:
+	將可疊代的資料分開，逐一取出
+```
+
+```
+for 變數名稱 in 生成器:
+	將生成器產生的資料，逐一取出
+```
+
+##### 生成器也是可疊代的資料 
+
+> 搭配使用範例
+
+```
+def test():
+	yield 3
+
+# 呼叫函式，回傳生成器
+gen = test()
+
+# 搭配 for 迴圈使用
+for data in gen:
+	print(data)
+```
+
+##### 在 for 迴圈裡，會根據函式裡的定義產生 3，3 會被放到 data 裡後印出 3
+
+##### data 會得到什麼資料是由 test() 函式裡的
+
+```
+def test():
+	yield 3
+	yield 5
+
+# 呼叫函式，回傳生成器
+gen = test()
+
+# 搭配 for 迴圈使用，逐一印出 3 和 5
+for data in gen:
+	print(data)
+```
+
+##### 函式裡可以 yield 很多次
+
+```
+# 定義建立生成器函式
+def test():
+	yield 5
+
+# 呼叫並回傳生成器
+gen = test()
+print(gen)
+
+→
+
+<generator object test at 0x000001D493E39A10>
+```
+
+##### gen 裡面裝了 generator object (生成器物件)；後面是記憶體位置
+
+##### 注意：呼叫 test() 的時候，yield 5 還沒有被運作，是立刻得到一個生成器，不是得到 5
+
+```
+# 定義建立生成器函式
+def test():
+	yield 5
+
+# 呼叫並回傳生成器
+gen = test()
+
+# 搭配for迴圈中使用
+for d in gen:
+	print(d)   # 印出 5
+
+→
+
+5
+```
+
+```
+# 定義建立生成器函式
+
+def test():
+	print("階段一")
+	yield 5
+	print("階段二")
+	yield 10
+
+# 呼叫並回傳生成器
+gen = test()
+
+→
+
+沒有跑出任何東西
+```
+
+##### 只要函式中有 yield，就和傳統的函式呼叫不同 (傳統函式呼叫：呼叫函式就會執行函式內的程式碼)；函式中有 yield，就會先建立生成器，函式中的程式碼暫時不會動，若想動函式中的程式碼，則需搭配 for 迴圈
+
+```
+# 定義建立生成器函式
+def test():
+	print("階段一")
+   	yield 5
+	print("階段二")
+	yield 10
+
+# 呼叫並回傳生成器
+gen = test()
+
+# 搭配 for 迴圈中使用
+for d in gen:
+	print(d)
+
+→ 
+
+階段一
+5
+階段二
+10
+```
+
+##### 程式邏輯：for d in gen: → 跑第一圈時就會去看函式程式碼開始執行 → 印出階段一 → yield 5 被放進 d 裡面後印出 5 → 從剛剛 yield 的位置 (yield 5) 繼續往下跑 → 印出階段二 → yield 10 被放進 d 裡面後印出 10 → yield 10 後沒有其他資料，迴圈結束
+
+> 產生偶數
+
+```
+def generateEven():   # generate：產生；even：偶數
+	number = 0
+	yield number
+	number += 2
+	yield number
+	number += 2
+	yield number
+
+evenGenerator = generateEven()
+
+for data in evenGenerator:
+	print(data)
+
+→
+
+0
+2
+4
+```
+
+> 產生無限多偶數
+
+```
+def generateEven():
+	number = 0
+	while True:
+		yield number
+		number += 2
+
+evenGenerator = generateEven()
+
+for data in evenGenerator:
+	print(data)
+
+→
+
+產生無限多偶數
+```
+
+##### ```ctrl + c```：強制程式碼結束
+
+```
+def generateEven(maxNumber):
+	number = 0
+	while number <= maxNumber:
+		yield number
+		number += 2
+
+evenGenerator = generateEven(10)
+
+for data in evenGenerator:
+	print(data)
+
+→
+
+0
+2
+4
+6
+8
+10
+```
+
+```
+def generateEven(maxNumber):
+	number = 0
+	while number <= maxNumber:
+		yield number
+		number += 2
+
+evenGenerator = generateEven(16)
+
+for data in evenGenerator:
+	print(data)
+
+→
+
+0
+2
+4
+6
+8
+10
+12
+14
+16
 ```
