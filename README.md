@@ -38,31 +38,35 @@
 
 ## 變數 & 資料 & 資料型態 <br/> 02_datatype.py
 
-- 資料：程式中最基本的單位
+### 資料：程式中最基本的單位
 
-- 資料型態 (Data type)：資料的分類
+### 資料型態 (Data type)：資料的分類
 
-- 資料的分類
+### 資料的分類
 
-	- 數字：整數、長整數、浮點數 (小數)
+### 數字：整數、長整數、浮點數 (小數)
 
-	- 字串：任意的文字內容
+- 字串：任意的文字內容
 
-	- 布林值：表達正確 (True) 或錯誤 (False)，T&F需大寫
+- 布林值：表達正確 (True) 或錯誤 (False)，T&F需大寫
 
-	- 可變列表 (List)：有順序、可變動的資料集合，ex. 學生的成績
+- 可變列表 (List)：有順序、可變動的資料集合，ex. 學生的成績
 
-	- 固定列表 (Tuple)：有順序、不可變動的資料集合
+- 固定列表 (Tuple)：有順序、不可變動的資料集合
 
-	- 集合 (Set)：無順序的資料集合，ex. 水果
+- 集合 (Set)：無順序的資料集合，ex. 水果
 
-	- 字典：鍵值對 (Key-Value Pair) 的集合， 程式中做資料查詢 (ex. A對應到B)
+- 字典：鍵值對 (Key-Value Pair) 的集合， 程式中做資料查詢 (ex. A對應到B)
 
-- 變數 (variable)：可用來存放資料的自訂名稱，可在程式中建立名稱，未來可用自訂名稱代表資料，變數用英文，開頭不可是數字
+### 變數 (variable)：可用來存放資料的自訂名稱，可在程式中建立名稱，未來可用自訂名稱代表資料
 
-- 字串：在程式中表達任意的文字，ex. 測試中文 是錯誤的語法，Python 語法為英文，但若想表達中文，用雙引號 (或單引號) 包起來，ex. "測試中文"、"HelloWorld"
+- 變數用英文，開頭不可是數字
 
-	- 雙引號 (或單引號) 中能寫任意文字
+###  字串：在程式中表達任意的文字
+
+- ex. 測試中文 是錯誤的語法，Python 語法為英文，但若想表達中文，用雙引號 (或單引號) 包起來，ex. "測試中文"、"HelloWorld"
+
+- 雙引號 (或單引號) 中能寫任意文字
 
 ###### <br/>
 ###### <br/>
@@ -96,7 +100,7 @@
 
 - ```x = x + 1``` 可寫成 ```x += 1```
 
-### 字串運算
+> 字串運算
 
 ```
 s = "Hello"
@@ -170,7 +174,7 @@ print(s)
 HelloHelloHelloWorld
 ```
 
-### 字串內部字元編號 (索引) 
+> 字串內部字元編號 (索引) 
 
 ```
 s = "Hello"
@@ -229,7 +233,7 @@ ell
 
 	- 資料不可更動，操作與 List 相同，但資料不可更動
 
-### 有序可變動列表List
+> 有序可變動列表List
 
 ```
 grades = [12, 60, 15, 70, 90]
@@ -293,7 +297,7 @@ print(grades)
 
 ##### 可輕易做到表的串接
 
-### 槽狀列表
+> 槽狀列表
 
 ```
 data = [[3, 4, 5], [6, 7, 8]]
@@ -329,7 +333,7 @@ print(data)
 
 ##### [3, 4, 5] 為第 0 層，[6, 7, 8] 為第 1 層；3 為 0、4 為 1、5 為 2、  6 為 0、7 為 1、8 為 2
 
-#### Tuple 所有操作與 List 相同，但 Tuple 資料不可更動
+> Tuple 所有操作與 List 相同，但 Tuple 資料不可更動
 
 ```
 data = (3, 4, 5)
@@ -385,7 +389,7 @@ error
 
 - 從列表建立字典：以列表的資料為基礎來建立字典
 
-### 集合的運算
+> 集合的運算
 
 ```
 s1 = {3, 4, 5}
@@ -497,7 +501,7 @@ print("h" in s)
 False
 ```
 
-### 字典的運算：Key-value 配對
+> 字典的運算：Key-value 配對
 
 ```
 dic = {"apple": "蘋果", "bug": "蟲蟲"}
@@ -544,7 +548,7 @@ print(dic)
 
 ##### 刪除字典中的鍵值對 (key-value pair)，[] 中只能選 key 不能選 value
 
-### 從列表的資料產生字典
+> 從列表的資料產生字典
 
 #### 語法：```dic = {x: x * 2 for x in [列表]}```
 
@@ -733,7 +737,16 @@ else:
 (自動完成上述運算)
 ```
 
-##### 程式邏輯：取得第一個數字放在 n1 → 取得第二個數字放在 n2 → 最後取得 +、-、*、/ 中的其中一個放在 op → 判斷式進行判斷是否為 True，若為 True 則跑該段
+##### 程式流程
+
+1. 取得第一個數字放在 n1
+
+2. 取得第二個數字放在 n2
+
+3. 最後取得 +、-、*、/ 中的其中一個放在 op
+
+4. 判斷式進行判斷是否為 True，若為 True 則跑該段
+
 
 ###### 建議有時間自行重寫練習
 
@@ -747,11 +760,11 @@ else:
 
 ## 流程控制：迴圈基礎，while 迴圈、for 迴圈 <br/> 07_loop-basic.py
 
-#### 迴圈：寫一段程式後不斷重複執行
+### 迴圈：寫一段程式後不斷重複執行
 
-> while迴圈
+### while 迴圈
 
->> 基本語法
+> 基本語法
 
 ```
 while 布林值:
@@ -759,7 +772,7 @@ while 布林值:
 	回到上方，做下一次的迴圈判斷
 ```
 
->>  程式範例
+>  程式範例
 
 ```
 n = 1
@@ -775,16 +788,16 @@ while n < 5:
 變數 n 的資料是： 4 
 ```
 
-> for 迴圈
+### for 迴圈
 
->> 基本語法
+> 基本語法
 
 ```
 for 變數名稱 in 列表或字串:
 	將列表中的項目或字串中的字元逐一取出，逐一處理
 ```
 
->> 程式範例
+> 程式範例
 
 ```
 n = 1
@@ -811,7 +824,7 @@ for c in "Hello":
 逐一取得字串中的字元 o
 ```
 
->> 使用 range()
+> 使用 range()
 
 #### range() 可幫忙製造連續數字的列表
 
@@ -942,9 +955,9 @@ for x in range(1, 11):   # 因為 0 不影響加法總和，所以 range(1, 11) 
 
 ### 迴圈搭配的指令：break 和 continue (這兩個命令一定要跟迴圈做搭配，需寫在迴圈裡面)
 
-> break
+### break
 
->> 強制結束迴圈
+> 強制結束迴圈
 
 ```
 while 布林值:
@@ -954,7 +967,7 @@ for 變數名稱 in 列表或字串:
 	break
 ```
 
->> 程式範例
+> 程式範例
 
 ```
 n = 1
@@ -971,9 +984,9 @@ print(n)
 
 ##### 程式邏輯：當 ```n = 1```，在 ```while n < 5:``` 中為 True，但在 ```if n == 3``` 為 False，所以不會執行 ```break```，```n += 1``` 讓 ```n = 2``` 回到迴圈，當 ```n = 2```，在 ```while n < 5:``` 中為 True，但在 ```if n == 3``` 為 False 所以不會執行 ```break```，```n + =1``` 讓 ```n = 3``` 回到迴圈，當 ```n = 3```，在 ```while n < 5:``` 中為 True，在 ```if n == 3``` 也為 True，執行 ```break```，停止程式
 
-> continue
+### continue
 
->> 強制繼續下一圈
+> 強制繼續下一圈
 
 ```
 while 布林值:
@@ -982,7 +995,7 @@ for 變數名稱 in 列表或字串:
 	continue
 ```
 
->> 程式範例
+> 程式範例
 
 ```
 n = 0
@@ -1005,9 +1018,7 @@ print(n)
 
 ### 迴圈結構在最後面可以加 else 的語法
 
-> else
-
->> 基本語法
+> 基本語法
 
 ```
 while 布林值:
@@ -1024,7 +1035,7 @@ else:
 	迴圈結束前，執行此區塊的命令
 ```
 
->> 程式範例
+> 程式範例
 
 ```
 n = 1
@@ -1050,7 +1061,7 @@ else:
 o
 ```
 
-### break 的簡易範例
+> break 的簡易範例
 
 ```
 n = 0
@@ -1071,7 +1082,7 @@ print("最後的 n：", n)   # 印出迴圈結束後的 n
 
 ###### crtl + 右邊 shift 旁的 / 可以直接進行註解
 
-### continue 的簡易範例
+> continue 的簡易範例
 
 ```
 n = 0
@@ -1089,7 +1100,7 @@ print("最後的 n：", n)
 最後的 n： 2
 ```
 
-### else 的簡易範例
+> else 的簡易範例
 
 ```
 sum = 0
@@ -1103,7 +1114,7 @@ else:
 55
 ```
 
-### 綜合範例：找出整數平方根
+> 綜合範例：找出整數平方根
 
 #### 輸入 9，得到 3；輸入 11 得到 "沒有整數的平方根"：
 
@@ -1149,15 +1160,15 @@ else:
 
 ## 函式基礎：定義並呼叫函式 <br/> 09_function-basic.py
 
-> 函式
+### 函式
 
-#### 程式區塊 (函式：程式碼包裝在一個區塊中，方便隨時呼叫，函式就是一個程式區塊)
+- 程式區塊 (函式：程式碼包裝在一個區塊中，方便隨時呼叫，函式就是一個程式區塊)
 
-#### 定義 > 呼叫：要先定義 (建立) 函式，然後才能呼叫 (使用) 函式
+- 定義 > 呼叫：要先定義 (建立) 函式，然後才能呼叫 (使用) 函式
 
-> 定義函式
+### 定義函式
 
->>基本語法
+> 基本語法
 
 ```
 def 函式名稱(參數名稱):
@@ -1166,7 +1177,7 @@ def 函式名稱(參數名稱):
 
 ##### def 代表 define
 
->> 程式範例：定義一個印出 Hello 的函式
+> 程式範例：定義一個印出 Hello 的函式
 
 ```
 def sayHello():
@@ -1175,7 +1186,7 @@ def sayHello():
 
 ##### sayHello 名字自取，但不可是中文及數字，只能是一般的英文
 
->> 程式範例：定義可以印出任何訊息的函式
+> 程式範例：定義可以印出任何訊息的函式
 
 ```
 def say(msg):
@@ -1184,7 +1195,7 @@ def say(msg):
 
 ##### 想法：把參數內的資料 ( () 內的資料) 印出來，暫時還不知道資料為何，只是先定義名字 (變數的概念)
 
->> 程式範例：定義一個可以做加法的函式
+> 程式範例：定義一個可以做加法的函式
 
 ```
 def add(n1, n2):
@@ -1192,14 +1203,14 @@ def add(n1, n2):
 	print(result)
 ```
 
-> 呼叫函式
+### 呼叫函式
 
->> 基本語法
+> 基本語法
 ```
 函式名稱(變數資料)
 ```
 
->> 程式範例：定義一個印出 Hello 的函式
+> 程式範例：定義一個印出 Hello 的函式
 
 ```
 def sayHello():
@@ -1209,7 +1220,7 @@ sayHello()   # 呼叫上方定義的函式
 
 ##### 呼叫函式：跳到函式裡面
 
->> 程式範例：定義可以印出任何訊息的函式
+> 程式範例：定義可以印出任何訊息的函式
 
 ```
 def say(msg):
@@ -1220,7 +1231,7 @@ say("Hello Python")   # 呼叫上方定義的函式
 
 ##### 函式參數的設計在呼叫時有彈性
 
->> 程式範例：定義一個可以做加法的函式
+> 程式範例：定義一個可以做加法的函式
 
 ```
 def add(n1, n2):
@@ -1231,9 +1242,9 @@ add(3, 4)
 add(7, 8)
 ```
 
-> 回傳值
+### 回傳值
 
->> 基本語法
+> 基本語法
 
 ```
 def 函式名稱(參數名稱):
@@ -1245,7 +1256,7 @@ def 函式名稱(參數名稱):
 
 ##### 資料：數字、字串、布林值、列表、字典、物件 …
 
->> 程式範例：函式回傳 None
+> 程式範例：函式回傳 None
 
 ```
 def say(msg):
@@ -1262,7 +1273,7 @@ None
 
 ##### 函式呼叫的結果，就是回傳值，也就是 None (say("Hello Function"))，None 放進變數 value，印出 value，印出 None
 
->> 程式範例：函式回傳字串 Hello
+> 程式範例：函式回傳字串 Hello
 
 ```
 def add(n1, n2):
@@ -1283,7 +1294,7 @@ Hello
 
 ##### 最後函式呼叫完得到的要看回傳值 (return)，和程式碼無關
 
->> 函式內部的程式碼，若是沒有做函式呼叫，就不會執行
+> 函式內部的程式碼，若是沒有做函式呼叫，就不會執行
 
 ```
 def multiply():
@@ -1318,7 +1329,7 @@ multiply()
 12
 ```
 
->> 透過參數得到彈性
+> 透過參數得到彈性
 
 ```
 def multiply(n1, n2):
@@ -1409,7 +1420,7 @@ value = multiply(3, 4)
 12
 ```
 
->> 回傳值的好處是可以在外部繼續操作
+> 回傳值的好處是可以在外部繼續操作
 
 ```
 def multiply(n1, n2):
@@ -1422,9 +1433,9 @@ print(value)
 62
 ```
 
-> 程式的包裝
+### 程式的包裝
 
->> 同樣的邏輯可以重複利用
+> 同樣的邏輯可以重複利用
 
 ```
 sum = 0
@@ -1472,16 +1483,16 @@ calculate(20)
 
 ## 函式參數詳解：參數預設值、名稱對應、任意長度參數 (函式進階) <br/> 10_function-args.py
 
->預設資料
+### 預設資料
 
->> 基本語法
+> 基本語法
 
 ```
 def 函式名稱(參數名稱 = 預設資料):
 	函式內部的程式碼
 ```
 
->> 程式範例
+> 程式範例
 
 ```
 # 參數 msg 預設資料為 "Hello"
@@ -1494,9 +1505,9 @@ say()   # 印出預設資料Hello
 
 ##### 用 say("Hello Function") 會印出 Hello Function，但用 say() 因 () 無資料所以會採用預設資料
 
-> 名稱對應
+### 名稱對應
 
->> 基本語法
+> 基本語法
 
 ```
 def 函式名稱(名稱1, 名稱2):
@@ -1507,7 +1518,7 @@ def 函式名稱(名稱1, 名稱2):
 
 ##### 呼叫函式名稱式可以倒過來，重點是前面要加參數名稱
 
->> 程式範例
+> 程式範例
 
 ```
 # 定義一個可以做除法的函數
@@ -1518,9 +1529,9 @@ divide(2, 4)   # 印出 0.5
 divide(n2 = 2, n1 = 4)   # 印出 2.0
 ```
 
-> 無限參數
+### 無限參數
 
->> 基本語法
+> 基本語法
 
 ```
 def 函式名稱(*無限參數):
@@ -1531,7 +1542,7 @@ def 函式名稱(*無限參數):
 
 ##### 呼叫函式中可以放不定量的資料
 
->> 程式範例
+> 程式範例
 
 ```
 # 函式接受無限參數 msgs
@@ -1564,7 +1575,7 @@ power(4)
 
 ##### power(4) 因為沒有給次方數，因此帶入預設值 0
 
->> 使用參數對應名稱
+> 使用參數對應名稱
 
 ```
 def divide(n1, n2):
@@ -1578,7 +1589,7 @@ divide(n2 = 2, n1 = 4)
 2.0
 ```
 
->> 無限 / 不定 參數資料
+> 無限 / 不定 參數資料
 
 ```
 def avg(*ns):
@@ -1645,9 +1656,9 @@ avg(1, 4, -1, -8)
 
 - 載入 > 使用：先載入模組，再使用模組中的函式或變數
 
-> 載入模組
+### 載入模組
 
->> 基本語法
+> 基本語法
 
 ```
 import 模組名稱
@@ -1657,9 +1668,9 @@ import 模組名稱
 import 模組名稱 as 模組別名
 ```
 
-> 使用模組
+### 使用模組
 
->> 基本語法
+> 基本語法
 
 ```
 模組名稱或別名.函式名稱(參數資料)
@@ -1669,11 +1680,11 @@ import 模組名稱 as 模組別名
 模組名稱或別名.變數名稱
 ```
 
-> 內建模組 (Python 語言中已內建好的模組)
+### 內建模組 (Python 語言中已內建好的模組)
 
 #### sys 模組：取得系統相關資料
 
->> 程式範例
+> 程式範例
 
 ```
 # 載入sys模組
@@ -1695,11 +1706,11 @@ print(s.maxsize)   # 印出整數型態的最大值
 print(s.path)   # 印出搜尋模組的路徑
 ```
 
-> 自訂模組
+### 自訂模組
 
 #### 建立幾何運算模組：建立檔案 geometry.py，定義平面幾何運算用的函式
 
-##### 載入與使用：載入 geometry 模組，並使用模組中定義的功能
+- 載入與使用：載入 geometry 模組，並使用模組中定義的功能
 
 ```
 import sys
@@ -1727,7 +1738,7 @@ win32
 
 #### 建立 geometry 模組，載入使用 (自訂模組)
 
-##### 先另開一個 Python 檔案命名 geometry.py，並在其中自訂模組
+- 先另開一個 Python 檔案命名 geometry.py，並在其中自訂模組
 
 ```
 # 在 geometry 模組中定義幾何運算功能
@@ -1741,7 +1752,7 @@ def slope(x1, y1, x2, y2):
 	return (y2 - y1) / (x2 - x1)
 ```
 
-##### 回到主程式 (11_module.py)
+#### 回到主程式 (11_module.py)
 
 ```
 import geometry
@@ -1757,7 +1768,7 @@ print(result)
 1.0
 ```
 
-##### 調整搜尋模組的路徑
+#### 調整搜尋模組的路徑
 
 ```
 import sys
@@ -1769,7 +1780,7 @@ print(sys.path)   # 印出模組的搜尋路徑列表
 ['D:\\Python-training','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\python310.zip','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\DLLs','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\lib','C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310', 'C:\\Users\\charmy\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages']
 ```
 
-##### 在資料夾中建立一個資料夾 (modules)，將 11_module.py 移入
+#### 在資料夾中建立一個資料夾 (modules)，將 11_module.py 移入
 
 ```
 import sys
@@ -1785,7 +1796,7 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'geometry'
 ```
 
-##### 在模組的搜尋路徑中，並沒有包含自己創建的資料夾(modules)，因此產生錯誤 
+##### 在模組的搜尋路徑中，並沒有包含自己創建的資料夾 (modules)，因此產生錯誤 
 
 ```
 import sys
@@ -1822,9 +1833,9 @@ print(geometry.distance(1, 1, 5, 5))
 
 - 檔案系統中的檔案對應到模組
 
-> 建立封包
+### 建立封包
 
->> 專案檔案配置
+> 專案檔案配置
 
 ```
 - 專案資料夾
@@ -1834,10 +1845,10 @@ print(geometry.distance(1, 1, 5, 5))
 		- 模組一.py
 		- 模組二.py
 
-# 有裝- __init__.py的資料夾才會被當作封包，若無- __init__.py則為普通資料夾，- __init__.py裡面留空即可，但檔案要建立，__為兩個底線
+# 有裝 __init__.py 的資料夾才會被當作封包，若無 __init__.py 則為普通資料夾，__init__.py 裡面留空即可，但檔案要建立，__ 為兩個底線
 ```
 
->> 專案檔案配置範例
+> 專案檔案配置範例
 
 ```
 - 專案資料夾
@@ -1848,9 +1859,9 @@ print(geometry.distance(1, 1, 5, 5))
 		- line.py
 ```
 
-> 使用封包
+### 使用封包
 
->> 基本語法
+> 基本語法
 
 ```
 import 封包名稱.模組名稱
@@ -1899,7 +1910,7 @@ print("斜率", result)
 斜率 1.0
 ```
 
-##### geometry.point為模組的完整名稱
+##### geometry.point 為模組的完整名稱
 
 #### 若覺得封包名稱太長，可以使用別名
 
@@ -1930,9 +1941,9 @@ print("斜率", result)
 
 ### 檔案操作流程 ：開啟檔案 > 讀取或寫入 > 關閉檔案
 
-> 開啟檔案
+### 開啟檔案
 
->> 基本語法
+> 基本語法
 
 ```
 檔案物件 = open(檔案路徑, mode = 開啟模式)
@@ -1946,22 +1957,22 @@ print("斜率", result)
 
 -讀寫模式 – r+
 
-> 讀取檔案
+### 讀取檔案
 
->> 讀取全部文字 
+> 讀取全部文字 
 
 ```
 檔案物件.read()
 ```
 
->> 一次讀取一行 
+> 一次讀取一行 
 
 ```
 for 變數 in 檔案物件:
 	從檔案依序讀取每行文字到變數中
 ```
 
->> 讀取 JSON 格式
+> 讀取 JSON 格式
 
 ```
 import json
@@ -1971,21 +1982,21 @@ import json
 
 - 資料格式 JSON 使用的非常頻繁，經常用於網路中交換資料或儲存設定檔
 
-> 寫入檔案 (儲存檔案)   # 因為英文是 write 所以有翻譯問題
+### 寫入檔案 (儲存檔案)   # 因為英文是 write 所以有翻譯問題
 
->> 寫入文字
+> 寫入文字
 
 ```
 檔案物件.write("字串")
 ```
 
->> 寫入換行符號
+> 寫入換行符號
 
 ```
 檔案物件.write("這是範例文字\n") 
 ```
 
->> 寫入 JSON 格式
+> 寫入 JSON 格式
 
 ```
 import json
@@ -1993,15 +2004,15 @@ import json
 json.dump(要寫入的資料, 檔案物件)
 ```
 
-> 關閉檔案
+### 關閉檔案
 
->> 基本語法
+> 基本語法
 
 ```
 檔案物件.close()
 ```
 
-> 最佳實務
+### 最佳實務
 
 ```
 with open(檔案路徑, mode = 開啟模式) as 檔案物件:
@@ -2010,7 +2021,7 @@ with open(檔案路徑, mode = 開啟模式) as 檔案物件:
 # 以上區塊會自動、安全的關閉檔案
 ```
 
->> 儲存檔案
+> 儲存檔案
 
 ```
 file = open("data.txt", mode="w")   # 開啟 
@@ -2065,7 +2076,7 @@ data.txt →
 好棒棒
 ```
 
-> 最佳實務寫法
+### 最佳實務寫法
 
 ```
 with open("data.txt", mode = "w", encoding = "utf-8") as file:
@@ -2080,7 +2091,7 @@ data.txt →
 
 ##### 不需要寫 close，會自動、安全、可靠的將檔案資源釋放、關閉
 
->> 讀取檔案 (讀取已經存在的檔案)
+> 讀取檔案 (讀取已經存在的檔案)
 
 
 - 寫入：不存在沒關係，可以創造新檔案 
@@ -2147,7 +2158,7 @@ name： My Name
 version： 1,2,5
 ```
 
->> 修改資料
+> 修改資料
 
 #### config.json
 
@@ -2190,15 +2201,15 @@ with open("config.json", mode = "w") as file:
 
 ### 內建模組：學習 random 和 statistics 模組 
 
-> 亂數模組
+### 亂數模組
 
->> 載入模組
+> 載入模組
 
 ```
 import random
 ```
 
->> 隨機選取
+> 隨機選取
 
 ```
 import random
@@ -2212,7 +2223,7 @@ random.sample([0, 1, 5, 8], 2)
 
 ##### 若想選取 3 個資料，把 2 改成 3；選取資料數不能超過列表長度
 
->> 隨機調換順序
+> 隨機調換順序
 
 ```
 import random
@@ -2226,7 +2237,7 @@ print(data)
 
 ##### 就地：將 data 本身進行修改
 
->> 隨機亂數
+> 隨機亂數
 
 ```
 import random
@@ -2238,7 +2249,7 @@ random.uniform(0.0, 1.0)
 
 ##### uniform：機率相同
 
->> 常態分配亂數
+> 常態分配亂數
 
 ```
 import random 
@@ -2253,15 +2264,15 @@ random.normalvariate(100, 10)
 
 ###### <br/>
 
-> 統計模組
+### 統計模組
 
->> 載入模組
+> 載入模組
 
 ```
 import statistics
 ```
 
->> 使用模組
+> 使用模組
 
 ```
 import statistics
@@ -2278,9 +2289,9 @@ statistics.stdev([1, 4, 6, 9])
 
 ##### 標準差：代表資料散佈的狀況 
 
-> 隨機模組
+### 隨機模組
 
-#### 隨機選取：TERMINAL 每次出現的數字都不同
+> 隨機選取：TERMINAL 每次出現的數字都不同
 
 ```
 import random
@@ -2304,7 +2315,7 @@ print(data)
 [1, 20, 6]
 ```
 
-#### 隨機調換順序：隨機直接調換 data 本身順序，TERMINAL每次出現的順序都不同
+> 隨機調換順序：隨機直接調換 data 本身順序，TERMINAL每次出現的順序都不同
 
 ```
 import random
@@ -2318,7 +2329,7 @@ print(data)
 [8, 20, 1, 5]
 ```
 
-#### 隨機選取亂數：TERMINAL 每次出現的數字都不同
+> 隨機選取亂數：TERMINAL 每次出現的數字都不同
 
 ```
 import random
@@ -2355,7 +2366,7 @@ print(data)
 64.21584558160195
 ```
 
-#### 取得常態分配亂數
+> 取得常態分配亂數
 
 ```
 # 平均數100，標準差10，得到的資料多數在 90 ~ 110 之間
@@ -2379,7 +2390,7 @@ print(data)
 7.198595824699282
 ```
 
-> 統計模組 
+### 統計模組 
 
 ```
 import statistics as stat
@@ -2449,15 +2460,15 @@ print(data)
 
 ### 內建模組：學習 random 和 statistics 模組 
 
-> 網路連線
+### 網路連線
 
->> 載入模組
+> 載入模組
 
 ```
 import urllib.request
 ```
 
->> 下載特定網址資料
+> 下載特定網址資料
 
 ```
 import urllib.request as request
@@ -2471,7 +2482,7 @@ print(data)
 # response：物件
 ```
 
-> 公開資料
+### 公開資料
 
 - 適合的資料來源
 
@@ -2550,7 +2561,7 @@ print(data)
 成功把台北市政府公開資料印在 console
 ```
 
-#### 將公司名稱列表出來 
+> 將公司名稱列表出來 
 
 ```
 import urllib.request as request
@@ -2591,7 +2602,7 @@ for company in clist:
 此資料中公司名稱為 key，對應的公司名稱為 value；統編為 key，統編號碼為 value 
 ```
 
-#### 將公司名稱的乾淨列表抓到檔案中
+> 將公司名稱的乾淨列表抓到檔案中
 
 ```
 import urllib.request as request
@@ -2632,9 +2643,9 @@ data.txt →
 
 - 定義 > 使用：要先定義 (建立) 類別，然後才能使用類別中封裝的屬性 
 
-> 定義類別
+### 定義類別
 
->> 基本語法
+> 基本語法
 
 ```
 class 類別名稱:
@@ -2644,7 +2655,7 @@ class 類別名稱:
 
 ##### 類別名稱和變數名稱相同，原則上為英文字，首字不可是數字，通常習慣首字大寫
 
->> 程式範例
+> 程式範例
 
 ```
 # 定義Test類別
@@ -2656,15 +2667,15 @@ class Test:
 
 ##### x 和 say 為 Test 類別的屬性，封裝在 Test 類別的裡面 
 
-> 使用類別
+### 使用類別
 
->> 基本語法
+> 基本語法
 
 ```
 類別名稱.屬性名稱
 ```
 
->> 程式範例
+> 程式範例
 
 ```
 # 定義 Test 類別 
@@ -2678,7 +2689,7 @@ Test.x+3   # 取得屬性x的資料3
 Test.say()   # 呼叫屬性say函式 
 ```
 
-> 定義類別 & 使用類別 
+### 定義類別 & 使用類別 
 
 ```
 # 定義類別，與類別屬性 (封裝在類別中的變數和函式)
@@ -2726,7 +2737,25 @@ IO.read("interent")
 Read from file
 Not Supported
 ```
-##### 程式邏輯：定義類別 → 定義 supporttedSrcs 有的東西 → 定義讀取 src → 若沒有在 supporttedSrcs → 則印出 Not Supported → 其餘則印出 Read from src (src 為讀取的內容) → 印出 supporttedSrcs 內的東西 → 讀取 file (有在 supporttedSrcs 裡) → 讀取interest (沒有在 supporttedSrcs 裡)
+##### 程式流程
+
+1. 定義類別
+
+2. 定義 supporttedSrcs 有的東西
+
+3. 定義讀取 src
+
+4. 若沒有在 supporttedSrcs
+
+5. 則印出 Not Supported
+
+6. 其餘則印出 Read from src (src 為讀取的內容)
+
+7. 印出 supporttedSrcs 內的東西
+
+8. 讀取 file (有在 supporttedSrcs 裡)
+
+9. 讀取 interest (沒有在 supporttedSrcs 裡)
 
 ##### 注意如何定義類別，類別的屬性是什麼樣的概念，有了類別 (IO) 和類別的屬性 (supporttedSrcs、read) 後該如何使用 (IO.supporttedSrcs、IO.read)，read 是一個函式，可以呼叫 
 
@@ -2753,9 +2782,9 @@ Not Supported
 
 - 建立 > 使用：要先建立實體物件，然後才能使用實體屬性
 
-> 建立實體
+### 建立實體
 
->> 基本語法
+> 基本語法
 
 ```
 class 類別名稱:
@@ -2767,7 +2796,7 @@ class 類別名稱:
 obj = 類別名稱()   # 呼叫初始化函式 
 ```
 
->> 程式範例
+> 程式範例
 
 ```
 class Point:
@@ -2783,7 +2812,7 @@ p = Point()
 
 ##### ```x = 3``` & ```y = 4``` 為實體屬性，和類別屬性不同
 
->> 程式範例
+> 程式範例
 
 ```
 class Point:
@@ -2799,15 +2828,15 @@ p = Point(1, 5)
 
 ##### 順序為 ```p = Point(1, 5)``` 中的 ```1, 5``` 放入 x, y 中 ```(self, x, y)``` 中的參數 x, y，再帶入實體參數 x, y
 
-> 使用實體
+### 使用實體
 
->> 基本語法
+> 基本語法
 
 ```
 實體物件.實體屬性名稱
 ```
 
->> 程式範例
+> 程式範例
 
 ```
 class Point:
@@ -2822,7 +2851,7 @@ print(p.x + p.y)   # 1 + 5 = 6，印出 6
 
 ##### 實體物件.實體屬性名稱 → p.x & p.y
 
-#### Point 實體物件的設計：平面座標上的點
+> Point 實體物件的設計：平面座標上的點
 
 ```
 class Point:
@@ -2838,7 +2867,7 @@ print(p1.x, p1.y)
 3 4
 ```
 
-#### 建立第一個實體物件裝在 p1，再建立第二個實體物件裝在 p2，就是和類別 & 類別屬性操作不一樣的地方
+> 建立第一個實體物件裝在 p1，再建立第二個實體物件裝在 p2，就是和類別 & 類別屬性操作不一樣的地方
 
 ```
 class Point:
@@ -2880,7 +2909,7 @@ print(p2.x, p2.y)
 5 6
 ```
 
-#### FullName 實體物件的設計：分開紀錄姓、名資料的全名
+> FullName 實體物件的設計：分開紀錄姓、名資料的全名
 
 ```
 class FullName:
@@ -2910,11 +2939,9 @@ G Bye
 
 ## 實體物件的建立與使用 – 下篇-實體方法 Instance Methods <br/> 18_instance.py
 
-> 實體屬性
+### 實體屬性：封裝在實體物件中的變數
 
-#### 實體屬性：封裝在實體物件中的變數
-
->> 程式範例
+> 程式範例
 
 ```
 class Point:
@@ -2928,11 +2955,9 @@ p = Point(1, 5)
 print(p.x + p.y)
 ```
 
-> 實體方法
+### 實體方法：封裝在實體物件中的函式
 
-#### 實體方法：封裝在實體物件中的函式
-
->> 基本語法
+> 基本語法
 
 ```
 class類別名稱:
@@ -2957,15 +2982,15 @@ class類別名稱:
 obj = 類別名稱()
 ```
 
-> 使用方法
+### 使用方法
 
->> 基本語法
+> 基本語法
 
 ```
 實體物件.實體屬性名稱(參數資料)   # 和函式呼叫動作相同 
 ```
 
->> 程式範例
+> 程式範例
 
 ```
 class Point:
@@ -2994,7 +3019,7 @@ def __init__(self, x, y):
 	self.y = y
 ```
 
-#### Point 實體物件的設計：平面座標上的點
+> Point 實體物件的設計：平面座標上的點
 
 ```
 class Point:
@@ -3046,9 +3071,9 @@ def distance(self, targetX, targetY):
 
 ##### 此段為函式的概念，只是封裝在實體物件裡，所以稱實體方法
 
-> File 實體物件的設計：包裝檔案讀取的程式
+### File 實體物件的設計：包裝檔案讀取的程式
 
->> 新增檔案 
+> 新增檔案 
 
 #### data1.txt 
 
@@ -3115,7 +3140,35 @@ print(data)
 好可愛
 ```
 
-##### 程式邏輯：利用類別建立實體物件 (file) → 建立初始化函式 → 建立兩個實體屬性 (name、file)，file 初期是 None → 定義實體方法 → 有兩個實體方法：open 方法 (調用 Python 內建的檔案開啟功能，得到一個檔案物件，放在實體屬性 file 裡面)；read 方法 (利用剛剛得到的檔案物件做 read，把檔案讀取出來並且回傳) → 這樣即完成一個定義 (一個實體物件的設計) → 設計完後開始使用，使用方式 → 建立實體物件放在 f1，會呼叫初始化函式 → 利用變數 f1 代表實體物件呼叫實體方法 open → 會開始跑 ```self.file = open(self.name, mode = "r", encoding = "utf-8")``` → 呼叫另一個實體方法 → 就會開始跑 ```return self.file.read()``` → 回傳資料放進 data 裡面 → 印出 data 
+##### 程式流程
+
+1. 利用類別建立實體物件 (file)
+
+2. 建立初始化函式
+
+3. 建立兩個實體屬性 (name、file)，file 初期是 None
+
+4. 定義實體方法
+
+5. 有兩個實體方法：open 方法 (調用 Python 內建的檔案開啟功能，得到一個檔案物件，放在實體屬性 file 裡面)；read 方法 (利用剛剛得到的檔案物件做 read，把檔案讀取出來並且回傳)
+
+6. 這樣即完成一個定義 (一個實體物件的設計)
+
+7. 設計完後開始使用，使用方式
+
+8. 建立實體物件放在 f1，會呼叫初始化函式
+
+9. 利用變數 f1 代表實體物件呼叫實體方法 open
+
+10. 會開始跑 ```self.file = open(self.name, mode = "r", encoding = "utf-8")```
+
+11. 呼叫另一個實體方法
+
+12. 就會開始跑 ```return self.file.read()```
+
+13. 回傳資料放進 data 裡面
+
+14. 印出 data 
 
 - 定義 class 是為了產生實體物件，目標是包裝檔案讀取的程式 
 
@@ -3179,9 +3232,9 @@ print(data)
 
 ##### div 標籤裡的 class 為標籤的屬性
 
-#### 使用第三方套件 BeautifulSoup 來做解析
+### 使用第三方套件 BeautifulSoup 來做解析
 
-### 安裝套件
+> 安裝套件
 
 - pip 套件管理工具：安裝 Python 時，就一起安裝在電腦裡了
 
@@ -3191,7 +3244,7 @@ print(data)
 pip install beautifulsoup4
 ```
 
-### 抓取 PTT 電影版的網頁原始碼 (HTML)
+> 抓取 PTT 電影版的網頁原始碼 (HTML)
 
 1. 抓取 PTT 電影版的網頁原始碼 (HTML)
 
@@ -3200,8 +3253,6 @@ pip install beautifulsoup4
 3. (要抓到的是在網頁點右鍵：檢視網頁原始碼)  ex：
 
 ![](./MarkDown-img/crawler.jpg)
-
-###### <br/>
 
 ##### 原則上所有內容都會在此原始碼內
 
@@ -3262,7 +3313,7 @@ print(data)
 成功抓到網頁原始碼資料
 ```
 
-#### 解析原始碼，取得每天文章標題
+> 解析原始碼，取得每天文章標題
 
 ##### 在 TERMIANAL 中輸入 pip install beautifulsoup4 進行安裝 
 
@@ -3292,7 +3343,7 @@ print(root.title)
 <title>看板 movie 文章列表 - 批踢踢實業坊</title>
 ```
 
-#### 抓標籤裡的文字 (在 print(root.title) 後面加 string 即可)
+> 抓標籤裡的文字 (在 print(root.title) 後面加 string 即可)
 
 ```
 # 抓取PTT電影版的網頁原始碼 (HTML)
@@ -3324,8 +3375,6 @@ print(root.title.string)
 ###### <br/>
 
 ![](./MarkDown-img/crawler2.jpg)
-
-###### <br/>
 
 ##### 發現每個文章的標題，都被 ```<a>``` (a 的標籤) 包裹，然後再被 ```<div>``` 包裹 (成功找出想要的資料在原始碼中的特色)
 
@@ -3359,7 +3408,7 @@ print(titles)
 
 ##### find 會幫忙找到一個符合條件的 ```<div class="title">``` 標籤
 
-#### 發現標籤裡有 a 標籤
+> 發現標籤裡有 a 標籤
 
 ```
 # 抓取PTT電影版的網頁原始碼 (HTML)
@@ -3388,7 +3437,7 @@ print(titles.a.string)
 [新聞] 漫威老大太狠心 原本想要初代復仇者全滅
 ```
 
-#### 抓到所有標題
+> 抓到所有標題
 
 ```
 # 抓取PTT電影版的網頁原始碼 (HTML)
@@ -3440,7 +3489,7 @@ print(titles)
 
 ##### 成功把標籤用列表找出來 
 
-#### 抓出資料 (用 for 迴圈) 
+> 抓出資料 (用 for 迴圈) 
 
 ```
 # 抓取 PTT 電影版的網頁原始碼 (HTML)
@@ -3517,7 +3566,7 @@ for title in titles:
 
 ### 追蹤連結
 
-#### HTML 超連結
+> HTML 超連結
 
 ```
 <html>
@@ -3538,7 +3587,7 @@ for title in titles:
 
 - ex. PPT 八卦版的第一頁，追蹤上一頁連結，抓第二頁，就可以持續追蹤上一頁抓很多的頁面 
 
-#### 抓取 PTT 八卦版
+> 抓取 PTT 八卦版
 
 1. Google 搜尋 PTT 八卦版並打開該網頁
 
@@ -3733,7 +3782,7 @@ print(nextLink)
 
 ##### bs4 可根據條件找到想要的標籤：```titles = root.find_all("div", class_="title")``` 中是根據 ```class；nextLink = root.find("a", string="‹ 上頁")``` 是根據內文 (標籤裡的內文) string 
 
-#### 下個頁面的標籤在 nextLink，下個目標是屬性 (href)，也就是 ```/bbs/Gossiping/index39194.html```，此時 nextLink 已代表 ```<a>```
+> 下個頁面的標籤在 nextLink，下個目標是屬性 (href)，也就是 ```/bbs/Gossiping/index39194.html```，此時 nextLink 已代表 ```<a>```
 
 ```
 # 抓取 PTT 八卦版的網頁原始碼 (HTML)
@@ -3774,7 +3823,7 @@ print(nextLink["href"])
 
 ##### 但此網址沒有包含前面的 ptt,cc，待會人工接上
 
-#### 整理程式碼 (用函式做包裝)
+> 整理程式碼 (用函式做包裝)
 
 ```
 # 抓取 PTT 八卦版的網頁原始碼 (HTML)
@@ -3858,7 +3907,17 @@ print(pageURL)
 
 ##### 已經形成完整的網址 
 
-##### 程式邏輯：呼叫函式 getData(pageURL) → 網址 ("https://www.ptt.cc/bbs/Gossiping/index.html") 就會丟進去跑 → 跑完就會抓到上一頁的連結 (nextLink["href"]) → 之後就會 return 回到 getData(pageURL) → 再覆蓋回 pageURL 裡面
+##### 程式流程
+
+1. 呼叫函式 getData(pageURL)
+
+2. 網址 ("https://www.ptt.cc/bbs/Gossiping/index.html") 就會丟進去跑
+
+3. 跑完就會抓到上一頁的連結 (nextLink["href"])
+
+4. 之後就會 return 回到 getData(pageURL)
+
+5. 再覆蓋回 pageURL 裡面
 
 ##### getData(pageURL) 得到的是後面那一段 (/bbs/Gossiping/index.html) 所以前面手動加，"https://www.ptt.cc"，形成 ```pageURL = "https://www.ptt.cc" + getData(pageURL)```
 
@@ -3904,7 +3963,35 @@ while count < 3:   # 若想抓 3 頁就 < 3
 成功
 ```
 
-##### 程式邏輯：在程式中其實只加了 ```"cookie":"over18=1"``` → 在 Request Heades 中加上 Cookie 的 Headers → 把 over18=1 放進去 (代表連線曾經點過已滿 18 歲) → 把本來的程式包裝在一個函式裡叫做 getData → 然後傳遞網址進去 → 利用 url 去抓資料 → 研究原始碼，看看每個頁面的上一頁連結要怎麼抓 (要動態的抓到，因為每個頁面上一頁的網址都不一樣) → 用 bs4 工具去尋找 a 標籤 (```nextLink=root.find("a",string="‹ 上頁")```) → 抓到 href 屬性，href = 一個網址 (網頁的超連結) → 進行 return (丟回函式的外面) → 包裝起來後外面的就是主程式 → ```pageURL = "https://www.ptt.cc/bbs/Gossiping/index.html"``` 為第一頁 → 去抓下一頁後得到網址再去串上網站名稱 → pageURL 就是上一頁的網址，再 +1 (```count+=1```)
+##### 程式流程
+
+1. 在程式中其實只加了 ```"cookie":"over18=1"```
+
+2. 在 Request Heades 中加上 Cookie 的 Headers
+
+3. 把 over18=1 放進去 (代表連線曾經點過已滿 18 歲)
+
+4. 把本來的程式包裝在一個函式裡叫做 getData
+
+5. 然後傳遞網址進去
+
+6. 利用 url 去抓資料
+
+7. 研究原始碼，看看每個頁面的上一頁連結要怎麼抓 (要動態的抓到，因為每個頁面上一頁的網址都不一樣)
+
+8. 用 bs4 工具去尋找 a 標籤 (```nextLink=root.find("a",string="‹ 上頁")```)
+
+9. 抓到 href 屬性，href = 一個網址 (網頁的超連結)
+
+10. 進行 return (丟回函式的外面)
+
+11. 包裝起來後外面的就是主程式
+
+12. ```pageURL = "https://www.ptt.cc/bbs/Gossiping/index.html"``` 為第一頁
+
+13. 去抓下一頁後得到網址再去串上網站名稱
+
+14. pageURL 就是上一頁的網址，再 +1 (```count+=1```)
 
 ###### <br/>
 ###### <br/>
@@ -3980,7 +4067,7 @@ while count < 3:   # 若想抓 3 頁就 < 3
 
 #### 安裝套件
 
-##### Flask 套件
+> Flask 套件
 
 ```
 pip install Flask
@@ -4199,11 +4286,7 @@ web gunicorn 24_app:app
 
 1. Google 搜尋 git → [git 網站](https://git-scm.com/)
 
-###### <br/>
-
 ![](./MarkDown-img/app-heroku.jpg)
-
-###### <br/>
 
 2. 點 Download for Winsows 下載 (windows 系統)
 
@@ -4620,7 +4703,8 @@ To https://git.heroku.com/python-training-setting.git
 
 ### 準備環境
  
-#### 安裝 Pandas
+> 安裝 Pandas
+
 ```
 pip install pandas 
 ```
@@ -4631,9 +4715,7 @@ pip install pandas
 
 ![](./MarkDown-img/series.jpg)
 
-###### <br/>
-
--  建立 Series
+> 建立 Series
 
 ```
 # 載入 Pandas 模組
@@ -4659,9 +4741,7 @@ data = data*2   # 放大兩倍
 
 ![](./MarkDown-img/dataframe.jpg)
 
-###### <br/>
-
--  建立 DataFrame
+> 建立 DataFrame
 
 ```
 # 載入 Pandas 模組
@@ -4787,7 +4867,7 @@ print(data)
 
 ##### 大括號就是字典
 
-#### 取得特定的欄位
+> 取得特定的欄位
 
 ```
 # 載入 pandas 模組
@@ -4831,7 +4911,7 @@ print(data["salary"])
 Name: salary, dtype: int64
 ```
 
-#### 取得特定的列
+> 取得特定的列
 
 ```
 # 載入 pandas 模組
@@ -4907,8 +4987,6 @@ Name: 1, dtype: object
 
 ![](./MarkDown-img/series.jpg)
 
-###### <br/>
-
 ### 建立 Series
 
 ```
@@ -4923,11 +5001,9 @@ pd.Series(資料列表)
 
 ![](./MarkDown-img/series-2.jpg)
 
-###### <br/>
-
 ##### 索引：index
 
-#### 內建索引
+> 內建索引
 
 ```
 # 載入 Pandas 模組
@@ -4937,7 +5013,7 @@ import pandas as pd
 pd.Series(資料列表)
 ```
 
-#### 自訂索引
+> 自訂索引
 
 ```
 # 載入 Pandas 模組
@@ -4949,7 +5025,7 @@ pd.Series(資料列表, index = 索引列表)
 
 ### 觀察資料
 
-#### 資料型態
+> 資料型態
 
 ```
 import pandas as pd
@@ -4960,7 +5036,7 @@ data = pd.Series(資料列表)
 print(data.dtype)
 ```
 
-#### 資料數量
+> 資料數量
 
 ```
 import pandas as pd
@@ -4971,7 +5047,7 @@ data = pd.Series(資料列表)
 print(data.size)
 ```
 
-#### 資料索引
+> 資料索引
 
 ```
 import pandas as pd
@@ -4984,7 +5060,7 @@ print(data.index)
 
 ### 取得資料
 
-#### 根據順序取值
+> 根據順序取值
 
 ```
 import pandas as pd
@@ -4997,7 +5073,7 @@ print(data.[1])
 
 ##### 順序有 0 開始算，0 代表第 1 個資料
 
-#### 根據索引取值
+> 根據索引取值
 
 ```
 import pandas as pd
@@ -5010,7 +5086,7 @@ print(data.[索引])
 
 ### 數字運算
 
-#### 數學、統計相關
+> 數學、統計相關
 
 ```
 import pandas as pd
@@ -5039,7 +5115,7 @@ print(data.nlargest(n), data.nsmallest(n))
 
 - nsmallest(n)：取最小的 n 個數字 
 
-#### 字串操作相關
+> 字串操作相關
 
 ```
 import pandas as pd
@@ -5284,11 +5360,9 @@ dtype: object
 
 ![](./MarkDown-img/dataframe.jpg)
 
-###### <br/>
-
 #### 直向為欄 (A 欄及 B 欄)；橫向為列 (第 1 列、第 2 列、第 3 列)
 
-### 建立 DataFrame
+> 建立 DataFrame
 
 ```
 # 載入 Pandas 模組
@@ -5302,10 +5376,7 @@ pd.DataFrame(字典)
 
 ![](./MarkDown-img/dataframe-2.jpg)
 
-###### <br/>
-
-
-#### 內建索引
+> 內建索引
 
 ```
 # 載入 Pandas 模組
@@ -5315,7 +5386,7 @@ import pandas as pd
 pd.DataFrame(字典)
 ```
 
-#### 自訂索引
+> 自訂索引
 
 ```
 # 載入 Pandas 模組
@@ -5327,7 +5398,8 @@ pd.DataFrame(字典, index = 索引列表)
 
 ### 觀察資料
 
-#### 資料數量
+> 資料數量
+
 ```
 import pandas as pd
 
@@ -5339,7 +5411,7 @@ print(data.size)
 
 ##### 每個格子為一筆資料 
 
-#### 資料形狀
+> 資料形狀
 
 ```
 import pandas as pd
@@ -5350,7 +5422,7 @@ data = pd.DataFrame(字典)
 print(data.shape)
 ```
 
-#### 資料索引
+> 資料索引
 
 ```
 import pandas as pd
@@ -5365,9 +5437,7 @@ print(data.index)
 
 ![](./MarkDown-img/dataframe-3.jpg)
 
-###### <br/>
-
-#### 根據順序取一整列
+> 根據順序取一整列
 
 ```
 import pandas as pd
@@ -5378,7 +5448,7 @@ data = pd.DataFrame(字典)
 print(data.iloc[列編號])   # Series 型態
 ```
 
-#### 根據索引取一整列
+> 根據索引取一整列
 
 ```
 import pandas as pd
@@ -5393,9 +5463,7 @@ print(data.loc[索引])   # Series 型態
 
 ![](./MarkDown-img/dataframe-4.jpg)
 
-###### <br/>
-
-#### 根據名稱取一整欄
+> 根據名稱取一整欄
 
 ```
 import pandas as pd
@@ -5406,7 +5474,7 @@ data = pd.DataFrame(字典)
 print(data[欄位名稱])   # Series 型態 (代表 Series 運算可以直接使用)
 ```
 
-#### 建立新的欄位
+> 建立新的欄位
 
 ```
 import pandas as pd
@@ -5566,7 +5634,7 @@ Name: name, dtype: object
 
 ### 綜合範例
 
-#### 雙維度的資料，在取得特定的欄或列，會變成單維度的資料 (Series)
+> 雙維度的資料，在取得特定的欄或列，會變成單維度的資料 (Series)
 
 ```
 # 載入 pandas 模組
@@ -5604,7 +5672,7 @@ Name: name, dtype: object
 薪水的平均值 45000.0
 ```
 
-#### 建立新的欄位
+> 建立新的欄位
 
 ```
 # 載入 pandas 模組
@@ -6019,8 +6087,6 @@ Name: name, dtype: bool
 #### 收集資料：
 
 ![](./MarkDown-img/pandas-googleplay.jpg)
-
-###### <br/>
 
 ##### 清理、分析與應用：利用 Pandas 完成簡單的實務演練
 
@@ -6537,17 +6603,6 @@ D:\Python-training\29_pandas-googleplay.py:19: FutureWarning: The default value 
 
 #### 基於資料的應用：關鍵字搜尋應用程式名稱 
 
-
-
-
-
-
-
-
-
-
-
-
 ```
 import pandas as pd
 
@@ -6830,8 +6885,6 @@ msg.add_alternative("<h1>HTML 內容</h1>", subtype = "html")
 ### 發送信件
 
 ![](./MarkDown-img/send-email.jpg)
-
-###### <br/>
 
 ##### GMAIL 有自己的 SMTP 伺服器 (用來發送電子郵件的伺服器)
 
@@ -7348,7 +7401,23 @@ for d in gen:
 10
 ```
 
-##### 程式邏輯：for d in gen: → 跑第一圈時就會去看函式程式碼開始執行 → 印出階段一 → yield 5 被放進 d 裡面後印出 5 → 從剛剛 yield 的位置 (yield 5) 繼續往下跑 → 印出階段二 → yield 10 被放進 d 裡面後印出 10 → yield 10 後沒有其他資料，迴圈結束
+##### 程式流程
+
+1. for d in gen:
+
+2. 跑第一圈時就會去看函式程式碼開始執行
+
+3. 印出階段一
+
+4. yield 5 被放進 d 裡面後印出 5
+
+5. 從剛剛 yield 的位置 (yield 5) 繼續往下跑
+
+6. 印出階段二
+
+7. yield 10 被放進 d 裡面後印出 10
+
+8. yield 10 後沒有其他資料，迴圈結束
 
 > 產生偶數
 
@@ -7496,7 +7565,15 @@ def handle():
 test(handle)
 ```
 
-##### 程式邏輯：呼叫 test → 把 handle 傳遞到 test 的 arg 裡面(arg 變成一個函式) → arg 後面加 () 就叫呼叫回呼函式 (呼叫到 handle 裡面) → 整個程式最後會印出 100
+##### 程式流程
+
+1. 呼叫 test
+
+2. 把 handle 傳遞到 test 的 arg 裡面(arg 變成一個函式)
+
+3. arg 後面加 () 就叫呼叫回呼函式 (呼叫到 handle 裡面)
+
+4. 整個程式最後會印出 100
 
 > 程式範例
 
@@ -7510,7 +7587,19 @@ def handle(data):
 test(handle)
 ```
 
-##### 程式流程：從最後一行開始看 → 呼叫函式 test，把 handle 函式傳遞到 arg 裡面 (arg 就是 handle) → 呼叫 arg (就是呼叫回呼函式) → 把 50 放進去 (回呼函式的參數) → 50 放進去就是放到 handle 的 data 裡面 (50 傳遞到data 裡面) → print 印出 50
+##### 程式流程
+
+1. 從最後一行開始看
+
+2. 呼叫函式 test，把 handle 函式傳遞到 arg 裡面 (arg 就是 handle)
+
+3. 呼叫 arg (就是呼叫回呼函式)
+
+4. 把 50 放進去 (回呼函式的參數)
+
+5. 50 放進去就是放到 handle 的 data 裡面 (50 傳遞到data 裡面)
+
+6. print 印出 50
 
 ```
 def test(arg):
@@ -7623,4 +7712,277 @@ add(4, 2, handle2)
 結果是 7
 結果是 11
 Result of Add is 6
+```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 裝飾器 Decorator – 基本篇 <br/> 34_decorator.py
+
+### 裝飾器 Decorator：特殊設計的函式，用來「輔助」其他的函式
+
+- 裝飾器本質上是一個函式，用來輔助其他函式的運作
+
+### 基本裝飾器
+
+> 定義裝飾器
+
+```
+def 裝飾器名稱(回呼函式名稱):
+	def 內部函式名稱():
+		# 裝飾器內部的程式碼
+		回呼函式名稱()
+	return 內部函式名稱
+```
+
+> 使用裝飾器
+
+```
+@裝飾器名稱
+def 函式名稱():
+	# 函式內部的程式碼
+
+函式名稱()   # 呼叫帶有裝飾器的函式 
+```
+
+> 程式範例
+
+```
+def testDecorator(callback):
+	def innerFunc():
+		print("裝飾器")
+		callback()
+	return innerFunc
+
+@testDecorator
+def decoratedFunc():
+	print("普通函式")
+
+decoratedFunc() 
+```
+
+##### 概念
+
+1. 上面是自己定義的裝飾器，裝飾器名字叫做 testDecorator，此裝飾器內部要執行的程式碼用裝飾器三個字把它印出來
+
+2. 下面是使用裝飾器，定義一個普通函式取名叫 decoratedFunc，在普通函式上面加上@裝飾器名稱，形成帶有裝飾器的函式
+
+3. 最後呼叫帶有裝飾器的函式 decoratedFunc
+
+
+##### 程式流程 (此運作方式不太一樣)
+
+1. 先執行裝飾器內部函式的程式碼，所以會先印出裝飾器三個字，呼叫 callback (呼叫回呼函式)
+
+2. 回呼函式就是本來的函式
+
+3. 回呼函式呼叫回來印出普通函式 4 個字
+
+##### 細說
+
+1. 要呼叫一個有裝飾器的函式 (decoratedFunc)
+
+2. 就不會執行函式內的程式碼 (普通函式)
+
+3. 會被直接丟到回呼函式裡面 (decoratedFunc 被丟到 callback 裡面)
+
+4. 先執行裝飾器中的內部函式，印出裝飾器
+
+5. 在呼叫回呼函式
+
+6. 然後才呼叫回本來的函式中，印出普通函式
+
+7. 程式結束
+
+> 程式範例
+
+```
+def testDecorator(callback):
+	def innerFunc():
+		print("裝飾器")
+		callback(3)
+	return innerFunc
+
+@testDecorator
+def decoratedFunc(data):
+	print("普通函式", data) 
+
+decoratedFunc() 
+```
+
+##### 與上面差在參數了部分
+
+##### 程式流程
+
+1. 呼叫一個帶有裝飾器的函式 (decoratedFunc)
+
+2. 先去執行裝飾器內部的程式碼，印出裝飾器 3 個字
+
+3. 然後呼叫 callback (呼叫 callback 其實就是呼叫 decoratedFunc)，所以 decoratedFunc 並不是在最下面呼叫的
+
+```
+# 定義裝飾器
+def myDeco(cb):
+	def run():
+		print("裝飾器中的程式碼")
+		cb()
+	return run
+
+# 使用裝飾器
+def test():
+	print("普通函式的程式碼")
+
+test()
+
+→
+
+普通函式的程式碼
+```
+
+```
+# 定義裝飾器
+def myDeco(cb):
+	def run():
+		print("裝飾器中的程式碼")
+		cb()
+	return run
+
+# 使用裝飾器
+@myDeco
+def test():
+	print("普通函式的程式碼")
+
+test()
+
+→ 
+
+裝飾器中的程式碼
+普通函式的程式碼
+```
+
+```
+# 定義裝飾器
+def myDeco(cb):
+	def run():
+		print("裝飾器中的程式碼")
+		cb()
+	return run
+
+# 使用裝飾器
+def test(n):
+	print("普通函式的程式碼", n)
+
+test(3)
+
+→
+
+普通函式的程式碼 3
+```
+
+```
+# 定義裝飾器
+def myDeco(cb):
+	def run():
+		print("裝飾器中的程式碼")
+		cb(5)   # 這個回呼函式，其實就是被裝飾的普通函式
+	return run
+
+# 使用裝飾器
+@myDeco
+def test(n):
+
+	print("普通函式的程式碼", n)
+
+test() 
+
+→ 
+
+裝飾器中的程式碼
+普通函式的程式碼 5
+```
+
+> 寫 1 加到 50 的裝飾器
+
+```
+# 定義一個裝飾器，計算 1 + 2 + ... + 50 的總和
+def calculate(callback):
+	def run():
+		# 裝飾器想要執行的程式碼
+		result = 0
+		for n in range(51):
+			result += n
+		print(result)   # 印出 1 + 2 + ... + 50 的總和
+		callback()
+	return run
+
+# 使用裝飾器
+@calculate
+def show():
+	print("普通函式的程式碼")
+
+show()
+
+→
+
+1275
+普通函式的程式碼
+```
+
+```
+# 定義一個裝飾器，計算 1 + 2 + ... + 50 的總和
+def calculate(callback):
+	def run():
+		# 裝飾器想要執行的程式碼
+		result = 0
+		for n in range(51):
+			result += n
+		# 把計算結果透過參數傳到被裝飾的普通函式中
+		callback(result)
+	return run
+
+# 使用裝飾器
+@calculate
+def show(n):
+	print("計算結果是", n)
+
+show()
+
+→
+
+計算結果是 1275
+```
+
+```
+# 定義一個裝飾器，計算 1 + 2 + ... + 50 的總和
+def calculate(callback):
+	def run():
+		# 裝飾器想要執行的程式碼
+		result = 0
+		for n in range(51):
+			result += n
+		# 把計算結果透過參數傳到被裝飾的普通函式中
+		callback(result)
+	return run
+
+# 使用裝飾器
+@calculate
+def show(n):
+	print("計算結果是", n)
+
+@calculate
+def showEnglish(n):
+	print("Result is", n)
+
+show()
+showEnglish()
+
+→
+
+計算結果是 1275
+Result is 1275
 ```
