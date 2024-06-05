@@ -7440,3 +7440,187 @@ for data in evenGenerator:
 14
 16
 ```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 回呼函式 Callback Function <br/> 33_callback-function.py
+
+### 回呼函式 Callback：透過參數傳遞函式到另一個函式中
+
+### 函式參數
+
+> 程式範例
+
+```
+def test(arg):
+	print(arg)
+
+# 呼叫 test，傳遞函式
+test(3)
+test("Hello")
+```
+
+> 程式範例
+
+```
+def test(arg):
+	print(arg)
+
+# 建立另一個函式 handle
+def handle():
+	print(100)
+
+# 呼叫 test，傳遞函式
+test(handle)
+```
+
+##### handle 就叫做回呼函式 (名稱不一定要叫 handle)
+
+### 回呼函式
+
+> 程式範例
+
+```
+def test(arg):
+	arg()   # 呼叫回呼函式
+
+def handle():
+	print(100)
+
+test(handle)
+```
+
+##### 程式邏輯：呼叫 test → 把 handle 傳遞到 test 的 arg 裡面(arg 變成一個函式) → arg 後面加 () 就叫呼叫回呼函式 (呼叫到 handle 裡面) → 整個程式最後會印出 100
+
+> 程式範例
+
+```
+def test(arg):
+	arg(50)   # 回呼函式的參數
+
+def handle(data):
+	print(data)
+
+test(handle)
+```
+
+##### 程式流程：從最後一行開始看 → 呼叫函式 test，把 handle 函式傳遞到 arg 裡面 (arg 就是 handle) → 呼叫 arg (就是呼叫回呼函式) → 把 50 放進去 (回呼函式的參數) → 50 放進去就是放到 handle 的 data 裡面 (50 傳遞到data 裡面) → print 印出 50
+
+```
+def test(arg):
+	print(arg)
+
+test(3)
+test("Hello")
+
+→
+
+3
+Hello
+```
+
+##### 參數 (3、Hello) 是一個函式
+
+```
+def test(arg):
+	print(arg)
+
+def handle():
+	print(100)
+
+test(handle)
+
+→
+
+<function handle at 0x000002438018E950>
+```
+
+##### python 表示 arg 是一個函式，名字叫 handle，記憶體位置是後面那一串
+
+##### handle 傳遞進去印出 handle 對程式沒有任何幫助
+
+```
+def test(arg):
+	arg()   # 函式呼叫
+
+# 定義一個回呼函式
+def handle():
+	print(100)
+
+test(handle)
+
+→
+
+100
+```
+
+#### 任何函式都可以定義參數
+
+```
+def test(arg):
+	arg("Hello")   # 呼叫回呼函式，帶入參數
+
+# 定義一個回呼函式
+def handle(da):
+	print(da)
+
+test(handle)
+
+→
+
+Hello
+```
+
+```
+def add(n1, n2):
+	print(n1 + n2)
+
+add(3, 4)
+
+→
+
+7
+```
+
+```
+def add(n1, n2, cb):
+	cb(n1 + n2)
+
+def handle1(result):
+	print("結果是", result)
+
+add(3, 4, handle1)
+add(5, 6, handle1)
+
+→
+
+結果是 7
+結果是 11
+```
+
+```
+def add(n1, n2, cb):
+	cb(n1 + n2)
+
+def handle1(result):
+	print("結果是", result)
+
+def handle2(result):
+	print("Result of Add is", result)
+
+add(3, 4, handle1)
+add(5, 6, handle1)
+add(4, 2, handle2)
+
+→
+
+結果是 7
+結果是 11
+Result of Add is 6
+```
