@@ -3979,7 +3979,7 @@ while count < 3:   # 若想抓 3 頁就 < 3
 
 7. 研究原始碼，看看每個頁面的上一頁連結要怎麼抓 (要動態的抓到，因為每個頁面上一頁的網址都不一樣)
 
-8. 用 bs4 工具去尋找 a 標籤 (```nextLink=root.find("a",string="‹ 上頁")```)
+8. 用 bs4 工具去尋找 a 標籤 ( ```nextLink=root.find("a",string="‹ 上頁")``` )
 
 9. 抓到 href 屬性，href = 一個網址 (網頁的超連結)
 
@@ -3991,7 +3991,7 @@ while count < 3:   # 若想抓 3 頁就 < 3
 
 13. 去抓下一頁後得到網址再去串上網站名稱
 
-14. pageURL 就是上一頁的網址，再 +1 (```count+=1```)
+14. pageURL 就是上一頁的網址，再 +1 ( ```count+=1``` )
 
 ###### <br/>
 ###### <br/>
@@ -4316,7 +4316,7 @@ web gunicorn 24_app:app
 
 	- 下方也有教學
 
-4. 在網頁中看到 Install the Heroku CLI，點進去 (```ctrl + 滑鼠左鍵``` 會另開視窗)
+4. 在網頁中看到 Install the Heroku CLI，點進去 ( ```ctrl + 滑鼠左鍵``` 會另開視窗)
 
 5. 下方選擇安裝
 
@@ -7985,4 +7985,269 @@ showEnglish()
 
 計算結果是 1275
 Result is 1275
+```
+
+###### <br/>
+###### <br/>
+###### <br/>
+
+
+
+
+
+## 裝飾器工廠 Decorator Factory – <br/> 35_decorator-factory.py
+
+### 裝飾器 Decorator：特殊設計的函式，用來「輔助」其他的函式
+
+### 基本裝飾器
+
+> 定義與使用
+
+```
+def裝飾器名稱(回呼函式名稱):
+	def內部函式名稱():
+		# 裝飾器內部的程式碼 
+		回呼函式名稱() 
+	return 內部函式名稱 
+
+@裝飾器名稱
+def 函式名稱():
+	# 函式內部的程式碼 
+
+函式名稱()   # 呼叫帶有裝飾器的函式 
+```
+
+> 定義與使用
+
+### 裝飾器工廠
+
+#### 裝飾器工廠：Decorator Factory 用來「生產」裝飾器的函式
+
+- 用來生產裝飾器；本身也是函式 
+
+> 定義與使用
+
+```
+def 裝飾器工廠名稱(參數名稱, …):
+	def 裝飾器名稱(回呼式名稱函):
+		def 內部函式名稱():
+			# 裝飾器內部的程式碼
+			回呼函式名稱()
+		return 內部函式名稱
+	return 裝飾器名稱
+
+@裝飾器工廠名稱(參數資料, …)
+def 函式名稱():
+	# 函式內部的程式碼 
+
+ 
+
+函式名稱()   # 呼叫帶有裝飾器的函式 
+```
+
+##### 一個裝飾器工廠的完整定義是三層的函式，最外層為裝飾器工廠名稱，裡面是裝飾器定義，要記得 return 裝飾器名稱
+
+##### 裝飾器工廠與裝飾器概念類似，只是多一層而已，特別之處在可以處理額外的參數，讓裝飾器更有彈性
+
+##### 使用裝飾器時後面不用 ()，使用裝飾器工廠時需要 ()
+
+> 程式範例
+
+```
+def testFactory(base):
+	def testDecorator(callback):
+		def innerFunc():
+			print("裝飾器", base)
+			callback()
+		return innerFunc
+	return testDecorator
+
+@testFactory(3)
+def decoratedFunc():
+	print("普通函式")
+
+decoratedFunc() 
+```
+
+##### 程式流程
+
+1. 定義一個裝飾器工廠叫做 testFactory，接收一個參數名稱叫做 base
+
+2. 在裝飾器工廠裡面定義一個裝飾器 testDecorator，其中 callback 為回呼函式 
+
+3. 內部函式 innerFunc 執行裝飾器的程式碼，印出裝飾器三個字 (可以額外調用在裝飾器工廠裡面傳進來的參數 base，也可以把 base 印出來)
+
+4. 呼叫回呼函式
+
+5. 記得要 return 裝飾器名稱 (在裝飾器裡面 ```return innerFunc``` ) 
+
+- 這樣就有裝飾器工廠 testFactory 接收一個參數 base，在普通函式上面加 @ 和裝飾器工廠名稱 testFactory 及對應的參數資料 3，把 3 傳遞到 base 裡面 (base 就是 3)，就會產生一個裝飾器讓函式 decoratedFunc 使用，接著呼叫帶有裝飾器的函式，呼叫後先執行裝飾器的程式碼印出裝飾器和 3，在執行普通函式內部的程式碼，印出普通函式，流程運作完畢
+
+##### 可以利用裝飾器工廠提供的參數，讓內部函式做的事更有意義 
+
+> 程式範例
+
+```
+def testFactory(base):
+	def testDecorator(callback):
+		def innerFunc():
+			result = base * 3
+			callback(result)
+		return innerFunc
+	return testDecorator
+
+@testFactory(3)
+	def decoratedFunc(result):
+		print("普通函式", result)
+
+decoratedFunc()
+```
+
+##### 概念
+
+1. 裝飾器工廠 testFactory 帶入一個數字 3
+
+2. 把這個數字 3 乘以 3
+
+3. 再把得到的結果送回普通函式做一個顯示
+
+##### 程式邏輯：testFactory 帶入 3，3 傳到 base 裡面，在執行函式裡面把 base 乘以 3 倍，3 * 3 = 9放進 result，再把結果送到回呼函式 callback 裡面，放到回呼函式的參數，最後印出普通函式 9，也就是裝飾器工廠把參數變 3 倍放到函式中
+
+```
+def myDeco(cb):
+    def run():
+        print("裝飾器內的程式")
+        cb()
+    return run
+
+@myDeco 
+def test():
+    print("普通函式的程式")
+
+test()
+
+→
+
+裝飾器內的程式
+普通函式的程式
+```
+
+```
+def myFactory():
+    def myDeco(cb):
+        def run():
+            print("裝飾器內的程式")
+            cb()
+        return run
+    return myDeco
+
+@myFactory()
+def test():
+    print("普通函式的程式")
+
+test()
+
+→
+
+裝飾器內的程式
+普通函式的程式
+```
+
+```
+def myFactory(base):
+    def myDeco(cb):
+        def run():
+            print("裝飾器內的程式", base)
+            cb()
+        return run
+    return myDeco 
+
+@myFactory(3)
+def test():
+    print("普通函式的程式")
+
+test()
+
+→
+
+裝飾器內的程式 3
+普通函式的程式
+```
+
+```
+def myFactory(base):
+    def myDeco(cb):
+        def run():
+            print("裝飾器內的程式", base)
+            result = base * 2
+            cb(result)
+        return run
+    return myDeco
+
+@myFactory(10)
+def test(result):
+    print("普通函式的程式",result)
+
+test()
+
+→
+
+裝飾器內的程式 10
+普通函式的程式 20
+```
+
+```
+# 計算 1 + 2 + 3 + ... + 50 的裝飾器
+def calculate(callback):
+    def run():
+        total = 0
+        for n in range(51):
+            total += n
+        callback(total)
+    return run
+
+@calculate
+def show(result):
+    print("計算結果是", result) 
+
+@calculate
+def showEnglish(result):
+    print("Result is", result)
+
+show()
+showEnglish()
+
+→ 
+
+計算結果是 1275
+Result is 1275
+```
+
+```
+# 計算 1 + 2 + 3 + ... + max 的裝飾器工廠
+def calculateFactory(max):
+    def calculate(callback):
+        def run():
+            total = 0
+            for n in range(max + 1):
+                total += n
+            callback(total)
+        return run
+    return calculate
+
+@calculateFactory(100)
+def show(result):
+    print("計算結果是", result)
+
+@calculateFactory(10)
+def showEnglish(result):
+    print("Result is", result)
+
+show()
+showEnglish()
+
+→
+
+計算結果是 5050
+Result is 55
 ```
